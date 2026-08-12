@@ -42,5 +42,14 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Crypto.com is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://forgeglobal.com/crypto-com_stock/
+Crypto.com is a cryptocurrency exchange, brokerage and payments company. Its public developer surface
+spans four programmable products — the Crypto.com Exchange API v1 (REST, WebSocket and FIX 4.4), the
+Crypto.com Pay merchant payments API, the Crypto.com Developer Platform API for Cronos EVM / zkEVM, and
+an agent layer made up of a published MCP server, an agent-first CLI and provider-authored Agent Skills.
+
+- Website: https://crypto.com/
+- Exchange API docs: https://exchange-developer.crypto.com/exchange/v1
+- Pay API docs: https://pay-docs.crypto.com/
+- Developer Platform: https://developer.crypto.com/
+- GitHub: https://github.com/crypto-com
+- Status: https://status.crypto.com/

@@ -1,0 +1,133 @@
+generated: '2026-08-11'
+method: searched
+source: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-common-api-reference
+apis:
+- Crypto.com Exchange REST API v1
+- Crypto.com Exchange WebSocket API v1
+- Crypto.com Pay API
+naming:
+  methods: dash-case
+  parameters: snake_case
+  enums: UPPERCASE snake_case
+  source: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-common-api-reference
+request_envelope:
+  style: JSON-RPC-shaped over HTTP POST/GET
+  fields:
+  - name: id
+    type: long
+    required: true
+    note: 0 to 9223372036854775807; echoed on the response
+  - name: method
+    type: string
+    required: true
+    note: e.g. private/get-order-detail
+  - name: params
+    type: object
+    required: true
+    note: use {} when the method takes no parameters
+  - name: api_key
+    type: string
+    required: private methods only
+  - name: sig
+    type: string
+    required: private methods only
+  - name: nonce
+    type: long
+    required: true
+    note: milliseconds since epoch
+  numeric_rule: All numbers must be sent as JSON strings ("12.34", not 12.34).
+  content_type: application/json
+response_envelope:
+  fields:
+  - id
+  - method
+  - result
+  - code
+  - message
+  - original
+  success: code == 0
+  note: HTTP status and the in-body code are BOTH significant; some failures return HTTP 200 with a non-zero
+    code (40401 NOT_FOUND, 43012 SELF_TRADE_PREVENTION).
+idempotency:
+  supported: true
+  apis:
+  - api: Crypto.com Pay API
+    header: Idempotency-Key
+    scope: refund API only
+    key_ownership: client-generated unique value
+    enabled_by_default: false
+    retention: not published
+    docs: https://pay-docs.crypto.com/
+    quote: Idempotent requests are not enabled by default, and it is available for refund API at the moment.
+  - api: Crypto.com Exchange REST API v1
+    header: null
+    mechanism: client_oid on order creation; duplicate submission is rejected with code 204 DUPLICATE_CLORDID,
+      and a repeated request envelope with 40006 DUPLICATE_REQUEST
+    note: This is duplicate REJECTION, not idempotent replay - a retried create-order does not return
+      the original result.
+    docs: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-common-api-reference
+  gap: No Idempotency-Key on the Exchange order-entry path, which is the surface where an agent retry
+    is most consequential.
+pagination:
+  style: cursor-and-time-window
+  params:
+  - start_time
+  - end_time
+  - limit
+  - page_size
+  - page
+  note: History endpoints (get-order-history, get-trades, get-transactions) page by time window plus limit;
+    get-trades and get-order-history are additionally rate-limited to 1 request per second. Pay list endpoints
+    use page/page_size (10-1000, default 10).
+  response_fields:
+  - data
+  - paging
+versioning:
+  scheme: uri-path
+  current: v1
+  note: Version is in the path (/exchange/v1). Breaking changes are announced on a dated Breaking Change
+    Schedule page rather than by a new version.
+  docs: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-breaking-change-schedule
+error_envelope:
+  format: proprietary
+  fields:
+  - code
+  - message
+  - original
+  problem_json: false
+  catalog: errors/crypto-com-error-codes.yml
+  pay_shape:
+    wrapper: error
+    fields:
+    - type
+    - error_code
+    - param
+    - error_message
+    types:
+    - authentication_error
+    - invalid_request_error
+    - forbidden_error
+    - not_found_error
+    - rate_limit_error
+rate_limit_signaling:
+  headers_published: false
+  note: Crypto.com publishes rate-limit NUMBERS but no rate-limit RESPONSE HEADERS - no X-RateLimit-*,
+    no RateLimit-*, no Retry-After is documented on any surface. Exhaustion is signalled only by HTTP
+    429 with in-body code 42901 TOO_MANY_REQUESTS. An agent must therefore model the published limits
+    client-side rather than read a runtime signal.
+  detail: rate-limits/crypto-com-rate-limits.yml
+tracing:
+  request_id_header: null
+  note: No request-id/correlation header is documented. Correlation is via the caller-supplied envelope
+    `id`, echoed on the response.
+metadata:
+  supported: false
+  note: Exchange orders carry client_oid; Pay objects carry a metadata object.
+field_expansion:
+  supported: false
+cross_links:
+  errors: errors/crypto-com-error-codes.yml
+  lifecycle: lifecycle/crypto-com-lifecycle.yml
+  authentication: authentication/crypto-com-authentication.yml
+  rate_limits: rate-limits/crypto-com-rate-limits.yml
+  sandbox: sandbox/crypto-com-sandbox.yml

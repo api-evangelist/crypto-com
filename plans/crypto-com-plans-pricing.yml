@@ -1,0 +1,29 @@
+generated: '2026-08-11'
+method: searched
+source: https://crypto.com/exchange/fee
+model: transaction-fee
+plan_count: 0
+note: 'Crypto.com publishes no API subscription plans. There is no per-call, per-seat or tiered API price list on
+  any of the four surfaces - API access is free and the company monetises the underlying activity instead. What
+  IS published is a volume/stake-based trading-fee ladder on the Exchange, which is a fee schedule for the business,
+  not a plan for the API. Recorded as plan_count: 0 deliberately, not as an omission.'
+commercial_surfaces:
+- product: Crypto.com Exchange
+  pricing: Maker/taker trading fees banded by 30-day trading volume and CRO stake; API access itself is free with
+    an account.
+  url: https://crypto.com/exchange/fee
+- product: Crypto.com Pay
+  pricing: Merchant processing fee; not published as a public rate card - merchants are onboarded through a sales/compliance
+    process.
+  url: https://crypto.com/en/pay
+- product: Crypto.com Developer Platform
+  pricing: API key issued free against a project; no published quota or overage schedule.
+  url: https://developer.crypto.com/
+quotas:
+  published: false
+  note: Rate limits are published (rate-limits/crypto-com-rate-limits.yml) but no monthly call quota or overage
+    price exists.
+x-evidence:
+  fetched: '2026-08-11'
+  url: https://crypto.com/exchange/fee
+  http_status: 200

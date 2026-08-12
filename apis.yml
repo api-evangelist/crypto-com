@@ -1,23 +1,292 @@
 aid: crypto-com
 name: Crypto.com
-description: 'Crypto.com is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  Crypto.com is a cryptocurrency exchange, brokerage and payments company serving retail and
+  institutional customers across spot, margin and derivatives trading, staking, custody, card
+  and payment acceptance, and on-chain development on the Cronos EVM and Cronos zkEVM networks.
+  Its public developer surface spans four programmable products: the Crypto.com Exchange API v1
+  (REST, WebSocket and FIX 4.4) for market data, order entry, advanced OCO/OTO/OTOCO orders,
+  trading bots, portfolio, wallet and staking operations; the Crypto.com Pay API for merchant
+  payment acceptance, refunds, subscriptions and invoicing with webhooks and idempotent refunds;
+  the Crypto.com Developer Platform API for Cronos tokens, contracts, transactions, blocks,
+  wallets, CronosID and DeFi; and an agent layer consisting of a published MCP server, an
+  agent-first Rust CLI, and provider-authored Agent Skills for trading through the Crypto.com
+  App and Exchange.
 url: https://raw.githubusercontent.com/api-evangelist/crypto-com/refs/heads/main/apis.yml
+image: https://crypto.com/images/meta-og/listing.png
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
-specificationVersion: '0.20'
+specificationVersion: '0.21'
 created: '2026-08-11'
 modified: '2026-08-11'
 tags:
-- Company
-apis: []
+- cryptocurrency
+- crypto-exchange
+- trading
+- derivatives
+- market-data
+- digital-assets
+- payments
+- merchant-payments
+- blockchain
+- cronos
+- defi
+- staking
+- fintech
+- mcp
+- agent-native
+apis:
+- name: Crypto.com Exchange REST API v1
+  description: >-
+    REST API for the Crypto.com Exchange covering public reference and market data
+    (instruments, order book, candlesticks, trades, tickers, valuations, settlement prices,
+    insurance fund, risk parameters) and authenticated trading, advanced order management
+    (OCO/OTO/OTOCO), OTC RFQ, account balances and positions, crypto and fiat wallet
+    operations, staking, trading bots and transaction history. Requests are JSON-RPC-shaped
+    (id/method/params) over HTTPS; private methods are signed with an HMAC-SHA256 digital
+    signature computed from the API key, method, id, sorted parameter string and nonce.
+  humanURL: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-introduction
+  baseURL: https://api.crypto.com/exchange/v1
+  tags:
+  - crypto-exchange
+  - trading
+  - derivatives
+  - market-data
+  - staking
+  - digital-assets
+  properties:
+  - type: OpenAPI
+    url: openapi/crypto-com-exchange-openapi.yml
+  - type: Documentation
+    url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-introduction
+  - type: APIReference
+    url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest/crypto-com-exchange-api-v-1
+  - type: Authentication
+    url: authentication/crypto-com-authentication.yml
+  - type: Conventions
+    url: conventions/crypto-com-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crypto-com-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/crypto-com-rate-limits.yml
+  - type: Sandbox
+    url: sandbox/crypto-com-sandbox.yml
+  - type: ChangeLog
+    url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-change-log
+  - type: MCPServer
+    url: mcp/crypto-com-mcp.yml
+  - type: ToolCrosswalk
+    url: mcp/crypto-com-tool-crosswalk.yml
+  - type: DataModel
+    url: data-model/crypto-com-data-model.yml
+  - type: Overlay
+    url: overlays/crypto-com-exchange-overlay.yaml
+  - type: LLMsTxt
+    url: https://exchange-developer.crypto.com/exchange/v1/llms.txt
+- name: Crypto.com Exchange WebSocket API v1
+  description: >-
+    WebSocket API for the Crypto.com Exchange, split into a Market Data stream (public
+    channels for book, ticker, trade, candlestick, index, mark price, settlement, funding and
+    open interest) and a User API stream (authenticated via public/auth once per session, then
+    subscription channels for user.order, user.trade, user.balance, user.positions,
+    user.account_risk, user.advance.order and related events). Same request envelope and error
+    codes as REST; websocket termination codes 1000/1006/1013 are documented.
+  humanURL: https://exchange-developer.crypto.com/exchange/v1/docs/api/websocket-introduction
+  baseURL: wss://stream.crypto.com/exchange/v1
+  tags:
+  - crypto-exchange
+  - market-data
+  - trading
+  - streaming
+  properties:
+  - type: Documentation
+    url: https://exchange-developer.crypto.com/exchange/v1/docs/api/websocket-introduction
+  - type: APIReference
+    url: https://exchange-developer.crypto.com/exchange/v1/docs/api/websocket-common-api-reference
+  - type: Webhooks
+    url: asyncapi/crypto-com-event-surface.yml
+  - type: ChangeLog
+    url: https://exchange-developer.crypto.com/exchange/v1/docs/api/websocket-change-log
+  - type: RateLimits
+    url: rate-limits/crypto-com-rate-limits.yml
+- name: Crypto.com Exchange FIX API
+  description: >-
+    FIX 4.4-based API for institutional order entry, market data and drop copy on the
+    Crypto.com Exchange, with tags borrowed from later FIX versions. Covers Logon/Logout,
+    NewOrderSingle, MassOrder, OrderCancelRequest, OrderCancelReplaceRequest,
+    OrderMassCancelRequest, ExecutionReport, SecurityList and MarketDataRequest. The FIX
+    gateway is not reachable over the public internet - clients must establish an AWS
+    PrivateLink connection - so no public baseURL is published.
+  humanURL: https://exchange-developer.crypto.com/exchange/v1/docs/api/fix-introduction
+  tags:
+  - crypto-exchange
+  - trading
+  - fix-protocol
+  - institutional
+  properties:
+  - type: Documentation
+    url: https://exchange-developer.crypto.com/exchange/v1/docs/api/fix-introduction
+  - type: APIReference
+    url: https://exchange-developer.crypto.com/exchange/v1/docs/api/fix-fix-dictionary
+  - type: ChangeLog
+    url: https://exchange-developer.crypto.com/exchange/v1/docs/api/fix-change-log
+  - type: RateLimits
+    url: rate-limits/crypto-com-rate-limits.yml
+- name: Crypto.com Pay API
+  description: >-
+    Merchant payments API for accepting cryptocurrency payments, issuing refunds, running
+    subscriptions and recurring invoices, managing customers, products and sub-merchants, and
+    reading transaction histories. REST over HTTPS with HTTP Basic authentication using a
+    secret key, test and live modes separated by key prefix, an Idempotency-Key header on the
+    refund API, and twelve signed webhook event types verified with an HMAC-SHA256
+    Pay-Signature header.
+  humanURL: https://pay-docs.crypto.com/
+  baseURL: https://pay.crypto.com/api
+  tags:
+  - payments
+  - merchant-payments
+  - subscriptions
+  - cryptocurrency
+  properties:
+  - type: Documentation
+    url: https://pay-docs.crypto.com/
+  - type: APIReference
+    url: https://pay-docs.crypto.com/#api-reference
+  - type: Authentication
+    url: authentication/crypto-com-authentication.yml
+  - type: Conventions
+    url: conventions/crypto-com-conventions.yml
+  - type: Idempotency
+    url: conventions/crypto-com-conventions.yml
+  - type: ErrorCatalog
+    url: errors/crypto-com-error-codes.yml
+  - type: Webhooks
+    url: asyncapi/crypto-com-event-surface.yml
+  - type: Sandbox
+    url: sandbox/crypto-com-sandbox.yml
+- name: Crypto.com Developer Platform API
+  description: >-
+    On-chain developer platform service API for Cronos EVM and Cronos zkEVM, exposing native
+    and ERC-20 token balances and transfers, smart contract ABI and bytecode lookup,
+    transaction and block queries, wallet creation and balances, CronosID name resolution,
+    DeFi data, contract events, network information and an Exchange module. Access requires an
+    API key created against a project in the Developer Platform dashboard; first-party
+    TypeScript and Python client SDKs wrap the service.
+  humanURL: https://developer.crypto.com/documentation
+  baseURL: https://developer-platform-api.crypto.com/v1/cdc-developer-platform
+  tags:
+  - blockchain
+  - cronos
+  - defi
+  - web3
+  - digital-assets
+  properties:
+  - type: DeveloperPortal
+    url: https://developer.crypto.com/
+  - type: Documentation
+    url: https://ai-agent-sdk-docs.crypto.com/crypto.com-developer-platform/on-chain-developer-platform
+  - type: APIReference
+    url: https://developer.crypto.com/documentation
+  - type: LLMsTxt
+    url: llms/crypto-com-llms.txt
+  - type: SDKs
+    url: packages/crypto-com-packages.yml
+common:
+- type: TrustCenter
+  url: security/crypto-com-trust-center.yml
+- type: DomainSecurity
+  url: security/crypto-com-domain-security.yml
+- type: Website
+  url: https://crypto.com/
+- type: DeveloperPortal
+  url: https://exchange-developer.crypto.com/exchange/v1
+- type: Documentation
+  url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-introduction
+- type: APIReference
+  url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest/crypto-com-exchange-api-v-1
+- type: GettingStarted
+  url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-common-api-reference
+- type: Support
+  url: https://help.crypto.com/en/
+- type: HelpCenter
+  url: https://help.crypto.com/en/
+- type: Blog
+  url: https://crypto.com/en/product-news
+- type: GitHubOrganization
+  url: https://github.com/crypto-com
+- type: Pricing
+  url: https://crypto.com/exchange/fee
+- type: SignUp
+  url: https://crypto.com/exchange/signup
+- type: Login
+  url: https://crypto.com/exchange/login
+- type: TermsOfService
+  url: https://crypto.com/exchange/terms
+- type: PrivacyPolicy
+  url: https://crypto.com/en/privacy
+- type: StatusPage
+  url: https://status.crypto.com/
+- type: ChangeLog
+  url: changelog/crypto-com-changelog.yml
+- type: Deprecation
+  url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-breaking-change-schedule
+- type: Security
+  url: https://help.crypto.com/en/articles/9154034-vulnerability-disclosure-and-bug-bounty
+- type: Compliance
+  url: https://crypto.com/en/security
+- type: OpenAPI
+  url: openapi/crypto-com-exchange-openapi.yml
+- type: MCPServer
+  url: mcp/crypto-com-mcp.yml
+- type: ToolCrosswalk
+  url: mcp/crypto-com-tool-crosswalk.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: CLI
+  url: cli/crypto-com-cli.yml
+- type: Packages
+  url: packages/crypto-com-packages.yml
+- type: SDKs
+  url: packages/crypto-com-packages.yml
+- type: LLMsTxt
+  url: llms/crypto-com-llms.txt
+- type: Authentication
+  url: authentication/crypto-com-authentication.yml
+- type: Conventions
+  url: conventions/crypto-com-conventions.yml
+- type: Idempotency
+  url: conventions/crypto-com-conventions.yml
+- type: ErrorCatalog
+  url: errors/crypto-com-error-codes.yml
+- type: RateLimits
+  url: rate-limits/crypto-com-rate-limits.yml
+- type: Plans
+  url: plans/crypto-com-plans-pricing.yml
+- type: Lifecycle
+  url: lifecycle/crypto-com-lifecycle.yml
+- type: Sandbox
+  url: sandbox/crypto-com-sandbox.yml
+- type: Webhooks
+  url: asyncapi/crypto-com-event-surface.yml
+- type: Conformance
+  url: conformance/crypto-com-conformance.yml
+- type: VulnerabilityDisclosure
+  url: security/crypto-com-vulnerability-disclosure.yml
+- type: TrustCenter
+  url: https://crypto.com/en/security
+- type: DomainSecurity
+  url: security/crypto-com-domain-security.yml
+- type: DataModel
+  url: data-model/crypto-com-data-model.yml
+- type: Overlay
+  url: overlays/crypto-com-exchange-overlay.yaml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
-common:
-- type: Website
-  url: https://forgeglobal.com/crypto-com_stock/
+x-enrichment:
+  date: '2026-08-11'
+  status: enriched
+  artifacts_added: 33
+  pass: local-v1

@@ -1,0 +1,149 @@
+generated: '2026-08-11'
+method: derived
+source: openapi/crypto-com-exchange-openapi.yml
+note: Derived from the published Exchange OpenAPI. The spec models 221 component schemas but almost all of them
+  are per-operation Request/Response envelopes rather than shared domain entities - only a handful of reusable object
+  schemas exist (ApiError, PrivateOrder). The entities below are read from the request/response field names and
+  the tag grouping, not from $ref reuse, because the spec does not express the relationships as references.
+entities:
+- name: Instrument
+  key: instrument_name
+  tag: Reference and Market Data
+  note: The join key for nearly the whole API. Appears as instrument_name on orders, trades, positions, books, candlesticks,
+    valuations, risk parameters and every websocket market channel.
+- name: Account
+  key: account_id
+  tag: Account Balance and Positions
+  relationships:
+  - type: has_many
+    target: Position
+    via: account_id
+  - type: has_many
+    target: Order
+    via: account_id
+  - type: has_many
+    target: SubAccount
+    via: hierarchy
+- name: Order
+  key: order_id
+  alt_key: client_oid
+  tag: Trading
+  relationships:
+  - type: belongs_to
+    target: Instrument
+    via: instrument_name
+  - type: belongs_to
+    target: Account
+    via: account_id
+  - type: has_many
+    target: Trade
+    via: order_id
+  - type: belongs_to
+    target: AdvancedOrder
+    via: list_id / attach_order_id
+- name: AdvancedOrder
+  key: list_id
+  tag: Advanced Order Management
+  note: OCO / OTO / OTOCO contingency groups. contingency_type is SPOT_ATTACH or DERIV_ATTACH, resolved from the
+    instrument type.
+  relationships:
+  - type: has_many
+    target: Order
+    via: order_id legs
+- name: Trade
+  key: trade_id
+  tag: Transaction History
+  relationships:
+  - type: belongs_to
+    target: Order
+    via: order_id
+  - type: belongs_to
+    target: Instrument
+    via: instrument_name
+- name: Position
+  key: instrument_name + account_id
+  tag: Account Balance and Positions
+  note: Isolated positions add isolation_id and isolation_type as of 2026-01-08.
+- name: IsolatedPosition
+  key: isolation_id
+  tag: Trading
+  relationships:
+  - type: belongs_to
+    target: Account
+    via: account_id
+- name: Balance
+  key: account_id + currency
+  tag: Account Balance and Positions
+- name: Withdrawal
+  key: id
+  tag: Crypto Wallet
+  relationships:
+  - type: belongs_to
+    target: Currency
+    via: currency
+  - type: belongs_to
+    target: Network
+    via: network_id
+- name: Deposit
+  key: id
+  tag: Crypto Wallet
+- name: FiatBankAccount
+  key: bank_account_id
+  tag: Fiat Wallet
+- name: StakePosition
+  key: instrument_name
+  tag: Staking
+- name: TradingBot
+  key: bot_id
+  tag: Trading Bot API
+  note: 'Added 2026-05-21. Types: DCA, TWAP, GRID, FUNDING_ARBITRAGE.'
+  relationships:
+  - type: has_many
+    target: Order
+    via: bot executions
+- name: OtcQuote
+  key: quote_id
+  tag: OTC RFQ for Taker
+  relationships:
+  - type: has_many
+    target: OtcDeal
+    via: quote_id
+- name: ApiError
+  key: code
+  tag: cross-cutting
+  note: The one genuinely shared component schema - referenced by the error response of all 95 operations.
+pay_entities:
+- name: Payment
+  key: id
+  relationships:
+  - type: has_many
+    target: Refund
+    via: payment_id
+  - type: belongs_to
+    target: Customer
+    via: customer_id
+- name: Refund
+  key: id
+- name: Subscription
+  key: id
+  relationships:
+  - type: has_many
+    target: Invoice
+    via: subscription_id
+- name: Invoice
+  key: id
+- name: Customer
+  key: id
+- name: Product
+  key: id
+- name: SubMerchant
+  key: id
+- name: TransactionHistory
+  key: id
+id_format:
+  exchange: numeric or string order ids; client_oid is caller-supplied
+  pay: UUID v4 (e.g. 8ddee625-d175-4c55-a5e0-5ed8c68e3cd1)
+schema_stats:
+  component_schemas: 221
+  reusable_domain_schemas: 87
+  note: 'The low reuse count is the finding: the contract is operation-shaped, not entity-shaped.'

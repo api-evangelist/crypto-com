@@ -1,0 +1,692 @@
+generated: '2026-08-11'
+method: derived
+source: https://github.com/crypto-com/cdcx-cli/blob/main/agents/tool-catalog.json + openapi/crypto-com-exchange-openapi.yml
+summary: Binds every command in Crypto.com's own published cdcx tool catalog (the surface the first-party
+  @cryptocom/cdcx-cli MCP server exposes) to the backing operationId in the published Crypto.com Exchange
+  REST OpenAPI, so each agent tool inherits a real inputSchema from the contract rather than a guessed
+  one.
+surfaces:
+  openapi:
+    file: openapi/crypto-com-exchange-openapi.yml
+    operations: 95
+    gated: false
+  mcp:
+    server: cdcx
+    transport: stdio
+    launch: npx -y @cryptocom/cdcx-cli@latest mcp
+    tools_list_probed: '2026-08-11'
+    gated: false
+    note: tools/list answered anonymously and returned 9 tools for the default "market" service group;
+      the other nine service groups (account, trade, advanced, margin, staking, funding, fiat, otc, stream)
+      are opt-in via ~/.config/cdcx/mcp.toml and require API credentials, so their live inputSchemas were
+      not observed. The published tool catalog covers all groups and is what is crosswalked here.
+  graphql: null
+coverage:
+  catalog_commands: 67
+  bound_to_rest: 62
+  high_confidence: 43
+  medium_confidence: 17
+  low_confidence: 2
+  mcp_only: 5
+  rest_operations_total: 95
+  rest_operations_with_a_tool: 59
+  rest_only: 36
+crosswalk:
+- tool: amend
+  cli_method: private/amend-order
+  category: Trading
+  rest:
+  - privateAmendOrder
+  binding: rest
+  confidence: high
+  safety_tier: mutate
+  auth_required: true
+- tool: cancel-all-oco
+  cli_method: private/cancel-all-oco-orders
+  category: Advanced Order Management
+  rest:
+  - privateAdvancedCancelAllOrders
+  binding: rest
+  confidence: medium
+  safety_tier: dangerous
+  auth_required: true
+  note: fans into one advanced cancel-all operation
+- tool: cancel-all
+  cli_method: private/cancel-all-orders
+  category: Trading
+  rest:
+  - privateCancelAllOrders
+  binding: rest
+  confidence: high
+  safety_tier: dangerous
+  auth_required: true
+- tool: cancel-all-oto
+  cli_method: private/cancel-all-oto-orders
+  category: Advanced Order Management
+  rest:
+  - privateAdvancedCancelAllOrders
+  binding: rest
+  confidence: medium
+  safety_tier: dangerous
+  auth_required: true
+  note: fans into one advanced cancel-all operation
+- tool: cancel-oco
+  cli_method: private/cancel-oco-order
+  category: Advanced Order Management
+  rest:
+  - privateAdvancedCancelOco
+  binding: rest
+  confidence: medium
+  safety_tier: mutate
+  auth_required: true
+  note: same advanced-order migration
+- tool: cancel
+  cli_method: private/cancel-order
+  category: Trading
+  rest:
+  - privateCancelOrder
+  binding: rest
+  confidence: high
+  safety_tier: mutate
+  auth_required: true
+- tool: cancel-list
+  cli_method: private/cancel-order-list
+  category: Trading
+  rest:
+  - privateCancelOrderList
+  binding: rest
+  confidence: high
+  safety_tier: mutate
+  auth_required: true
+- tool: cancel-oto
+  cli_method: private/cancel-oto-order
+  category: Advanced Order Management
+  rest:
+  - privateAdvancedCancelOto
+  binding: rest
+  confidence: medium
+  safety_tier: mutate
+  auth_required: true
+  note: same advanced-order migration
+- tool: cancel-otoco
+  cli_method: private/cancel-otoco-order
+  category: Advanced Order Management
+  rest:
+  - privateAdvancedCancelOtoco
+  binding: rest
+  confidence: medium
+  safety_tier: mutate
+  auth_required: true
+  note: same advanced-order migration
+- tool: leverage
+  cli_method: private/change-account-leverage
+  category: Trading
+  rest:
+  - privateChangeAccountLeverage
+  binding: rest
+  confidence: high
+  safety_tier: mutate
+  auth_required: true
+- tool: settings
+  cli_method: private/change-account-settings
+  category: Trading
+  rest:
+  - privateChangeAccountSettings
+  binding: rest
+  confidence: high
+  safety_tier: mutate
+  auth_required: true
+- tool: close-position
+  cli_method: private/close-position
+  category: Trading
+  rest:
+  - privateClosePosition
+  binding: rest
+  confidence: high
+  safety_tier: mutate
+  auth_required: true
+- tool: deposit
+  cli_method: private/create-fiat-deposit
+  category: Fiat Wallet
+  rest:
+  - privateFiatFiatDepositInfo
+  binding: rest
+  confidence: low
+  safety_tier: mutate
+  auth_required: true
+  note: CLI "fiat deposit" resolves deposit instructions; the spec exposes fiat-deposit-info, there is
+    no create-deposit operation
+- tool: withdraw
+  cli_method: private/create-fiat-withdrawal
+  category: Fiat Wallet
+  rest:
+  - privateFiatFiatCreateWithdraw
+  binding: rest
+  confidence: high
+  safety_tier: dangerous
+  auth_required: true
+  note: same operation, flattened CLI name
+- tool: create-oco
+  cli_method: private/create-oco-order
+  category: Advanced Order Management
+  rest:
+  - privateAdvancedCreateOco
+  binding: rest
+  confidence: medium
+  safety_tier: mutate
+  auth_required: true
+  note: CLI keeps the pre-migration method name; the REST spec moved OCO creation under private/advanced/
+    (breaking-change schedule, 2025-12-17)
+- tool: order
+  cli_method: private/create-order
+  category: Trading
+  rest:
+  - privateCreateOrder
+  binding: rest
+  confidence: high
+  safety_tier: mutate
+  auth_required: true
+- tool: order-list
+  cli_method: private/create-order-list
+  category: Trading
+  rest:
+  - privateCreateOrderList
+  binding: rest
+  confidence: high
+  safety_tier: mutate
+  auth_required: true
+- tool: create-oto
+  cli_method: private/create-oto-order
+  category: Advanced Order Management
+  rest:
+  - privateAdvancedCreateOto
+  binding: rest
+  confidence: medium
+  safety_tier: mutate
+  auth_required: true
+  note: same advanced-order migration
+- tool: create-otoco
+  cli_method: private/create-otoco-order
+  category: Advanced Order Management
+  rest:
+  - privateAdvancedCreateOtoco
+  binding: rest
+  confidence: medium
+  safety_tier: mutate
+  auth_required: true
+  note: same advanced-order migration
+- tool: withdraw
+  cli_method: private/create-withdrawal
+  category: Crypto Wallet
+  rest:
+  - privateCreateWithdrawal
+  binding: rest
+  confidence: high
+  safety_tier: dangerous
+  auth_required: true
+- tool: info
+  cli_method: private/get-account-info
+  category: Account Balance and Positions
+  rest:
+  - privateGetAccounts
+  binding: rest
+  confidence: medium
+  safety_tier: sensitive_read
+  auth_required: true
+  note: CLI account info maps to the accounts hierarchy operation
+- tool: summary
+  cli_method: private/get-account-summary
+  category: Account Balance and Positions
+  rest:
+  - privateUserBalance
+  binding: rest
+  confidence: medium
+  safety_tier: sensitive_read
+  auth_required: true
+  note: CLI account summary is rendered from user-balance
+- tool: networks
+  cli_method: private/get-currency-networks
+  category: Crypto Wallet
+  rest:
+  - privateGetCurrencyNetworks
+  binding: rest
+  confidence: high
+  safety_tier: sensitive_read
+  auth_required: true
+- tool: deposit-address
+  cli_method: private/get-deposit-address
+  category: Crypto Wallet
+  rest:
+  - privateGetDepositAddress
+  binding: rest
+  confidence: high
+  safety_tier: sensitive_read
+  auth_required: true
+- tool: deposit-history
+  cli_method: private/get-deposit-history
+  category: Crypto Wallet
+  rest:
+  - privateGetDepositHistory
+  binding: rest
+  confidence: high
+  safety_tier: sensitive_read
+  auth_required: true
+- tool: fee-rate
+  cli_method: private/get-fee-rate
+  category: Trading
+  rest:
+  - privateGetFeeRate
+  binding: rest
+  confidence: high
+  safety_tier: sensitive_read
+  auth_required: true
+- tool: accounts
+  cli_method: private/get-fiat-accounts
+  category: Fiat Wallet
+  rest:
+  - privateFiatFiatGetBankAccounts
+  binding: rest
+  confidence: medium
+  safety_tier: sensitive_read
+  auth_required: true
+  note: fiat bank accounts
+- tool: currencies
+  cli_method: private/get-fiat-currencies
+  category: Fiat Wallet
+  rest:
+  - privateFiatFiatAccess
+  binding: rest
+  confidence: low
+  safety_tier: sensitive_read
+  auth_required: true
+  note: closest published operation; the spec has no dedicated fiat-currencies operation
+- tool: deposit-history
+  cli_method: private/get-fiat-deposit-history
+  category: Fiat Wallet
+  rest:
+  - privateFiatFiatDepositHistory
+  binding: rest
+  confidence: high
+  safety_tier: sensitive_read
+  auth_required: true
+  note: same operation, flattened CLI name
+- tool: withdrawal-history
+  cli_method: private/get-fiat-withdrawal-history
+  category: Fiat Wallet
+  rest:
+  - privateFiatFiatWithdrawHistory
+  binding: rest
+  confidence: high
+  safety_tier: sensitive_read
+  auth_required: true
+  note: same operation, flattened CLI name
+- tool: instrument-fee-rate
+  cli_method: private/get-instrument-fee-rate
+  category: Trading
+  rest:
+  - privateGetInstrumentFeeRate
+  binding: rest
+  confidence: high
+  safety_tier: sensitive_read
+  auth_required: true
+- tool: oco-open-orders
+  cli_method: private/get-oco-open-orders
+  category: Advanced Order Management
+  rest:
+  - privateAdvancedGetOpenOrders
+  binding: rest
+  confidence: medium
+  safety_tier: sensitive_read
+  auth_required: true
+  note: advanced open orders, filtered client-side by contingency type
+- tool: oco-detail
+  cli_method: private/get-oco-order-detail
+  category: Advanced Order Management
+  rest:
+  - privateAdvancedGetOrderDetail
+  binding: rest
+  confidence: medium
+  safety_tier: sensitive_read
+  auth_required: true
+  note: advanced order detail
+- tool: open-orders
+  cli_method: private/get-open-orders
+  category: Trading
+  rest:
+  - privateGetOpenOrders
+  binding: rest
+  confidence: high
+  safety_tier: sensitive_read
+  auth_required: true
+- tool: order-detail
+  cli_method: private/get-order-detail
+  category: Trading
+  rest:
+  - privateGetOrderDetail
+  binding: rest
+  confidence: high
+  safety_tier: sensitive_read
+  auth_required: true
+- tool: orders
+  cli_method: private/get-order-history
+  category: Trading
+  rest:
+  - privateGetOrderHistory
+  binding: rest
+  confidence: high
+  safety_tier: sensitive_read
+  auth_required: true
+- tool: oto-open-orders
+  cli_method: private/get-oto-open-orders
+  category: Advanced Order Management
+  rest:
+  - privateAdvancedGetOpenOrders
+  binding: rest
+  confidence: medium
+  safety_tier: sensitive_read
+  auth_required: true
+  note: advanced open orders, filtered client-side by contingency type
+- tool: oto-detail
+  cli_method: private/get-oto-order-detail
+  category: Advanced Order Management
+  rest:
+  - privateAdvancedGetOrderDetail
+  binding: rest
+  confidence: medium
+  safety_tier: sensitive_read
+  auth_required: true
+  note: advanced order detail
+- tool: positions
+  cli_method: private/get-positions
+  category: Account Balance and Positions
+  rest:
+  - privateGetPositions
+  binding: rest
+  confidence: high
+  safety_tier: sensitive_read
+  auth_required: true
+- tool: subaccount-balances
+  cli_method: private/get-subaccount-balances
+  category: Account Balance and Positions
+  rest:
+  - privateGetSubaccountBalances
+  binding: rest
+  confidence: high
+  safety_tier: sensitive_read
+  auth_required: true
+- tool: trades
+  cli_method: private/get-trades
+  category: Trading
+  rest:
+  - privateGetTrades
+  binding: rest
+  confidence: high
+  safety_tier: sensitive_read
+  auth_required: true
+- tool: transactions
+  cli_method: private/get-transactions
+  category: Trading
+  rest:
+  - privateGetTransactions
+  binding: rest
+  confidence: high
+  safety_tier: sensitive_read
+  auth_required: true
+- tool: withdrawal-history
+  cli_method: private/get-withdrawal-history
+  category: Crypto Wallet
+  rest:
+  - privateGetWithdrawalHistory
+  binding: rest
+  confidence: high
+  safety_tier: sensitive_read
+  auth_required: true
+- tool: leverage
+  cli_method: private/margin/set-leverage
+  category: Trading
+  rest:
+  - privateChangeIsolatedMarginLeverage
+  binding: rest
+  confidence: medium
+  safety_tier: mutate
+  auth_required: true
+  note: isolated margin leverage
+- tool: transfer
+  cli_method: private/margin/transfer
+  category: Trading
+  rest:
+  - privateCreateIsolatedMarginTransfer
+  binding: rest
+  confidence: medium
+  safety_tier: mutate
+  auth_required: true
+  note: isolated margin transfer
+- tool: convert
+  cli_method: private/staking/convert
+  category: Staking
+  rest:
+  - privateStakingConvert
+  binding: rest
+  confidence: high
+  safety_tier: mutate
+  auth_required: true
+- tool: open-stakes
+  cli_method: private/staking/get-open-stake
+  category: Staking
+  rest:
+  - privateStakingGetOpenStake
+  binding: rest
+  confidence: high
+  safety_tier: sensitive_read
+  auth_required: true
+- tool: stake-history
+  cli_method: private/staking/get-stake-history
+  category: Staking
+  rest:
+  - privateStakingGetStakeHistory
+  binding: rest
+  confidence: high
+  safety_tier: sensitive_read
+  auth_required: true
+- tool: instruments
+  cli_method: private/staking/get-staking-instruments
+  category: Staking
+  rest:
+  - privateStakingGetStakingInstruments
+  binding: rest
+  confidence: high
+  safety_tier: sensitive_read
+  auth_required: true
+- tool: positions
+  cli_method: private/staking/get-staking-position
+  category: Staking
+  rest:
+  - privateStakingGetStakingPosition
+  binding: rest
+  confidence: high
+  safety_tier: sensitive_read
+  auth_required: true
+- tool: stake
+  cli_method: private/staking/stake
+  category: Staking
+  rest:
+  - privateStakingStake
+  binding: rest
+  confidence: high
+  safety_tier: mutate
+  auth_required: true
+- tool: unstake
+  cli_method: private/staking/unstake
+  category: Staking
+  rest:
+  - privateStakingUnstake
+  binding: rest
+  confidence: high
+  safety_tier: mutate
+  auth_required: true
+- tool: book
+  cli_method: public/get-book
+  category: Reference and Market Data
+  rest:
+  - publicGetBook
+  binding: rest
+  confidence: high
+  safety_tier: read
+  auth_required: false
+- tool: candlestick
+  cli_method: public/get-candlestick
+  category: Reference and Market Data
+  rest:
+  - publicGetCandlestick
+  binding: rest
+  confidence: high
+  safety_tier: read
+  auth_required: false
+- tool: instruments
+  cli_method: public/get-instruments
+  category: Reference and Market Data
+  rest:
+  - publicGetInstruments
+  binding: rest
+  confidence: high
+  safety_tier: read
+  auth_required: false
+- tool: insurance
+  cli_method: public/get-insurance
+  category: Reference and Market Data
+  rest:
+  - publicGetInsurance
+  binding: rest
+  confidence: high
+  safety_tier: read
+  auth_required: false
+- tool: risk-params
+  cli_method: public/get-risk-parameters
+  category: Reference and Market Data
+  rest:
+  - publicGetRiskParameters
+  binding: rest
+  confidence: high
+  safety_tier: read
+  auth_required: false
+- tool: settlement-prices
+  cli_method: public/get-settlement-price
+  category: Reference and Market Data
+  rest:
+  - publicGetExpiredSettlementPrice
+  binding: rest
+  confidence: high
+  safety_tier: read
+  auth_required: false
+  note: renamed in the REST spec
+- tool: ticker
+  cli_method: public/get-tickers
+  category: Reference and Market Data
+  rest:
+  - publicGetTickers
+  binding: rest
+  confidence: high
+  safety_tier: read
+  auth_required: false
+- tool: trades
+  cli_method: public/get-trades
+  category: Reference and Market Data
+  rest:
+  - publicGetTrades
+  binding: rest
+  confidence: high
+  safety_tier: read
+  auth_required: false
+- tool: valuations
+  cli_method: public/get-valuations
+  category: Reference and Market Data
+  rest:
+  - publicGetValuations
+  binding: rest
+  confidence: high
+  safety_tier: read
+  auth_required: false
+- tool: conversion-rate
+  cli_method: public/staking/get-conversion-rate
+  category: Staking
+  rest:
+  - publicStakingGetConversionRate
+  binding: rest
+  confidence: high
+  safety_tier: read
+  auth_required: false
+mcp_only:
+- tool: channel
+  cli_method: private/get-fiat-channel
+  safety_tier: sensitive_read
+  reason: No fiat-channel operation in the published REST OpenAPI.
+- tool: open-unstakes
+  cli_method: private/staking/get-open-unstake
+  safety_tier: sensitive_read
+  reason: The REST spec publishes private/staking/get-open-stake and get-open-convert but no open-unstake
+    operation.
+- tool: reward-history
+  cli_method: private/staking/get-staking-reward-history
+  safety_tier: sensitive_read
+  reason: The REST spec publishes private/staking/get-reward-history; the CLI name is not a spec path
+    and the reward-history binding is already covered by the reward-history tool.
+- tool: unstake-history
+  cli_method: private/staking/get-unstake-history
+  safety_tier: sensitive_read
+  reason: The REST spec publishes get-stake-history and get-convert-history but no unstake-history operation.
+- tool: announcements
+  cli_method: public/get-announcements
+  safety_tier: read
+  reason: No announcements operation in the published REST OpenAPI; the CLI reads the exchange announcements
+    feed.
+rest_only:
+- capability: Account Balance and Positions
+  operations:
+  - privateCreateSubaccountTransfer
+  - privateGetFeeCreditBalances
+  - privateUserBalanceHistory
+- capability: Advanced Order Management
+  operations:
+  - privateAdvancedAmendOrder
+  - privateAdvancedCancelOrder
+  - privateAdvancedCancelOrderList
+  - privateAdvancedCreateOrder
+  - privateAdvancedCreateOrderList
+  - privateAdvancedGetOrderHistory
+  - privateAdvancedGetOrderListDetail
+- capability: Fiat Wallet
+  operations:
+  - privateFiatFiatCreateBankAccount
+  - privateFiatFiatGetPlaidToken
+  - privateFiatFiatTransactionLimit
+  - privateFiatFiatTransactionQuota
+- capability: OTC RFQ for Taker
+  operations:
+  - privateOtcGetDealHistory
+  - privateOtcGetOpenDeals
+  - privateOtcGetOpenQuoteRequests
+  - privateOtcGetOpenQuotes
+  - privateOtcGetOtcInstruments
+  - privateOtcGetQuoteHistory
+  - privateOtcGetQuoteRequestHistory
+  - privateOtcGetSettleLaterLimit
+  - privateOtcGetUnsettledAmounts
+  - privateOtcRequestDeal
+  - privateOtcRequestQuote
+- capability: Staking
+  operations:
+  - privateStakingGetConvertHistory
+  - privateStakingGetOpenConvert
+  - privateStakingGetRewardHistory
+- capability: Trading
+  operations:
+  - privateGetAccountSettings
+- capability: Trading Bot API
+  operations:
+  - privateBotCreateTradingBot
+  - privateBotGetTradingBotExecutions
+  - privateBotGetTradingBots
+  - privateBotPauseTradingBot
+  - privateBotResumeTradingBot
+  - privateBotTerminateTradingBot
+  - privateBotUpdateTradingBot

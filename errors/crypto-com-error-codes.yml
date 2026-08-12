@@ -1,0 +1,573 @@
+generated: '2026-08-11'
+method: searched
+source:
+- https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-common-api-reference
+- https://pay-docs.crypto.com/
+- https://github.com/crypto-com/cdcx-cli/blob/main/agents/error-catalog.json
+format: proprietary
+problem_json: false
+note: Crypto.com does not use RFC 9457 application/problem+json on any surface. The Exchange returns a numeric reason
+  `code` inside a 200-shaped envelope alongside the HTTP status, and materially, some failures arrive as HTTP 200
+  with a non-zero code. Crypto.com Pay uses a separate string-code envelope. All three tables below are transcribed
+  from the provider docs.
+envelopes:
+- api: Crypto.com Exchange REST + WebSocket API v1
+  shape:
+    id: long
+    method: string
+    code: int (0 = success)
+    message: string
+    original: escaped original request, error cases only
+  note: On a websocket error where the original request omitted id/method, id is -1 and method is ERROR.
+- api: Crypto.com Pay API
+  shape:
+    error:
+      type: authentication_error | invalid_request_error | forbidden_error | not_found_error | rate_limit_error
+      error_code: string
+      param: string, when parameter-specific
+      error_message: string
+exchange_http_semantics:
+- status: 200
+  meaning: Success (code 0), plus two non-fatal outcomes carried as codes 40401 and 43012
+- status: 400
+  meaning: Bad request / rejected order
+- status: 401
+  meaning: Unauthorized - bad key, bad signature, non-whitelisted IP, or wrong user tier
+- status: 408
+  meaning: Request timeout
+- status: 429
+  meaning: Rate limit exceeded (code 42901)
+- status: 500
+  meaning: Internal error and the bulk of risk/margin/position rejections
+exchange_codes:
+- http_status: 200
+  code: 0
+  name: --
+  meaning: Success
+- http_status: 200
+  code: 40401
+  name: NOT_FOUND
+  meaning: Not found
+- http_status: 200
+  code: 43012
+  name: SELF_TRADE_PREVENTION
+  meaning: Canceled due to Self Trade Prevention
+- http_status: 400
+  code: 202
+  name: ACCOUNT_IS_SUSPENDED
+  meaning: Account is suspended
+- http_status: 400
+  code: 204
+  name: DUPLICATE_CLORDID
+  meaning: Duplicate client order id
+- http_status: 400
+  code: 207
+  name: NO_MARK_PRICE
+  meaning: No mark price
+- http_status: 400
+  code: 208
+  name: INSTRUMENT_NOT_TRADABLE
+  meaning: Instrument is not tradable
+- http_status: 400
+  code: 209
+  name: INVALID_INSTRUMENT
+  meaning: Instrument is invalid
+- http_status: 400
+  code: 213
+  name: INVALID_ORDERQTY
+  meaning: Invalid order quantity
+- http_status: 400
+  code: 218
+  name: INVALID_ORDTYPE
+  meaning: Invalid order_type
+- http_status: 400
+  code: 220
+  name: INVALID_SIDE
+  meaning: Invalid side
+- http_status: 400
+  code: 221
+  name: INVALID_TIF
+  meaning: Invalid time_in_force
+- http_status: 400
+  code: 222
+  name: STALE_MARK_PRICE
+  meaning: Stale mark price
+- http_status: 400
+  code: 223
+  name: NO_CLORDID
+  meaning: No client order id
+- http_status: 400
+  code: 224
+  name: REJ_BY_MATCHING_ENGINE
+  meaning: Rejected by matching engine
+- http_status: 400
+  code: 225
+  name: EXCEED_MAXIMUM_ENTRY_LEVERAGE
+  meaning: Exceeds maximum entry leverage
+- http_status: 400
+  code: 226
+  name: INVALID_LEVERAGE
+  meaning: Invalid leverage
+- http_status: 400
+  code: 227
+  name: INVALID_SLIPPAGE
+  meaning: Invalid slippage
+- http_status: 400
+  code: 228
+  name: INVALID_FLOOR_PRICE
+  meaning: Invalid floor price
+- http_status: 400
+  code: 229
+  name: INVALID_REF_PRICE
+  meaning: Invalid ref price
+- http_status: 400
+  code: 230
+  name: INVALID_REF_PRICE_TYPE
+  meaning: Invalid ref price type
+- http_status: 400
+  code: 308
+  name: INVALID_PRICE
+  meaning: Invalid price
+- http_status: 400
+  code: 314
+  name: EXCEEDS_MAX_ORDER_SIZE
+  meaning: Exceeds max order size
+- http_status: 400
+  code: 315
+  name: FAR_AWAY_LIMIT_PRICE
+  meaning: Far away limit price
+- http_status: 400
+  code: 318
+  name: EXCEEDS_MAX_ALLOWED_ORDERS
+  meaning: Exceeds max allowed orders
+- http_status: 400
+  code: 319
+  name: EXCEEDS_MAX_POSITION_SIZE
+  meaning: Exceeds max position size
+- http_status: 400
+  code: 401
+  name: ACCOUNT_DOES_NOT_EXIST
+  meaning: Account does not exist
+- http_status: 400
+  code: 408
+  name: MARGIN_UNIT_IS_SUSPENDED
+  meaning: Margin unit is suspended
+- http_status: 400
+  code: 30024
+  name: MAX_AMOUNT_VIOLATED
+  meaning: If create-withdrawal call quantity > max_withdrawal_balance in user-balance api
+- http_status: 400
+  code: 40001
+  name: BAD_REQUEST
+  meaning: Bad request
+- http_status: 400
+  code: 40002
+  name: METHOD_NOT_FOUND
+  meaning: Method not found
+- http_status: 400
+  code: 40003
+  name: INVALID_REQUEST
+  meaning: Invalid request
+- http_status: 400
+  code: 40004
+  name: MISSING_OR_INVALID_ARGUMENT
+  meaning: Required argument is blank or missing
+- http_status: 400
+  code: 40005
+  name: INVALID_DATE
+  meaning: Invalid date
+- http_status: 400
+  code: 40006
+  name: DUPLICATE_REQUEST
+  meaning: Duplicate request received
+- http_status: 400
+  code: 40102
+  name: INVALID_NONCE
+  meaning: Nonce value differs by more than 60 seconds
+- http_status: 400
+  code: 40107
+  name: EXCEED_MAX_SUBSCRIPTIONS
+  meaning: Session subscription limit has been exceeded
+- http_status: 400
+  code: 50001
+  name: ERR_INTERNAL
+  meaning: Internal error
+- http_status: 400
+  code: 50002
+  name: DW_CREDIT_LINE_NOT_MAINTAINED
+  meaning: If create-withdrawal call breaches credit line check
+- http_status: 401
+  code: 40101
+  name: UNAUTHORIZED
+  meaning: Not authenticated, or key/signature incorrect
+- http_status: 401
+  code: 40103
+  name: IP_ILLEGAL
+  meaning: IP address not whitelisted
+- http_status: 401
+  code: 40104
+  name: USER_TIER_INVALID
+  meaning: Disallowed based on user tier
+- http_status: 408
+  code: 40801
+  name: REQUEST_TIMEOUT
+  meaning: Request has timed out
+- http_status: 429
+  code: 42901
+  name: TOO_MANY_REQUESTS
+  meaning: Requests have exceeded rate limits
+- http_status: 500
+  code: 201
+  name: NO_POSITION
+  meaning: No position
+- http_status: 500
+  code: 203
+  name: ACCOUNTS_DO_NOT_MATCH
+  meaning: Accounts do not match
+- http_status: 500
+  code: 205
+  name: DUPLICATE_ORDERID
+  meaning: Duplicate order id
+- http_status: 500
+  code: 206
+  name: INSTRUMENT_EXPIRED
+  meaning: Instrument has expired
+- http_status: 500
+  code: 210
+  name: INVALID_ACCOUNT
+  meaning: Account is invalid
+- http_status: 500
+  code: 211
+  name: INVALID_CURRENCY
+  meaning: Currency is invalid
+- http_status: 500
+  code: 212
+  name: INVALID_ORDERID
+  meaning: Invalid order id
+- http_status: 500
+  code: 214
+  name: INVALID_SETTLE_CURRENCY
+  meaning: Invalid settlement currency
+- http_status: 500
+  code: 215
+  name: INVALID_FEE_CURRENCY
+  meaning: Invalid fee currency
+- http_status: 500
+  code: 216
+  name: INVALID_POSITION_QTY
+  meaning: Invalid position quantity
+- http_status: 500
+  code: 217
+  name: INVALID_OPEN_QTY
+  meaning: Invalid open quantity
+- http_status: 500
+  code: 219
+  name: INVALID_EXECINST
+  meaning: Invalid exec_inst
+- http_status: 500
+  code: 301
+  name: ACCOUNT_IS_IN_MARGIN_CALL
+  meaning: Account is in margin call
+- http_status: 500
+  code: 302
+  name: EXCEEDS_ACCOUNT_RISK_LIMIT
+  meaning: Exceeds account risk limit
+- http_status: 500
+  code: 303
+  name: EXCEEDS_POSITION_RISK_LIMIT
+  meaning: Exceeds position risk limit
+- http_status: 500
+  code: 304
+  name: ORDER_WILL_LEAD_TO_IMMEDIATE_LIQUIDATION
+  meaning: Order will lead to immediate liquidation
+- http_status: 500
+  code: 305
+  name: ORDER_WILL_TRIGGER_MARGIN_CALL
+  meaning: Order will trigger margin call
+- http_status: 500
+  code: 306
+  name: INSUFFICIENT_AVAILABLE_BALANCE
+  meaning: Insufficient available balance
+- http_status: 500
+  code: 307
+  name: INVALID_ORDSTATUS
+  meaning: Invalid order status
+- http_status: 500
+  code: 309
+  name: MARKET_IS_NOT_OPEN
+  meaning: Market is not open
+- http_status: 500
+  code: 310
+  name: ORDER_PRICE_BEYOND_LIQUIDATION_PRICE
+  meaning: Order price beyond liquidation price
+- http_status: 500
+  code: 311
+  name: POSITION_IS_IN_LIQUIDATION
+  meaning: Position is in liquidation
+- http_status: 500
+  code: 312
+  name: ORDER_PRICE_GREATER_THAN_LIMITUPPRICE
+  meaning: Order price is greater than the limit up price
+- http_status: 500
+  code: 313
+  name: ORDER_PRICE_LESS_THAN_LIMITDOWNPRICE
+  meaning: Order price is less than the limit down price
+- http_status: 500
+  code: 316
+  name: NO_ACTIVE_ORDER
+  meaning: No active order
+- http_status: 500
+  code: 317
+  name: POSITION_NO_EXIST
+  meaning: Position does not exist
+- http_status: 500
+  code: 320
+  name: EXCEEDS_INITIAL_MARGIN
+  meaning: Exceeds initial margin
+- http_status: 500
+  code: 321
+  name: EXCEEDS_MAX_AVAILABLE_BALANCE
+  meaning: Exceeds maximum available balance
+- http_status: 500
+  code: 406
+  name: ACCOUNT_IS_NOT_ACTIVE
+  meaning: Account is not active
+- http_status: 500
+  code: 407
+  name: MARGIN_UNIT_DOES_NOT_EXIST
+  meaning: Margin unit does not exist
+- http_status: 500
+  code: 409
+  name: INVALID_USER
+  meaning: Invalid user
+- http_status: 500
+  code: 410
+  name: USER_IS_NOT_ACTIVE
+  meaning: User is not active
+- http_status: 500
+  code: 411
+  name: USER_NO_DERIV_ACCESS
+  meaning: User does not have derivative access
+- http_status: 500
+  code: 412
+  name: ACCOUNT_NO_DERIV_ACCESS
+  meaning: Account does not have derivative access
+- http_status: 500
+  code: 415
+  name: BELOW_MIN_ORDER_SIZE
+  meaning: Below Min. Order Size
+- http_status: 500
+  code: 501
+  name: EXCEED_MAXIMUM_EFFECTIVE_LEVERAGE
+  meaning: Exceeds maximum effective leverage
+- http_status: 500
+  code: 604
+  name: INVALID_COLLATERAL_PRICE
+  meaning: Invalid collateral price
+- http_status: 500
+  code: 605
+  name: INVALID_MARGIN_CALC
+  meaning: Invalid margin calculation
+- http_status: 500
+  code: 606
+  name: EXCEED_ALLOWED_SLIPPAGE
+  meaning: Exceed allowed slippage
+- http_status: 500
+  code: 613
+  name: INVALID_ISOLATION_ID
+  meaning: Invalid isolation ID
+- http_status: 500
+  code: 614
+  name: EXCEEDS_ISOLATED_POSITION_LIMIT
+  meaning: Exceeds maximum allowed number of isolated position
+- http_status: 500
+  code: 615
+  name: ACCOUNT_DOES_NOT_SUPPORT_ISOLATED_POSITION
+  meaning: Account does not support isolated position
+- http_status: 500
+  code: 616
+  name: CREATE_ISOLATED_POSITION_FAILED
+  meaning: Failed to create isolated position
+- http_status: 500
+  code: 617
+  name: DUPLICATED_INSTRUMENT_ORDER_FOR_ISOLATED_MARGIN
+  meaning: Account already have isolated position with same instrument
+- http_status: 500
+  code: 618
+  name: TOO_MANY_PENDING_ISOLATED_MARGIN_REQUESTS
+  meaning: Exceeds request limit for isolated margin order
+- http_status: 500
+  code: 619
+  name: UNSUPPORTED_OPERATION_ON_ISOLATED_POSITION
+  meaning: Unsupported operation on isolated position
+- http_status: 500
+  code: 620
+  name: CREATE_ISOLATED_POSITION_TIMEOUT
+  meaning: Request for create isolated position has timed out
+- http_status: 400
+  code: 1110
+  name: REDUCE_ONLY_REJECTED
+  meaning: Rejected REDUCE_ONLY create-order request
+- http_status: 500
+  code: 43003
+  name: FILL_OR_KILL
+  meaning: FOK order has not been filled and cancelled
+- http_status: 500
+  code: 43004
+  name: IMMEDIATE_OR_CANCEL
+  meaning: IOC order has not been filled and cancelled
+- http_status: 500
+  code: 43005
+  name: POST_ONLY_REJ
+  meaning: Rejected POST_ONLY create-order request (normally happened when exec_inst contains POST_ONLY but time_in_force
+    is NOT GOOD_TILL_CANCEL)
+- http_status: 500
+  code: 120009
+  name: REJECTED
+  meaning: Request rejected by upstream service
+- http_status: 500
+  code: 130008
+  name: NON_APPLICABLE
+  meaning: Operation not applicable for current state
+pay_codes:
+  general:
+  - code: api_key_invalid
+    http_status: 401
+    description: The provided API key is invalid or malformed.
+  - code: invalid_parameter
+    http_status: 400
+    description: One or more parameters are invalid or missing.
+  - code: resource_missing
+    http_status: 404
+    description: The requested resource with the provided ID does not exist.
+  - code: secret_key_required
+    http_status: 401
+    description: This operation requires a secret key, but a publishable key was provided.
+  payment:
+  - code: account_not_enable
+    http_status: 400
+    description: The merchant account has not been activated yet.
+  - code: amount_too_small
+    http_status: 400
+    description: The payment amount is below the minimum required amount.
+  - code: annual_amount_limit
+    http_status: 400
+    description: The merchant has exceeded their annual payment amount limit.
+  - code: customer_email_exist
+    http_status: 400
+    description: Email address cannot be changed for this payment.
+  - code: customer_email_missing
+    http_status: 400
+    description: Customer email is required but was not provided.
+  - code: daily_amount_limit
+    http_status: 400
+    description: The merchant has exceeded their daily payment amount limit.
+  - code: invalid_amount
+    http_status: 400
+    description: The payment amount is invalid (e.g., less than or equal to 0).
+  - code: invalid_tax_amount
+    http_status: 400
+    description: The tax amount is invalid (e.g., exceeds payment amount).
+  - code: region_not_supported
+    http_status: 400
+    description: The customer's region is not supported for this payment.
+  - code: sub_merchant_info_check
+    http_status: 400
+    description: Sub-merchant information is invalid or the sub-merchant is not enabled.
+  - code: transaction_disabled
+    http_status: 400
+    description: The merchant account's transaction functionality has been disabled.
+  redirect_url:
+  - code: redirect_url_required
+    http_status: 422
+    description: return_url or cancel_url is missing and the merchant is not exempted from domain validation.
+  - code: redirect_url_domain_not_allowed
+    http_status: 422
+    description: The domain in return_url or cancel_url is not in the merchant's approved whitelist, or the URL
+      format is invalid.
+  - code: redirect_url_scheme_not_allowed
+    http_status: 422
+    description: The URL scheme in return_url or cancel_url is not in the merchant's approved whitelist.
+  refund:
+  - code: account_not_match
+    http_status: 403
+    description: The provided payment ID does not belong to this merchant account.
+  - code: not_enough_balance
+    http_status: 400
+    description: Insufficient balance to complete the refund.
+websocket_termination_codes:
+- code: 1000
+  description: Normal disconnection by server, usually when the heartbeat is not handled properly
+- code: 1006
+  description: Abnormal disconnection
+- code: 1013
+  description: Server restarting - try again later
+agent_error_taxonomy:
+  source: https://github.com/crypto-com/cdcx-cli/blob/main/agents/error-catalog.json
+  note: Crypto.com publishes a machine-readable, retryability-tagged mapping of Exchange codes into ten agent-facing
+    categories, shipped inside its own CLI. This is the closest thing to remediation guidance the company publishes.
+  categories:
+  - category: auth
+    retryable: false
+    cdc_codes:
+    - 10002
+    - 10003
+    - 10006
+    - 10007
+    - 40101
+    - 40102
+  - category: validation
+    retryable: false
+    cdc_codes:
+    - 10001
+    - 10004
+    - 10005
+    - 10008
+    - 10009
+  - category: safety
+    retryable: false
+    cdc_codes: []
+  - category: rate_limit
+    retryable: true
+    cdc_codes:
+    - 42901
+  - category: insufficient_funds
+    retryable: false
+    cdc_codes:
+    - 20001
+    - 306
+  - category: order_error
+    retryable: false
+    cdc_codes:
+    - 20002
+    - 20005
+    - 20006
+    - 20007
+    - 318
+  - category: network
+    retryable: true
+    cdc_codes: []
+  - category: api
+    retryable: false
+    cdc_codes: []
+  - category: config
+    retryable: false
+    cdc_codes: []
+  - category: io
+    retryable: true
+    cdc_codes: []
+  discrepancy: The CLI catalog references a 1000x/2000x code family (10001-10009, 20001-20007) that does not appear
+    in the published REST reason-code tables, which use the 2xx/3xx/4xx/40xxx/5xxxx families. Recorded as found;
+    not reconciled, because doing so would require guessing.
+derived_from_openapi:
+  file: openapi/crypto-com-exchange-openapi.yml
+  note: All 95 operations declare 200/400/408/429/500 responses and 85 of 95 declare 401, every one referencing
+    the shared ApiError schema. The spec carries the status codes; the reason codes live only in the docs tables
+    above.
+x-evidence:
+  fetched: '2026-08-11'
+  urls:
+  - https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-common-api-reference.md
+  - https://pay-docs.crypto.com/
+  - https://raw.githubusercontent.com/crypto-com/cdcx-cli/main/agents/error-catalog.json
+  http_status: 200

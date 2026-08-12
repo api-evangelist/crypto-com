@@ -1,0 +1,53 @@
+generated: '2026-08-11'
+method: searched
+source: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-breaking-change-schedule
+versioning:
+  scheme: uri-path
+  current: v1
+  base: https://api.crypto.com/exchange/v1
+  predecessor: Exchange API v1 (legacy) archived at https://crypto.com/exchange-docs-v1
+  docs: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-introduction
+deprecation:
+  policy_url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-breaking-change-schedule
+  sunset_header: false
+  deprecation_header: false
+  mechanism: A dated Breaking Change Schedule page announcing each removal in advance, with a stated transition
+    period during which the removed behaviour is silently substituted (e.g. callers of the removed 100ms book snapshot
+    were served the 500ms subscription).
+  note: 'RFC 8594 Sunset and Deprecation response headers are NOT used, and no operation in the OpenAPI carries
+    deprecated: true. The policy is a human-readable page, not a machine-readable signal.'
+  announced_changes:
+  - date: '2025-12-17T08:00:00Z'
+    change: Trigger order creation/cancellation migrated to the Advanced Order Management API.
+  - date: '2025-02-27T08:00:00Z'
+    change: book.{instrument_name}.{depth} 100ms full-snapshot subscription removed; switch to the SNAPSHOT_AND_UPDATE
+      delta subscription. Default-depth book.{instrument_name} subscription removed.
+  - date: '2023-12-17T08:00:00Z'
+    change: Market Data wildcard ticker subscription removed; use instrument-specific subscriptions.
+deprecated_operations: []
+deprecated_packages:
+- package: '@crypto.com/ai-agent-client'
+  last_release: '2024-11-25'
+  note: Labelled "outdated contents" in the provider docs; superseded by the AI Agent SDK.
+- package: crypto-com-ai-agent-client
+  last_release: '2024-11-25'
+  note: Python sibling, same status.
+status_page: https://status.crypto.com/
+status_page_api: https://status.crypto.com/api/v2/summary.json
+status_page_platform: Atlassian Statuspage (machine-readable v2 API available)
+sla:
+  published: false
+  note: No public uptime SLA or uptime target is published for any Crypto.com API.
+changelogs:
+- api: Exchange REST
+  url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-change-log
+- api: Exchange WebSocket
+  url: https://exchange-developer.crypto.com/exchange/v1/docs/api/websocket-change-log
+- api: Exchange FIX
+  url: https://exchange-developer.crypto.com/exchange/v1/docs/api/fix-change-log
+x-evidence:
+  fetched: '2026-08-11'
+  urls:
+  - https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-breaking-change-schedule.md
+  - https://status.crypto.com/api/v2/summary.json
+  http_status: 200

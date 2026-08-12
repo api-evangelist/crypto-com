@@ -1,0 +1,228 @@
+# Crypto.com Exchange API v1 Documentation
+
+> Fast, Reliable, and Secure Trading API
+
+This file contains links to documentation sections following the llmstxt.org standard.
+
+## Table of Contents
+
+- [Exchange FIX Protocol](https://exchange-developer.crypto.com/docs/api/fix/exchange-fix-protocol.info.md): Introduction
+- [BusinessMessageReject (35=j)](https://exchange-developer.crypto.com/docs/api/fix/fix-business-message-reject.api.md): The Business Message Reject message can reject an application-level message which fulfills session-level rules and cannot be rejected via any other...
+- [FIX Drop Copy](https://exchange-developer.crypto.com/docs/api/fix/fix-drop-copy.tag.md): FIX Drop Copy
+- [ExecutionReport (35=8)](https://exchange-developer.crypto.com/docs/api/fix/fix-execution-report.api.md): The ExecType (150) field indicates the reason why this ExecutionReport was sent.
+- [Heartbeat (35=0)](https://exchange-developer.crypto.com/docs/api/fix/fix-heartbeat.api.md): The Heartbeat (0) monitors the status of the communication link and identifies when the last of a string of messages was not received.
+- [EXCHANGE FIX Protocol](https://exchange-developer.crypto.com/exchange/v1/docs/api/fix/fix-introduction.md): <head>
+- [Logon (35=A)](https://exchange-developer.crypto.com/docs/api/fix/fix-logon.api.md): Initiate FIX session with authentication credentials.
+- [Logout (35=5)](https://exchange-developer.crypto.com/docs/api/fix/fix-logout.api.md): The Logout (35=5) message initiates or confirms the termination of a FIX session. Disconnection without the exchange of Logout (35=5) messages shou...
+- [MarketDataIncrementalRefresh (35=X)](https://exchange-developer.crypto.com/docs/api/fix/fix-market-data-incremental-refresh.api.md): Response for Market Data Request.
+- [MarketDataRequestReject (35=Y)](https://exchange-developer.crypto.com/docs/api/fix/fix-market-data-request-reject.api.md): The Market Data Request Reject is used when the broker cannot honor the Market Data Request (35=V), due to business or technical reasons. Brokers m...
+- [MarketDataRequest (35=V)](https://exchange-developer.crypto.com/docs/api/fix/fix-market-data-request.api.md): Subscribes to Market Data: Order Book, Trades.
+- [Snapshot/Full Refresh (35=W)](https://exchange-developer.crypto.com/docs/api/fix/fix-market-data-snapshot-full-refresh.api.md): The Market Data messages are used as the response to a Market Data Request (V) message. In all cases, one Market Data message refers only to one Ma...
+- [FIX Market Data](https://exchange-developer.crypto.com/docs/api/fix/fix-market-data.tag.md): FIX Market Data
+- [MassOrder (35=DJ)](https://exchange-developer.crypto.com/docs/api/fix/fix-mass-order.api.md): The MassOrder message, which we adopted from FIX 5.0 SP2, can be used to add or cancel multiple unrelated orders with a single message. Only the ke...
+- [NewOrderSingle (35=D)](https://exchange-developer.crypto.com/docs/api/fix/fix-new-order-single.api.md): Creates a new BUY or SELL order on the Exchange.
+- [OrderCancelReject (35=9)](https://exchange-developer.crypto.com/docs/api/fix/fix-order-cancel-reject.api.md): The Order Cancel Reject (9) message is issued by the broker upon receipt of a cancel request or cancel/replace request message which cannot be hono...
+- [OrderCancelReplaceRequest (35=G)](https://exchange-developer.crypto.com/docs/api/fix/fix-order-cancel-replace-request.api.md): Cancel/Replace will be used to change any valid attribute of an open order (i.e. reduce/increase quantity, change limit price, change instructions,...
+- [OrderCancelRequest (35=F)](https://exchange-developer.crypto.com/docs/api/fix/fix-order-cancel-request.api.md): Cancels an existing order on the Exchange (asynchronous)
+- [FIX Order Management](https://exchange-developer.crypto.com/docs/api/fix/fix-order-management.tag.md): FIX Order Management
+- [OrderMassCancelReport (35=r)](https://exchange-developer.crypto.com/docs/api/fix/fix-order-mass-cancel-report.api.md): The Order Mass Cancel Report is used to acknowledge an Order Mass Cancel Request. Note that each affected order that is canceled is acknowledged wi...
+- [OrderMassCancelRequest (35=q)](https://exchange-developer.crypto.com/docs/api/fix/fix-order-mass-cancel-request.api.md): Cancels all orders for a particular instrument/pair (asynchronous).
+- [OrderStatusRequest (35=H)](https://exchange-developer.crypto.com/docs/api/fix/fix-order-status-request.api.md): Get details on a particular OPEN Orders only in Order Management Flow. Not available in Drop Copy Flow.
+- [Reject (35=3)](https://exchange-developer.crypto.com/docs/api/fix/fix-reject.api.md): The Reject (3) message should be issued when a message is received but cannot be properly processed due to a session-level rule violation. An examp...
+- [ResendRequest (35=2)](https://exchange-developer.crypto.com/docs/api/fix/fix-resend-request.api.md): The resend request is sent by the receiving application to initiate the retransmission of messages. This function is utilized if a sequence number ...
+- [SecurityDefinitionRequest (35=c)](https://exchange-developer.crypto.com/docs/api/fix/fix-security-definition-request.api.md): The FIX Client could request the details of a tradable instrument by sending a Security Definition Request (35=c) message to the gateway. The Symbo...
+- [SecurityDefinition (35=d)](https://exchange-developer.crypto.com/docs/api/fix/fix-security-definition.api.md): After received (35=c), gateway will acknowledge and send a Security Definition (35=d) message to the client. The subscribed clients will be sent a ...
+- [SecurityListRequest (35=x)](https://exchange-developer.crypto.com/docs/api/fix/fix-security-list-request.api.md): Security List is an aggregation of instrument definitions. It is useful when the FIX Client want get all instrument definitions, or expect to get n...
+- [SecurityList (35=y)](https://exchange-developer.crypto.com/docs/api/fix/fix-security-list.api.md): After receiving (35=x), the Gateway will acknowledge this message by sending one or more Security List (35=y) message, because the gateway divides ...
+- [SequenceReset (35=4)](https://exchange-developer.crypto.com/docs/api/fix/fix-sequence-reset.api.md): The Sequence Reset message has two modes: Gap Fill mode and Reset mode.
+- [FIX Session Management](https://exchange-developer.crypto.com/docs/api/fix/fix-session-management.tag.md): FIX Session Management
+- [TestRequest (35=1)](https://exchange-developer.crypto.com/docs/api/fix/fix-test-request.api.md): The Test Request (1) message forces a heartbeat from the opposing application. The Test Request (1) message checks sequence numbers or verifies com...
+- [Generating the API Key](https://exchange-developer.crypto.com/exchange/v1/docs/api/fix-api-key.md): Before sending any requests, you'll need to generate a new API key.
+- [Change Log](https://exchange-developer.crypto.com/exchange/v1/docs/api/fix-change-log.md): - **2025-08-29** - Update description on tag6616, tag10060, tag60 and tag52
+- [FIX Dictionary](https://exchange-developer.crypto.com/exchange/v1/docs/api/fix-fix-dictionary.md): Our FIX API implementation is based on the FIX Protocol 4.4 specifications, and on top of it we also include some tags from other versions of the F...
+- [FIX Endpoints](https://exchange-developer.crypto.com/exchange/v1/docs/api/fix-fix-endpoints.md): To establish a FIX session, FIX clients must setup/use the AWS private link connection.
+- [FIX API](https://exchange-developer.crypto.com/exchange/v1/docs/api/fix-introduction.md): Welcome to the Crypto.com Exchange FIX API reference documentation.
+- [Rate Limits](https://exchange-developer.crypto.com/exchange/v1/docs/api/fix-rate-limits.md): | FIX Endpoint | Limit |
+- [Standard Header and Trailer](https://exchange-developer.crypto.com/exchange/v1/docs/api/fix-standard-header-and-trailer.md): This documentation uses `|` to represent the FIX field separator (byte 0x01). It should be replaced by 0x01 in actual messages.
+- [Account Balance and Positions](https://exchange-developer.crypto.com/docs/api/rest/account-balance-and-positions.tag.md): Account Balance and Positions
+- [Advanced Order Management](https://exchange-developer.crypto.com/docs/api/rest/advanced-order-management.tag.md): Advanced Order Management
+- [Crypto.com Exchange API v1](https://exchange-developer.crypto.com/docs/api/rest/crypto-com-exchange-api-v-1.info.md): Welcome
+- [Crypto Wallet](https://exchange-developer.crypto.com/docs/api/rest/crypto-wallet.tag.md): Crypto Wallet
+- [Fiat Wallet](https://exchange-developer.crypto.com/docs/api/rest/fiat-wallet.tag.md): Fiat Wallet
+- [OTC RFQ for Taker](https://exchange-developer.crypto.com/docs/api/rest/otc-rfq-for-taker.tag.md): OTC RFQ for Taker
+- [private/advanced/amend-order](https://exchange-developer.crypto.com/docs/api/rest/private-advanced-amend-order.api.md): Amends an existing trigger order on the Exchange.
+- [private/advanced/cancel-all-orders](https://exchange-developer.crypto.com/docs/api/rest/private-advanced-cancel-all-orders.api.md): Cancels all OTO/OTOCO orders for a particular instrument/pair (asynchronous).
+- [private/advanced/cancel-oco](https://exchange-developer.crypto.com/docs/api/rest/private-advanced-cancel-oco.api.md): Cancel an OCO order on the Exchange. This call is asynchronous, so the response is simply a confirmation of the request. The `user.advanced.order` ...
+- [private/advanced/cancel-order-list](https://exchange-developer.crypto.com/docs/api/rest/private-advanced-cancel-order-list.api.md): Cancels multiple advanced orders in a single request.
+- [private/advanced/cancel-order](https://exchange-developer.crypto.com/docs/api/rest/private-advanced-cancel-order.api.md): Cancel an individual order of a OTO/OTOCO order on the Exchange (asynchronous).
+- [private/advanced/cancel-oto](https://exchange-developer.crypto.com/docs/api/rest/private-advanced-cancel-oto.api.md): Cancel a SPOT_ATTACH or DERIV_ATTACH order on the Exchange. This call is asynchronous, so the response is simply a confirmation of the request. The...
+- [private/advanced/cancel-otoco](https://exchange-developer.crypto.com/docs/api/rest/private-advanced-cancel-otoco.api.md): Cancel a SPOT_ATTACH or DERIV_ATTACH order on the Exchange. This call is asynchronous, so the response is simply a confirmation of the request. The...
+- [private/advanced/create-oco](https://exchange-developer.crypto.com/docs/api/rest/private-advanced-create-oco.api.md): Creates a One-cancels-the-Other (OCO) execution strategy on the Exchange.
+- [private/advanced/create-order-list](https://exchange-developer.crypto.com/docs/api/rest/private-advanced-create-order-list.api.md): Creates multiple advanced orders in a single request.
+- [private/advanced/create-order](https://exchange-developer.crypto.com/docs/api/rest/private-advanced-create-order.api.md): Creates a new BUY or SELL trigger order on the Exchange.
+- [private/advanced/create-oto](https://exchange-developer.crypto.com/docs/api/rest/private-advanced-create-oto.api.md): Creates a One-triggers-the-Other (OTO) execution strategy on the Exchange.
+- [private/advanced/create-otoco](https://exchange-developer.crypto.com/docs/api/rest/private-advanced-create-otoco.api.md): Creates a One-Triggers-a-One-Cancels-the-Other (OTOCO) execution strategy on the Exchange.
+- [private/advanced/get-open-orders](https://exchange-developer.crypto.com/docs/api/rest/private-advanced-get-open-orders.api.md): Gets all open orders for OTO/OTOCO orders for a particular instrument.
+- [private/advanced/get-order-detail](https://exchange-developer.crypto.com/docs/api/rest/private-advanced-get-order-detail.api.md): Gets detail of a single advanced order by `order_id` or `client_oid`.
+- [private/advanced/get-order-history](https://exchange-developer.crypto.com/docs/api/rest/private-advanced-get-order-history.api.md): Gets the order history of OTO/OTOCO orders for a particular instrument.
+- [private/advanced/get-order-list-detail](https://exchange-developer.crypto.com/docs/api/rest/private-advanced-get-order-list-detail.api.md): Gets order details for multiple OCO/SpotAttach orders by their list IDs.
+- [private/amend-order](https://exchange-developer.crypto.com/docs/api/rest/private-amend-order.api.md): Amend an existing order on the Exchange.
+- [private/bot/create-trading-bot (DCA)](https://exchange-developer.crypto.com/docs/api/rest/private-bot-create-trading-bot-dca.api.md): Creates a new DCA (Dollar-Cost Averaging) Trading Bot that automatically buys or sells at regular intervals over a preset time frame.
+- [private/bot/create-trading-bot (FUNDING_ARBITRAGE)](https://exchange-developer.crypto.com/docs/api/rest/private-bot-create-trading-bot-funding-arbitrage.api.md): Creates a new Funding Arbitrage Trading Bot that simultaneously holds a spot position and an opposing perpetual swap position to capture funding ra...
+- [private/bot/create-trading-bot (GRID)](https://exchange-developer.crypto.com/docs/api/rest/private-bot-create-trading-bot-grid.api.md): Creates a new GRID Trading Bot that automatically places buy and sell orders within a defined price range.
+- [private/bot/create-trading-bot (TWAP)](https://exchange-developer.crypto.com/docs/api/rest/private-bot-create-trading-bot-twap.api.md): Creates a new TWAP (Time-Weighted Average Price) Trading Bot that executes large orders by splitting them into smaller slices over a defined time w...
+- [private/bot/get-trading-bot-executions](https://exchange-developer.crypto.com/docs/api/rest/private-bot-get-trading-bot-executions.api.md): Returns the order execution history for a specific Trading Bot.
+- [private/bot/get-trading-bots](https://exchange-developer.crypto.com/docs/api/rest/private-bot-get-trading-bots.api.md): Returns a list of Trading Bots filtered by type and state. Results are sorted by update time in descending order.
+- [private/bot/pause-trading-bot](https://exchange-developer.crypto.com/docs/api/rest/private-bot-pause-trading-bot.api.md): Pauses a running Trading Bot. The bot's open orders are cancelled and no new orders will be placed until resumed.
+- [private/bot/resume-trading-bot](https://exchange-developer.crypto.com/docs/api/rest/private-bot-resume-trading-bot.api.md): Resumes a paused Trading Bot. The bot will restart placing orders according to its configured strategy.
+- [private/bot/terminate-trading-bot](https://exchange-developer.crypto.com/docs/api/rest/private-bot-terminate-trading-bot.api.md): Terminates a Trading Bot. All open orders placed by the bot are cancelled.
+- [private/bot/update-trading-bot (DCA)](https://exchange-developer.crypto.com/docs/api/rest/private-bot-update-trading-bot-dca.api.md): Updates settings for a running or paused DCA (Dollar-Cost Averaging) Trading Bot.
+- [private/bot/update-trading-bot (FUNDING_ARBITRAGE)](https://exchange-developer.crypto.com/docs/api/rest/private-bot-update-trading-bot-funding-arbitrage.api.md): Updates a Funding Arbitrage Trading Bot.
+- [private/bot/update-trading-bot (GRID)](https://exchange-developer.crypto.com/docs/api/rest/private-bot-update-trading-bot-grid.api.md): Updates settings for a running or paused GRID Trading Bot.
+- [private/bot/update-trading-bot (TWAP)](https://exchange-developer.crypto.com/docs/api/rest/private-bot-update-trading-bot-twap.api.md): Updates a TWAP (Time-Weighted Average Price) Trading Bot.
+- [private/cancel-all-orders](https://exchange-developer.crypto.com/docs/api/rest/private-cancel-all-orders.api.md): Cancels all orders for a particular instrument/pair (asynchronous).
+- [private/cancel-order-list (LIST)](https://exchange-developer.crypto.com/docs/api/rest/private-cancel-order-list.api.md): Cancel a list of orders on the Exchange.
+- [private/cancel-order](https://exchange-developer.crypto.com/docs/api/rest/private-cancel-order.api.md): Cancels an existing order on the Exchange.
+- [private/change-account-leverage](https://exchange-developer.crypto.com/docs/api/rest/private-change-account-leverage.api.md): Changes the maximum leverage used by the account. Please note, each instrument has its own maximum leverage. Whichever leverage (account or instrum...
+- [private/change-account-settings](https://exchange-developer.crypto.com/docs/api/rest/private-change-account-settings.api.md): Change account level settings regarding STP and other properties.
+- [private/change-isolated-margin-leverage](https://exchange-developer.crypto.com/docs/api/rest/private-change-isolated-margin-leverage.api.md): Changes the maximum leverage of an isolated position.
+- [private/close-position](https://exchange-developer.crypto.com/docs/api/rest/private-close-position.api.md): Cancels position for a particular instrument/pair (asynchronous).
+- [private/create-isolated-margin-transfer](https://exchange-developer.crypto.com/docs/api/rest/private-create-isolated-margin-transfer.api.md): Transfer balance between account and isolated position.
+- [private/create-order](https://exchange-developer.crypto.com/docs/api/rest/private-create-order-dma.api.md): Creates a new BUY or SELL order.
+- [private/create-order-list (LIST)](https://exchange-developer.crypto.com/docs/api/rest/private-create-order-list.api.md): Create a list of orders on the Exchange.
+- [private/create-subaccount-transfer](https://exchange-developer.crypto.com/docs/api/rest/private-create-subaccount-transfer.api.md): Transfer between subaccounts (and master account).
+- [private/create-withdrawal](https://exchange-developer.crypto.com/docs/api/rest/private-create-withdrawal.api.md): Creates a withdrawal request. Withdrawal setting must be enabled for your API Key. If you do not see the option when viewing your API Key, this fea...
+- [private/fiat/fiat-access](https://exchange-developer.crypto.com/docs/api/rest/private-fiat-fiat-access.api.md): Retrieves fiat access information for a user account. Used by FCM/DCM brokers to check deposit and withdrawal permissions for different currencies ...
+- [private/fiat/fiat-create-bank-account](https://exchange-developer.crypto.com/docs/api/rest/private-fiat-fiat-create-bank-account.api.md): Link a bank account via Plaid for a user. Links the user's bank account to their profile for withdrawals using a Plaid integration payload.
+- [private/fiat/fiat-create-withdraw](https://exchange-developer.crypto.com/docs/api/rest/private-fiat-fiat-create-withdraw.api.md): Creates a new fiat withdrawal request for the authenticated user.
+- [private/fiat/fiat-deposit-history](https://exchange-developer.crypto.com/docs/api/rest/private-fiat-fiat-deposit-history.api.md): Retrieves paginated fiat deposit transaction history for the authenticated user.
+- [private/fiat/fiat-deposit-info](https://exchange-developer.crypto.com/docs/api/rest/private-fiat-fiat-deposit-info.api.md): Retrieves fiat deposit information for the authenticated user. Returns bank details for depositing fiat currency with optional payment network filt...
+- [private/fiat/fiat-get-bank-accounts](https://exchange-developer.crypto.com/docs/api/rest/private-fiat-fiat-get-bank-accounts.api.md): Retrieves user's bank accounts with optional payment network filtering.
+- [private/fiat/fiat-get-plaid-token](https://exchange-developer.crypto.com/docs/api/rest/private-fiat-fiat-get-plaid-token.api.md): Get a Plaid link token for the user. Must call this before initiating the Plaid Link flow on the frontend. The token is single-use and expires — a ...
+- [private/fiat/fiat-transaction-limit](https://exchange-developer.crypto.com/docs/api/rest/private-fiat-fiat-transaction-limit.api.md): Retrieves transaction limits for a specific payment network.
+- [private/fiat/fiat-transaction-quota](https://exchange-developer.crypto.com/docs/api/rest/private-fiat-fiat-transaction-quota.api.md): Retrieves transaction quota information for a specific payment network.
+- [private/fiat/fiat-withdraw-history](https://exchange-developer.crypto.com/docs/api/rest/private-fiat-fiat-withdraw-history.api.md): Retrieves paginated fiat withdrawal transaction history for the authenticated user.
+- [private/get-account-settings](https://exchange-developer.crypto.com/docs/api/rest/private-get-account-settings.api.md): Get account settings.
+- [private/get-accounts](https://exchange-developer.crypto.com/docs/api/rest/private-get-accounts.api.md): Get Account and its Sub Accounts.
+- [private/get-currency-networks](https://exchange-developer.crypto.com/docs/api/rest/private-get-currency-networks.api.md): Get the symbol network mapping.
+- [private/get-deposit-address](https://exchange-developer.crypto.com/docs/api/rest/private-get-deposit-address.api.md): Fetches deposit address. Withdrawal setting must be enabled for your API Key. If you do not see the option when viewing your API Keys, this feature...
+- [private/get-deposit-history](https://exchange-developer.crypto.com/docs/api/rest/private-get-deposit-history.api.md): Fetches deposit history. If you do not see the option when viewing your API Keys, this feature is not yet available for you.
+- [private/get-fee-credit-balances](https://exchange-developer.crypto.com/docs/api/rest/private-get-fee-credit-balances.api.md): Get fee credit balance details for the authenticated account. Fee credits are grouped by expiry date and sorted in ascending order. Values are not ...
+- [private/get-fee-rate](https://exchange-developer.crypto.com/docs/api/rest/private-get-fee-rate.api.md): Get fee rates for user’s account.
+- [private/get-instrument-fee-rate](https://exchange-developer.crypto.com/docs/api/rest/private-get-instrument-fee-rate.api.md): Get the instrument fee rate.
+- [private/get-open-orders](https://exchange-developer.crypto.com/docs/api/rest/private-get-open-orders.api.md): Gets all open orders for a particular instrument.
+- [private/get-order-detail](https://exchange-developer.crypto.com/docs/api/rest/private-get-order-detail.api.md): Gets detail of a single order by order_id or client_oid.
+- [private/get-order-history](https://exchange-developer.crypto.com/docs/api/rest/private-get-order-history.api.md): Gets the order history for a particular instrument.
+- [private/get-positions](https://exchange-developer.crypto.com/docs/api/rest/private-get-positions.api.md): Returns the user's position.
+- [private/get-subaccount-balances](https://exchange-developer.crypto.com/docs/api/rest/private-get-subaccount-balances.api.md): Returns the user's wallet balances of all sub-accounts.
+- [private/get-trades](https://exchange-developer.crypto.com/docs/api/rest/private-get-trades.api.md): Gets all executed trades for a particular instrument.
+- [private/get-transactions](https://exchange-developer.crypto.com/docs/api/rest/private-get-transactions.api.md): Fetches recent transactions.
+- [private/get-withdrawal-history](https://exchange-developer.crypto.com/docs/api/rest/private-get-withdrawal-history.api.md): Fetches withdrawal history. If you do not see the option when viewing your API Keys, this feature is not yet available for you.
+- [private/otc/get-deal-history (RFQ)](https://exchange-developer.crypto.com/docs/api/rest/private-otc-get-deal-history-rfq.api.md): Get closed deals for given user.
+- [private/otc/get-open-deals (RFQ)](https://exchange-developer.crypto.com/docs/api/rest/private-otc-get-open-deals-rfq.api.md): Get quote requests history. Only return closed quote requests (status = COMPLETED/REJECTED).
+- [private/otc/get-open-quote-requests](https://exchange-developer.crypto.com/docs/api/rest/private-otc-get-open-quote-requests.api.md): Get open quote requests. Only return active quote requests (status = NEW or ACTIVE).
+- [private/otc/get-open-quotes](https://exchange-developer.crypto.com/docs/api/rest/private-otc-get-open-quotes.api.md): Get open quotes. Only return active Quotes (status = ACTIVE).
+- [private/otc/get-otc-instruments](https://exchange-developer.crypto.com/docs/api/rest/private-otc-get-otc-instruments.api.md): Retrieves a list of available OTC instruments that takers can request quotes for.
+- [private/otc/get-quote-history](https://exchange-developer.crypto.com/docs/api/rest/private-otc-get-quote-history.api.md): Get quotes history.
+- [private/otc/get-quote-request-history](https://exchange-developer.crypto.com/docs/api/rest/private-otc-get-quote-request-history.api.md): Get quote requests history. Only return closed quote requests (status = COMPLETED/REJECTED).
+- [private/otc/get-settle-later-limit](https://exchange-developer.crypto.com/docs/api/rest/private-otc-get-settle-later-limit.api.md): Get used settle later limit as well as the configured limit for account.
+- [private/otc/get-unsettled-amounts](https://exchange-developer.crypto.com/docs/api/rest/private-otc-get-unsettled-amounts.api.md): Get pending settlement amount aggregated by date and instrument.
+- [private/otc/request-deal (RFQ)](https://exchange-developer.crypto.com/docs/api/rest/private-otc-request-deal-rfq.api.md): Request a deal from a quote (RFQ flow).
+- [private/otc/request-quote](https://exchange-developer.crypto.com/docs/api/rest/private-otc-request-quote.api.md): Create a quote request.
+- [private/staking/convert](https://exchange-developer.crypto.com/docs/api/rest/private-staking-convert.api.md): Create a request to convert between staked token with liquid staking token.
+- [private/staking/get-convert-history](https://exchange-developer.crypto.com/docs/api/rest/private-staking-get-convert-history.api.md): Get convert request history
+- [private/staking/get-open-convert](https://exchange-developer.crypto.com/docs/api/rest/private-staking-get-open-convert.api.md): Get convert request that status is not in final state.
+- [private/staking/get-open-stake](https://exchange-developer.crypto.com/docs/api/rest/private-staking-get-open-stake.api.md): Get stake/unstake requests that status is not in final state.
+- [private/staking/get-reward-history](https://exchange-developer.crypto.com/docs/api/rest/private-staking-get-reward-history.api.md): Get stake/unstake request history
+- [private/staking/get-stake-history](https://exchange-developer.crypto.com/docs/api/rest/private-staking-get-stake-history.api.md): Get stake/unstake request history
+- [private/staking/get-staking-instruments](https://exchange-developer.crypto.com/docs/api/rest/private-staking-get-staking-instruments.api.md): Get staking instruments information
+- [private/staking/get-staking-position](https://exchange-developer.crypto.com/docs/api/rest/private-staking-get-staking-position.api.md): Get the total staking position for a user/token
+- [private/staking/stake](https://exchange-developer.crypto.com/docs/api/rest/private-staking-stake.api.md): Create a request to earn token rewards by staking on-chain in the Exchange.
+- [private/staking/unstake](https://exchange-developer.crypto.com/docs/api/rest/private-staking-unstake.api.md): Create a request to unlock staked token.
+- [private/user-balance-history](https://exchange-developer.crypto.com/docs/api/rest/private-user-balance-history.api.md): Returns the user's balance history. This call may temporarily have discrepancies with that shown on the GUI.
+- [private/user-balance](https://exchange-developer.crypto.com/docs/api/rest/private-user-balance.api.md): Returns the user's wallet balance.
+- [public/get-book](https://exchange-developer.crypto.com/docs/api/rest/public-get-book.api.md): Fetches the public order book for a particular instrument and depth.
+- [public/get-candlestick](https://exchange-developer.crypto.com/docs/api/rest/public-get-candlestick.api.md): Retrieves candlesticks (k-line data history) over a given period for an instrument (e.g. BTCUSD-PERP).
+- [public/get-expired-settlement-price](https://exchange-developer.crypto.com/docs/api/rest/public-get-expired-settlement-price.api.md): Fetches settlement prices of expired instruments.
+- [public/get-instruments](https://exchange-developer.crypto.com/docs/api/rest/public-get-instruments.api.md): Provides information on all supported instruments (e.g. BTCUSD-PERP).
+- [public/get-insurance](https://exchange-developer.crypto.com/docs/api/rest/public-get-insurance.api.md): Fetches the balance of the Insurance Fund for a particular currency.
+- [public/get-risk-parameters](https://exchange-developer.crypto.com/docs/api/rest/public-get-risk-parameters.api.md): Provides information on risk parameter settings for [Smart Cross Margin](https://crypto.com/exchange/document/margin-rules).
+- [public/get-tickers](https://exchange-developer.crypto.com/docs/api/rest/public-get-tickers.api.md): Fetches the public tickers for all or a particular instrument.
+- [public/get-trades](https://exchange-developer.crypto.com/docs/api/rest/public-get-trades.api.md): Fetches the public trades for a particular instrument. Time window can only be up to 7 days for maximum.
+- [public/get-valuations](https://exchange-developer.crypto.com/docs/api/rest/public-get-valuations.api.md): Fetches valuation type data for an instrument.
+- [public/staking/get-conversion-rate](https://exchange-developer.crypto.com/docs/api/rest/public-staking-get-conversion-rate.api.md): Returns conversion rate between staked token (e.g. ETH.staked) and liquid staking token (e.g. CDCETH). Params instrument_name (e.g. CDCETH). Used b...
+- [Reference and Market Data](https://exchange-developer.crypto.com/docs/api/rest/reference-and-market-data.tag.md): Reference and Market Data
+- [Staking](https://exchange-developer.crypto.com/docs/api/rest/staking.tag.md): Staking
+- [Trading Bot API](https://exchange-developer.crypto.com/docs/api/rest/trading-bot-api.tag.md): Trading Bot API
+- [Trading](https://exchange-developer.crypto.com/docs/api/rest/trading.tag.md): Trading
+- [Transaction History](https://exchange-developer.crypto.com/docs/api/rest/transaction-history.tag.md): Transaction History
+- [Breaking Change Schedule](https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-breaking-change-schedule.md): - On 2025-12-17 8:00 UTC,  
+- [Change Log](https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-change-log.md): - **2026-05-21**
+- [Common API Reference](https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-common-api-reference.md): - All **methods and URLs** in **dash-case**
+- [REST API](https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-introduction.md): Welcome to the Crypto.com Exchange API v1 reference documentation.
+- [Advanced Order Management](https://exchange-developer.crypto.com/docs/api/websocket/advanced-order-management.tag.md): Advanced Order Management
+- [Crypto.com Exchange WebSocket API](https://exchange-developer.crypto.com/docs/api/websocket/crypto-com-exchange-websocket-api.info.md): Welcome
+- [OTC RFQ for Taker](https://exchange-developer.crypto.com/docs/api/websocket/otc-rfq-for-taker.tag.md): OTC RFQ for Taker
+- [Trading](https://exchange-developer.crypto.com/docs/api/websocket/trading.tag.md): Trading
+- [Websocket Market Data](https://exchange-developer.crypto.com/docs/api/websocket/websocket-market-data.tag.md): Websocket Market Data
+- [Websocket User API](https://exchange-developer.crypto.com/docs/api/websocket/websocket-user-api.tag.md): Websocket User API
+- [book.{instrument_name}.{depth}](https://exchange-developer.crypto.com/docs/api/websocket/ws-channel-book-instrument-name-depth.api.md): Order book (L2). Subscribe with channels e.g. ['book.BTCUSD-PERP.10'] or ['book.BTCUSD-PERP.50'].
+- [candlestick.{timeframe}.{instrument_name}](https://exchange-developer.crypto.com/docs/api/websocket/ws-channel-candlestick-timeframe-instrument-name.api.md): Candlestick (k-line) updates. Subscribe e.g. ['candlestick.1D.BTCUSD-PERP']. Timeframe: 1m, 5m, 15m, 30m, 1h, 2h, 4h, 12h, 1D, 7D, 14D, 1M.
+- [estimatedfunding.{instrument_name}](https://exchange-developer.crypto.com/docs/api/websocket/ws-channel-estimatedfunding-instrument-name.api.md): Estimated funding rate for the next interval. Subscribe e.g. ['estimatedfunding.BTCUSD-PERP'].
+- [funding.{instrument_name}](https://exchange-developer.crypto.com/docs/api/websocket/ws-channel-funding-instrument-name.api.md): Hourly funding rate that will settle at end of current hour. Subscribe e.g. ['funding.BTCUSD-PERP'].
+- [index.{instrument_name}](https://exchange-developer.crypto.com/docs/api/websocket/ws-channel-index-instrument-name.api.md): Index price. Subscribe e.g. ['index.BTCUSD-INDEX'].
+- [mark.{instrument_name}](https://exchange-developer.crypto.com/docs/api/websocket/ws-channel-mark-instrument-name.api.md): Mark price (updates ~50ms). Subscribe e.g. ['mark.BTCUSD-PERP'].
+- [settlement.{instrument_name}](https://exchange-developer.crypto.com/docs/api/websocket/ws-channel-settlement-instrument-name.api.md): Settlement prices. Subscribe e.g. ['settlement.BTCUSD-210528'] or wildcard.
+- [ticker.{instrument_name}](https://exchange-developer.crypto.com/docs/api/websocket/ws-channel-ticker-instrument-name.api.md): Ticker updates. Subscribe with channels e.g. ['ticker.BTCUSD-PERP'].
+- [trade.{instrument_name}](https://exchange-developer.crypto.com/docs/api/websocket/ws-channel-trade-instrument-name.api.md): Public trades. Subscribe with channels e.g. ['trade.BTCUSD-PERP']. Returns last 50 trades on subscribe.
+- [user.account_risk](https://exchange-developer.crypto.com/docs/api/websocket/ws-channel-user-account-risk.api.md): Account risk snapshot on a regular basis. Subscribe with channels ['user.account_risk'].
+- [user.advance.order.{instrument_name}](https://exchange-developer.crypto.com/docs/api/websocket/ws-channel-user-advance-order-instrument-name.api.md): OTO/OTOCO order updates. Subscribe with channel ['user.advance.order.{instrument_name}'].
+- [user.advance.order](https://exchange-developer.crypto.com/docs/api/websocket/ws-channel-user-advance-order.api.md): OTO/OTOCO order updates. Subscribe with channel ['user.advance.order'].
+- [user.balance](https://exchange-developer.crypto.com/docs/api/websocket/ws-channel-user-balance.api.md): Balance updates. Subscribe with channels ['user.balance'].
+- [user.order.{instrument_name}](https://exchange-developer.crypto.com/docs/api/websocket/ws-channel-user-order-instrument-name.api.md): Order updates for the user. Subscribe with channel ['user.order.{instrument_name}'].
+- [user.order](https://exchange-developer.crypto.com/docs/api/websocket/ws-channel-user-order.api.md): Order updates for the user. Subscribe with channel ['user.order'].
+- [user.otc.deals](https://exchange-developer.crypto.com/docs/api/websocket/ws-channel-user-otc-deals.api.md): OTC deal updates for RFQ takers. Subscribe with channels ['user.otc.deals'].
+- [user.otc_qr.quotes](https://exchange-developer.crypto.com/docs/api/websocket/ws-channel-user-otc-qr-quotes.api.md): OTC quote updates for RFQ takers. Subscribe with channels ['user.otc_qr.quotes'].
+- [user.otc_qr.requests](https://exchange-developer.crypto.com/docs/api/websocket/ws-channel-user-otc-qr-requests.api.md): OTC quote request status updates for RFQ takers. Subscribe with channels ['user.otc_qr.requests'].
+- [user.position_balance](https://exchange-developer.crypto.com/docs/api/websocket/ws-channel-user-position-balance.api.md): Position and balance realtime updates. Subscribe with channels ['user.position_balance'].
+- [user.positions](https://exchange-developer.crypto.com/docs/api/websocket/ws-channel-user-positions.api.md): Position updates. Subscribe with channels ['user.positions'].
+- [user.trade.{instrument_name}](https://exchange-developer.crypto.com/docs/api/websocket/ws-channel-user-trade-instrument-name.api.md): Trade updates for the user. Subscribe with channel ['user.trade.{instrument_name}'].
+- [user.trade](https://exchange-developer.crypto.com/docs/api/websocket/ws-channel-user-trade.api.md): Trade updates for the user. Subscribe with channel ['user.trade'].
+- [user.transactions](https://exchange-developer.crypto.com/docs/api/websocket/ws-channel-user-transactions.api.md): Transaction updates for the user. Subscribe with channel ['user.transactions'].
+- [private/get-cancel-on-disconnect](https://exchange-developer.crypto.com/docs/api/websocket/ws-client-commands-get-cancel-on-disconnect-request.api.md): Get cancel on disconnect
+- [public/heartbeat](https://exchange-developer.crypto.com/docs/api/websocket/ws-client-commands-heartbeat-request.api.md): Heartbeat sent by server every 30s; client must respond with public/respond-heartbeat within 5 seconds.
+- [public/auth](https://exchange-developer.crypto.com/docs/api/websocket/ws-client-commands-public-auth-request.api.md): Authenticate with API key and signature (required once per User API session)
+- [public/respond-heartbeat](https://exchange-developer.crypto.com/docs/api/websocket/ws-client-commands-respond-heartbeat-request.api.md): Respond to server heartbeat within 5 seconds
+- [private/set-cancel-on-disconnect](https://exchange-developer.crypto.com/docs/api/websocket/ws-client-commands-set-cancel-on-disconnect-request.api.md): Set cancel on disconnect
+- [subscribe](https://exchange-developer.crypto.com/docs/api/websocket/ws-client-commands-user-subscribe-request.api.md): Subscribe to one or more **user** channels. Use on the User API server only.
+- [unsubscribe](https://exchange-developer.crypto.com/docs/api/websocket/ws-client-commands-user-unsubscribe-request.api.md): Unsubscribe from user channels. Use on the User API server only.
+- [public/heartbeat](https://exchange-developer.crypto.com/docs/api/websocket/ws-market-data-client-commands-heartbeat-request.api.md): Heartbeat sent by server every 30s; client must respond with public/respond-heartbeat within 5 seconds.
+- [subscribe](https://exchange-developer.crypto.com/docs/api/websocket/ws-market-data-client-commands-market-data-subscribe-request.api.md): Subscribe to one or more **market data** channels. Use on the Market Data server only.
+- [unsubscribe](https://exchange-developer.crypto.com/docs/api/websocket/ws-market-data-client-commands-market-data-unsubscribe-request.api.md): Unsubscribe from market data channels. Use on the Market Data server only.
+- [public/respond-heartbeat](https://exchange-developer.crypto.com/docs/api/websocket/ws-market-data-client-commands-respond-heartbeat-request.api.md): Respond to server heartbeat within 5 seconds
+- [private/advanced/amend-order](https://exchange-developer.crypto.com/docs/api/websocket/ws-user-api-private-advanced-amend-order.api.md): Amends an existing trigger order on the Exchange.
+- [private/advanced/cancel-all-orders](https://exchange-developer.crypto.com/docs/api/websocket/ws-user-api-private-advanced-cancel-all-orders.api.md): Cancels all OTO/OTOCO orders for a particular instrument/pair (asynchronous).
+- [private/advanced/cancel-oco](https://exchange-developer.crypto.com/docs/api/websocket/ws-user-api-private-advanced-cancel-oco.api.md): Cancel an OCO order on the Exchange. This call is asynchronous, so the response is simply a confirmation of the request. The `user.advanced.order` ...
+- [private/advanced/cancel-order-list](https://exchange-developer.crypto.com/docs/api/websocket/ws-user-api-private-advanced-cancel-order-list.api.md): Cancels multiple advanced orders in a single request.
+- [private/advanced/cancel-order](https://exchange-developer.crypto.com/docs/api/websocket/ws-user-api-private-advanced-cancel-order.api.md): Cancel an individual order of a OTO/OTOCO order on the Exchange (asynchronous).
+- [private/advanced/cancel-oto](https://exchange-developer.crypto.com/docs/api/websocket/ws-user-api-private-advanced-cancel-oto.api.md): Cancel a SPOT_ATTACH or DERIV_ATTACH order on the Exchange. This call is asynchronous, so the response is simply a confirmation of the request. The...
+- [private/advanced/cancel-otoco](https://exchange-developer.crypto.com/docs/api/websocket/ws-user-api-private-advanced-cancel-otoco.api.md): Cancel a SPOT_ATTACH or DERIV_ATTACH order on the Exchange. This call is asynchronous, so the response is simply a confirmation of the request. The...
+- [private/advanced/create-oco](https://exchange-developer.crypto.com/docs/api/websocket/ws-user-api-private-advanced-create-oco.api.md): Creates a One-cancels-the-Other (OCO) execution strategy on the Exchange.
+- [private/advanced/create-order-list](https://exchange-developer.crypto.com/docs/api/websocket/ws-user-api-private-advanced-create-order-list.api.md): Creates multiple advanced orders in a single request.
+- [private/advanced/create-order](https://exchange-developer.crypto.com/docs/api/websocket/ws-user-api-private-advanced-create-order.api.md): Creates a new BUY or SELL trigger order on the Exchange.
+- [private/advanced/create-oto](https://exchange-developer.crypto.com/docs/api/websocket/ws-user-api-private-advanced-create-oto.api.md): Creates a One-triggers-the-Other (OTO) execution strategy on the Exchange.
+- [private/advanced/create-otoco](https://exchange-developer.crypto.com/docs/api/websocket/ws-user-api-private-advanced-create-otoco.api.md): Creates a One-Triggers-a-One-Cancels-the-Other (OTOCO) execution strategy on the Exchange.
+- [private/amend-order](https://exchange-developer.crypto.com/docs/api/websocket/ws-user-api-private-amend-order.api.md): Amend an existing order on the Exchange.
+- [private/cancel-all-orders](https://exchange-developer.crypto.com/docs/api/websocket/ws-user-api-private-cancel-all-orders.api.md): Cancels all orders for a particular instrument/pair (asynchronous).
+- [private/cancel-order-list (LIST)](https://exchange-developer.crypto.com/docs/api/websocket/ws-user-api-private-cancel-order-list.api.md): Cancel a list of orders on the Exchange.
+- [private/cancel-order](https://exchange-developer.crypto.com/docs/api/websocket/ws-user-api-private-cancel-order.api.md): Cancels an existing order on the Exchange.
+- [private/close-position](https://exchange-developer.crypto.com/docs/api/websocket/ws-user-api-private-close-position.api.md): Cancels position for a particular instrument/pair (asynchronous).
+- [private/create-order](https://exchange-developer.crypto.com/docs/api/websocket/ws-user-api-private-create-order-dma.api.md): Creates a new BUY or SELL order.
+- [private/create-order-list (LIST)](https://exchange-developer.crypto.com/docs/api/websocket/ws-user-api-private-create-order-list.api.md): Create a list of orders on the Exchange.
+- [private/otc/request-deal (RFQ)](https://exchange-developer.crypto.com/docs/api/websocket/ws-user-api-private-otc-request-deal-rfq.api.md): Request a deal from a quote (RFQ flow).
+- [private/otc/request-quote](https://exchange-developer.crypto.com/docs/api/websocket/ws-user-api-private-otc-request-quote.api.md): Create a quote request.
+- [Breaking Change Schedule](https://exchange-developer.crypto.com/exchange/v1/docs/api/websocket-breaking-change-schedule.md): - On 2025-12-17 8:00 UTC,  
+- [Change Log](https://exchange-developer.crypto.com/exchange/v1/docs/api/websocket-change-log.md): - **2026-05-21**
+- [Common API Reference](https://exchange-developer.crypto.com/exchange/v1/docs/api/websocket-common-api-reference.md): - All **methods and URLs** in **dash-case**
+- [Websocket API](https://exchange-developer.crypto.com/exchange/v1/docs/api/websocket-introduction.md): Welcome to the Crypto.com Exchange API v1 reference documentation.
+- [Guides](https://exchange-developer.crypto.com/docs/guides.md): Browse by topic. Each guide links to API reference for that area.

@@ -1,0 +1,227 @@
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "tools": [
+      {
+        "name": "cdcx_market_risk-params",
+        "description": "Provides information on risk parameter settings for [Smart Cross Margin](https://crypto.com/exchange/document/margin-rules).",
+        "inputSchema": {
+          "properties": {},
+          "required": [],
+          "type": "object"
+        }
+      },
+      {
+        "name": "cdcx_market_instruments",
+        "description": "Provides information on all supported instruments (e.g. BTCUSD-PERP).",
+        "inputSchema": {
+          "properties": {
+            "PREDICT_CONTRACT_TYPE": {
+              "description": "Filter by predict contract type.",
+              "type": "string"
+            },
+            "event_symbols": {
+              "description": "Filter by up to 10 event symbols. Comma-separated.",
+              "type": "string"
+            },
+            "is_combo": {
+              "description": "Filter for combo instruments.",
+              "type": "boolean"
+            }
+          },
+          "required": [],
+          "type": "object"
+        }
+      },
+      {
+        "name": "cdcx_market_book",
+        "description": "Fetches the public order book for a particular instrument and depth.",
+        "inputSchema": {
+          "properties": {
+            "depth": {
+              "description": "Number of bids and asks to return (up to 50)",
+              "type": "string"
+            },
+            "instrument_name": {
+              "description": "Instrument symbol, e.g. BTCUSD-PERP",
+              "type": "string"
+            }
+          },
+          "required": [
+            "instrument_name"
+          ],
+          "type": "object"
+        }
+      },
+      {
+        "name": "cdcx_market_candlestick",
+        "description": "Retrieves candlesticks (k-line data history) over a given period for an instrument (e.g. BTCUSD-PERP).",
+        "inputSchema": {
+          "properties": {
+            "count": {
+              "description": "Number of candles to return. Default 25.",
+              "type": "string"
+            },
+            "end_ts": {
+              "description": "End time (Unix timestamp). Default current time.",
+              "type": "string"
+            },
+            "instrument_name": {
+              "description": "Instrument symbol, e.g. BTCUSD-PERP",
+              "type": "string"
+            },
+            "start_ts": {
+              "description": "Start time (Unix timestamp). Default 1 day ago.",
+              "type": "string"
+            },
+            "timeframe": {
+              "description": "The period value. Default **1m**.\n",
+              "enum": [
+                "1m",
+                "5m",
+                "15m",
+                "30m",
+                "1h",
+                "2h",
+                "4h",
+                "12h",
+                "1D",
+                "7D",
+                "14D",
+                "1M"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "instrument_name"
+          ],
+          "type": "object"
+        }
+      },
+      {
+        "name": "cdcx_market_trades",
+        "description": "Fetches the public trades for a particular instrument. Time window can only be up to 7 days for maximum.",
+        "inputSchema": {
+          "properties": {
+            "count": {
+              "description": "The maximum number of trades to be retrieved. Default: 25. Max: 150",
+              "type": "string"
+            },
+            "end_ts": {
+              "description": "End time in Unix time format (exclusive). Default: current system timestamp. Nanosecond recommended for accurate pagination",
+              "type": "string"
+            },
+            "instrument_name": {
+              "description": "e.g. BTCUSD-PERP",
+              "type": "string"
+            },
+            "start_ts": {
+              "description": "Start time in Unix time format (inclusive). Default: end_time - 1 day. Nanosecond recommended for accurate pagination",
+              "type": "string"
+            }
+          },
+          "required": [
+            "instrument_name"
+          ],
+          "type": "object"
+        }
+      },
+      {
+        "name": "cdcx_market_ticker",
+        "description": "Fetches the public tickers for all or a particular instrument.",
+        "inputSchema": {
+          "properties": {
+            "instrument_name": {
+              "description": "e.g. BTCUSD-PERP",
+              "type": "string"
+            }
+          },
+          "required": [],
+          "type": "object"
+        }
+      },
+      {
+        "name": "cdcx_market_valuations",
+        "description": "Fetches valuation type data for an instrument.",
+        "inputSchema": {
+          "properties": {
+            "count": {
+              "description": "Default is 25",
+              "type": "string"
+            },
+            "end_ts": {
+              "description": "Default timestamp is current time (Unix timestamp).",
+              "type": "string"
+            },
+            "instrument_name": {
+              "description": "e.g. BTCUSD-INDEX",
+              "type": "string"
+            },
+            "start_ts": {
+              "description": "Default timestamp is 30 days ago for funding_hist, and 1 day ago for other valuation_type (Unix timestamp).",
+              "type": "string"
+            },
+            "valuation_type": {
+              "description": "**List of available types:**\n- a. **index_price**: returns per minute data of underlying reference price of the instrument.\n- b. **mark_price**: returns per minute data of mark price of the instrument.\n- c. **funding_hist**: returns hourly data of the funding rate settled in past hourly settlement.\n- d. **funding_rate**: returns per minute data of current hourly funding rate that will settle at the end of each hour of current 4-hour interval.\n- e. **estimated_funding_rate**: returns per minute data of estimated funding rate for the next interval.\n",
+              "type": "string"
+            }
+          },
+          "required": [
+            "instrument_name",
+            "valuation_type"
+          ],
+          "type": "object"
+        }
+      },
+      {
+        "name": "cdcx_market_settlement-prices",
+        "description": "Fetches settlement prices of expired instruments.",
+        "inputSchema": {
+          "properties": {
+            "instrument_type": {
+              "description": "FUTURE",
+              "type": "string"
+            },
+            "page": {
+              "description": "Page number. Default 1.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "instrument_type"
+          ],
+          "type": "object"
+        }
+      },
+      {
+        "name": "cdcx_market_insurance",
+        "description": "Fetches the balance of the Insurance Fund for a particular currency.",
+        "inputSchema": {
+          "properties": {
+            "count": {
+              "description": "Default is 25",
+              "type": "string"
+            },
+            "end_ts": {
+              "description": "Default timestamp is current time (Unix timestamp).",
+              "type": "string"
+            },
+            "instrument_name": {
+              "description": "e.g. USD",
+              "type": "string"
+            },
+            "start_ts": {
+              "description": "Default timestamp is 1 day ago (Unix timestamp).",
+              "type": "string"
+            }
+          },
+          "required": [
+            "instrument_name"
+          ],
+          "type": "object"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,131 @@
+generated: '2026-08-11'
+method: probed
+status: published
+source: https://www.npmjs.com/package/@cryptocom/cdcx-cli
+server:
+  name: cdcx
+  version: 1.2.6
+  protocol_version: '2025-06-18'
+  transport: stdio
+  launch: npx -y @cryptocom/cdcx-cli@latest mcp
+  package: '@cryptocom/cdcx-cli'
+  repository: https://github.com/crypto-com/cdcx-cli
+  config: ~/.config/cdcx/mcp.toml
+  config_schema: https://raw.githubusercontent.com/crypto-com/cdcx-cli/refs/heads/main/schemas/configs/mcp.json
+  official: true
+  note: 'First-party: published under the crypto-com GitHub organization and the @cryptocom npm scope.
+    No hosted/remote HTTP MCP endpoint is published - the server runs locally over stdio and calls the
+    Crypto.com Exchange REST API.'
+service_groups:
+  available:
+  - market
+  - account
+  - trade
+  - advanced
+  - margin
+  - staking
+  - funding
+  - fiat
+  - otc
+  - stream
+  default:
+  - market
+  note: Only the market group is exposed by default; the rest are opted into in mcp.toml and require API
+    credentials.
+safety_model:
+  tiers:
+  - tier: read
+    behavior: runs freely, no auth
+  - tier: sensitive_read
+    behavior: runs freely, auth required
+  - tier: mutate
+    behavior: requires acknowledged=true on the MCP call (--yes on the CLI)
+  - tier: dangerous
+    behavior: requires the server to be started with --allow-dangerous AND acknowledged=true
+  allow_dangerous_default: false
+  source: https://github.com/crypto-com/cdcx-cli/blob/main/agents/AGENTS.md
+x-evidence:
+  fetched: '2026-08-11'
+  probe: JSON-RPC initialize + tools/list over stdio against npx -y @cryptocom/cdcx-cli@latest mcp
+  result: '200-equivalent: initialize returned serverInfo {name: cdcx, version: 1.2.6}, tools/list returned
+    9 tools with inputSchema'
+  tools_observed: 9
+  auth_state: public-only (no credentials supplied)
+  raw: mcp/crypto-com-mcp-tools-list.json
+tools:
+- name: cdcx_market_risk-params
+  description: Provides information on risk parameter settings for [Smart Cross Margin](https://crypto.com/exchange/document/margin-rules).
+  required: []
+  params: []
+- name: cdcx_market_instruments
+  description: Provides information on all supported instruments (e.g. BTCUSD-PERP).
+  required: []
+  params:
+  - PREDICT_CONTRACT_TYPE
+  - event_symbols
+  - is_combo
+- name: cdcx_market_book
+  description: Fetches the public order book for a particular instrument and depth.
+  required:
+  - instrument_name
+  params:
+  - depth
+  - instrument_name
+- name: cdcx_market_candlestick
+  description: Retrieves candlesticks (k-line data history) over a given period for an instrument (e.g.
+    BTCUSD-PERP).
+  required:
+  - instrument_name
+  params:
+  - count
+  - end_ts
+  - instrument_name
+  - start_ts
+  - timeframe
+- name: cdcx_market_trades
+  description: Fetches the public trades for a particular instrument. Time window can only be up to 7
+    days for maximum.
+  required:
+  - instrument_name
+  params:
+  - count
+  - end_ts
+  - instrument_name
+  - start_ts
+- name: cdcx_market_ticker
+  description: Fetches the public tickers for all or a particular instrument.
+  required: []
+  params:
+  - instrument_name
+- name: cdcx_market_valuations
+  description: Fetches valuation type data for an instrument.
+  required:
+  - instrument_name
+  - valuation_type
+  params:
+  - count
+  - end_ts
+  - instrument_name
+  - start_ts
+  - valuation_type
+- name: cdcx_market_settlement-prices
+  description: Fetches settlement prices of expired instruments.
+  required:
+  - instrument_type
+  params:
+  - instrument_type
+  - page
+- name: cdcx_market_insurance
+  description: Fetches the balance of the Insurance Fund for a particular currency.
+  required:
+  - instrument_name
+  params:
+  - count
+  - end_ts
+  - instrument_name
+  - start_ts
+tool_catalog:
+  source: https://github.com/crypto-com/cdcx-cli/blob/main/agents/tool-catalog.json
+  commands: 67
+  note: Provider-published catalog of every cdcx command across all ten service groups, with http_method,
+    backing Exchange API method, parameters and safety tier. Crosswalked to OpenAPI operationIds in mcp/crypto-com-tool-crosswalk.yml.

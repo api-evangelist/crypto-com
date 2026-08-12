@@ -1,0 +1,89 @@
+generated: '2026-08-11'
+method: searched
+source:
+- https://pay-docs.crypto.com/
+- https://exchange-developer.crypto.com/exchange/v1/docs/api/websocket-common-api-reference
+asyncapi_published: false
+note: Crypto.com publishes NO AsyncAPI document for either of its two event surfaces. Probed /asyncapi.yaml, /asyncapi.json
+  and the GitHub organisation on 2026-08-11 - nothing. Both surfaces are real and documented in prose, so they are
+  captured here as a webhook/channel catalog. Nothing in this file is invented; an AsyncAPI document was NOT fabricated.
+surfaces:
+- kind: webhooks
+  api: Crypto.com Pay API
+  docs: https://pay-docs.crypto.com/
+  subscription: Merchant Dashboard -> add a webhook subscription
+  delivery:
+    expected_response: 200
+    retry: Retried every 10 seconds up to 5 times (6 deliveries including the original) until a 200 is returned.
+    ordering: not published
+    replay: not published
+  security:
+    header: Pay-Signature
+    algorithm: HMAC-SHA256
+    format: t=<unix timestamp>,v1=<hex signature>
+    secret: per-endpoint Signature Secret from the Merchant Dashboard; distinct per endpoint and per mode
+    guidance: Ignore any scheme that is not v1 to prevent downgrade attacks.
+  events:
+  - event: payment.created
+    description: New payment is created
+  - event: payment.fulfill
+    description: Payment is available for capture
+  - event: payment.captured
+    description: Payment has been captured (status has become succeeded)
+  - event: payment.cancelled
+    description: Payment has been cancelled (status has become cancelled)
+  - event: payment.refund_requested
+    description: New refund is requested by merchant
+  - event: payment.refund_transferred
+    description: Refund has been transferred to customer
+  - event: subscription.created
+    description: New subscription is created
+  - event: subscription.activated
+    description: Subscription is activated by customer
+  - event: subscription.cancelled
+    description: Subscription has been cancelled
+  - event: invoice.created
+    description: Invoice is created, individually or by recurring invoices/subscriptions
+  - event: invoice.paid
+    description: Invoice is paid
+  - event: invoice.payment_attempt_failed
+    description: The payment attempted for the invoice failed
+- kind: websocket-channels
+  api: Crypto.com Exchange WebSocket API v1
+  docs: https://exchange-developer.crypto.com/exchange/v1/docs/api/websocket-introduction
+  endpoints:
+    user: wss://stream.crypto.com/exchange/v1/user
+    market: wss://stream.crypto.com/exchange/v1/market
+  auth: public/auth once per session for user channels; market channels are public
+  channels_public:
+  - book.{instrument_name}.{depth}
+  - ticker.{instrument_name}
+  - trade.{instrument_name}
+  - candlestick.{time_frame}.{instrument_name}
+  - index.{instrument_name}
+  - mark.{instrument_name}
+  - settlement.{instrument_name}
+  - funding.{instrument_name}
+  - open_interest.{instrument_name}
+  channels_user:
+  - user.order.{instrument_name}
+  - user.trade.{instrument_name}
+  - user.balance
+  - user.positions
+  - user.position_balance
+  - user.account_risk
+  - user.advance.order
+  note: Channel names are transcribed from the WebSocket reference and change log. Subscription payload shapes are
+    documented per channel in the docs; no machine-readable schema is published.
+gaps:
+- No AsyncAPI 2.x/3.x document for either surface.
+- No webhook event schemas beyond the linked Resources object reference - a consumer infers the payload from the
+  REST object shape.
+- 'The Exchange has no webhook surface at all: server-to-server notification is WebSocket-only, which forces an
+  agent to hold a persistent connection rather than receive a callback.'
+x-evidence:
+  fetched: '2026-08-11'
+  urls:
+  - https://pay-docs.crypto.com/
+  - https://exchange-developer.crypto.com/exchange/v1/docs/api/websocket-common-api-reference.md
+  http_status: 200

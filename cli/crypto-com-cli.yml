@@ -1,0 +1,95 @@
+generated: '2026-08-11'
+method: searched
+source: https://github.com/crypto-com/cdcx-cli
+name: cdcx
+tagline: Agent-first CLI for Crypto.com Exchange API and TUI for humans
+official: true
+language: Rust
+license: MIT OR Apache-2.0
+install:
+- method: script
+  command: curl -sSfL https://raw.githubusercontent.com/crypto-com/cdcx-cli/main/install.sh | sh
+- method: npm
+  command: npx @cryptocom/cdcx-cli@latest
+  package: '@cryptocom/cdcx-cli'
+  note: The npm package is a thin installer (npm/post-install.mjs) that downloads the released Rust binary
+    from GitHub; npm dist-tag latest is 1.2.3 while the binary it fetched on 2026-08-11 reported version
+    1.2.6.
+- method: cargo
+  command: cargo install --git https://github.com/crypto-com/cdcx-cli.git --bin cdcx
+  note: Installed from git, not from crates.io. The crates.io name cdcx-cli is owned by an unrelated account
+    (litleSDK) and is NOT first-party.
+commands:
+- group: market
+  purpose: Prices, orderbook, candles, trades, instruments
+  auth: false
+- group: trade
+  purpose: Place/amend/cancel LIMIT and MARKET orders
+  auth: true
+- group: advanced
+  purpose: OCO, OTO, OTOCO bracket orders with trigger logic
+  auth: true
+- group: account
+  purpose: Balances, positions, sub-accounts, P&L
+  auth: true
+- group: history
+  purpose: Order history, fills, transactions
+  auth: true
+- group: wallet
+  purpose: Deposits, withdrawals, network info
+  auth: true
+- group: margin
+  purpose: Isolated margin transfers, leverage
+  auth: true
+- group: staking
+  purpose: Stake/unstake, conversion, reward history
+  auth: true
+- group: fiat
+  purpose: Fiat deposit/withdrawal, bank accounts
+  auth: true
+- group: otc
+  purpose: OTC RFQ quotes and deals
+  auth: true
+- group: paper
+  purpose: Local paper-trading simulation against live prices
+  auth: false
+- group: stream
+  purpose: Real-time WebSocket data as NDJSON
+  auth: false
+- group: mcp
+  purpose: Run the CLI as an MCP server over stdio
+  auth: false
+- group: auth
+  purpose: OAuth login and credential management
+  auth: false
+- group: schema
+  purpose: Show the request schema for any Exchange API method
+  auth: false
+key_flows:
+- cdcx auth login --oauth - browser OAuth, no manual key entry
+- cdcx market ticker BTC_USDT -o json - unauthenticated market data
+- cdcx trade order BUY BTC_USDT 0.01 --type LIMIT --price 50000 --dry-run -o json - preview before execution
+- cdcx mcp - expose the command surface to an agent as MCP tools
+safety:
+  tiers:
+  - read
+  - sensitive_read
+  - mutate
+  - dangerous
+  dry_run: true
+  note: mutate requires --yes (or acknowledged=true over MCP); dangerous additionally requires --allow-dangerous.
+agent_assets:
+  agents_md: https://github.com/crypto-com/cdcx-cli/blob/main/agents/AGENTS.md
+  tool_catalog: https://github.com/crypto-com/cdcx-cli/blob/main/agents/tool-catalog.json
+  error_catalog: https://github.com/crypto-com/cdcx-cli/blob/main/agents/error-catalog.json
+  mcp_config_schema: https://github.com/crypto-com/cdcx-cli/blob/main/schemas/configs/mcp.json
+  plugin_marketplace: https://github.com/crypto-com/cdcx-cli/blob/main/.claude-plugin/marketplace.json
+binary_in: packages/crypto-com-packages.yml
+x-evidence:
+  fetched: '2026-08-11'
+  url: https://raw.githubusercontent.com/crypto-com/cdcx-cli/main/README.md
+  http_status: 200
+latest_release:
+  tag: v1.2.6
+  published: '2026-06-18'
+  source: https://github.com/crypto-com/cdcx-cli/releases/latest

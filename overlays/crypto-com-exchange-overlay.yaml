@@ -1,0 +1,105 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Crypto.com Exchange REST API v1
+  version: 1.0.0
+extends: openapi/crypto-com-exchange-openapi.yml
+x-generated: '2026-08-11'
+x-method: generated
+x-source: >-
+  Derived from https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-common-api-reference and
+  the artifacts in this repository. Never applied to the harvested spec in openapi/_original/.
+x-rationale: >-
+  The published spec is unusually complete on content - 95 operations, every one tagged with a unique
+  operationId, a summary, a description and 200/400/408/429/500 responses, 221 component schemas and 560
+  in-spec examples - but it declares NO components.securitySchemes and no top-level security, even though
+  85 of the 95 operations document a 401 response. An agent reading only the contract cannot discover how
+  to authenticate. These actions add the auth contract and the runtime semantics that live only in prose.
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-profile: https://apievangelist.com/providers/crypto-com
+      x-apievangelist-reviewed: '2026-08-11'
+      x-contact-docs: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-common-api-reference
+
+  - target: $.components
+    update:
+      securitySchemes:
+        ExchangeHmacSignature:
+          type: apiKey
+          in: header
+          name: api_key
+          description: >-
+            NOT a header in practice - documented here because OpenAPI 3.0 has no vocabulary for a
+            body-carried HMAC signature. Private methods carry api_key, sig and nonce inside the JSON
+            request body. sig is the hex-encoded HMAC-SHA256 of
+            (method + id + api_key + parameter_string + nonce), keyed with the API secret, where
+            parameter_string is the request params sorted by key ascending and concatenated as key+value
+            with no separators. nonce is a millisecond epoch timestamp and is rejected with reason code
+            40102 INVALID_NONCE if it differs from server time by more than 60 seconds. Keys are issued in
+            the Exchange User Center, default to read-only, and may be bound to an IP allowlist.
+          x-signing-string: method + id + api_key + parameter_string + nonce
+          x-algorithm: HMAC-SHA256, hex-encoded
+          x-carried-in: request-body
+          x-docs: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-common-api-reference
+
+  - target: $.info
+    update:
+      x-rate-limits:
+        source: rate-limits/crypto-com-rate-limits.yml
+        response_headers: none
+        exhaustion:
+          http_status: 429
+          code: 42901
+        note: >-
+          Limits are published as numbers only. No X-RateLimit-*, RateLimit-* or Retry-After header is
+          returned, so a client must model the limits rather than read them.
+      x-error-catalog:
+        source: errors/crypto-com-error-codes.yml
+        format: proprietary
+        note: >-
+          The in-body `code` is authoritative alongside the HTTP status. Two failure-shaped outcomes
+          (40401 NOT_FOUND, 43012 SELF_TRADE_PREVENTION) are returned with HTTP 200.
+      x-idempotency:
+        supported: false
+        note: >-
+          The Exchange order path has no idempotency key. client_oid gives duplicate REJECTION
+          (204 DUPLICATE_CLORDID / 40006 DUPLICATE_REQUEST), not idempotent replay. Crypto.com Pay,
+          a different API, does accept an Idempotency-Key header on refunds.
+      x-sandbox:
+        server: https://uat-api.3ona.co/exchange/v1
+        note: Already declared in servers[]; recorded here for artifact cross-linking.
+      x-deprecation-policy:
+        url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-breaking-change-schedule
+        sunset_header: false
+        note: Dated HTML schedule only; no RFC 8594 Sunset/Deprecation headers and no deprecated operations.
+
+  - target: $.paths['/private/create-order'].post
+    update:
+      x-agentic-access:
+        action-class: acting
+        consequence: physical
+        audit: required
+        note: >-
+          Places a live order against real funds. Crypto.com's own CLI classifies this at the `mutate`
+          safety tier, requiring acknowledged=true over MCP and --yes on the command line.
+
+  - target: $.paths['/private/create-withdrawal'].post
+    update:
+      x-agentic-access:
+        action-class: acting
+        consequence: physical
+        audit: required
+        human-in-the-loop: required
+        note: >-
+          Moves assets off the platform. Crypto.com's own CLI classifies this at the `dangerous` safety
+          tier, which the MCP server refuses entirely unless started with --allow-dangerous.
+
+  - target: $.paths['/private/cancel-all-orders'].post
+    update:
+      x-agentic-access:
+        action-class: acting
+        consequence: safety-critical
+        audit: required
+        human-in-the-loop: required
+        note: >-
+          Bulk, irreversible cancellation. Classified `dangerous` in the provider's own tool catalog.

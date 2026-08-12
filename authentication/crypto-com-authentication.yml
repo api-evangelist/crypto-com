@@ -1,0 +1,97 @@
+generated: '2026-08-11'
+method: searched
+source: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-common-api-reference
+docs:
+- https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-common-api-reference
+- https://pay-docs.crypto.com/
+- https://ai-agent-sdk-docs.crypto.com/crypto.com-developer-platform/developer-platform-dashboard
+summary:
+  types:
+  - apiKey
+  - http
+  - custom-hmac
+  api_key_in:
+  - body
+  - header
+  oauth2_flows: []
+  note: No OAuth 2.0 or OpenID Connect surface is published on any Crypto.com API. The Exchange REST OpenAPI
+    declares NO components.securitySchemes at all, even though 85 of its 95 operations document a 401
+    response - the auth contract lives only in prose. See overlays/crypto-com-exchange-overlay.yaml for
+    the scheme API Evangelist would add.
+schemes:
+- name: exchange-hmac-signature
+  api: Crypto.com Exchange REST API v1
+  type: custom-hmac
+  in: body
+  parameters:
+  - api_key
+  - sig
+  - nonce
+  algorithm: HMAC-SHA256, hex-encoded
+  signing_string: method + id + api_key + parameter_string + nonce
+  parameter_string: request params sorted by key ascending, concatenated as key+value with no spaces or
+    delimiters
+  nonce: UTC Unix timestamp in milliseconds; rejected with 40102 INVALID_NONCE when more than 60 seconds
+    from server time
+  key_management: Exchange website, User Center -> API. Default permission is read-only; permissions and
+    an optional source-IP allowlist are set in the web UI.
+  sources:
+  - https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-common-api-reference
+  spec_declared: false
+- name: exchange-websocket-session-auth
+  api: Crypto.com Exchange WebSocket API v1
+  type: custom-hmac
+  in: message
+  parameters:
+  - api_key
+  - sig
+  - nonce
+  note: public/auth is invoked once per session with the same HMAC-SHA256 signature; afterwards user-channel
+    commands need no per-request signature for the life of the session.
+  sources:
+  - https://exchange-developer.crypto.com/exchange/v1/docs/api/websocket-common-api-reference
+  spec_declared: false
+- name: exchange-fix-logon
+  api: Crypto.com Exchange FIX API
+  type: custom-hmac
+  in: fix-message
+  note: Credentials are presented on the FIX Logon (35=A) message over an AWS PrivateLink connection.
+  sources:
+  - https://exchange-developer.crypto.com/exchange/v1/docs/api/fix-api-key
+  spec_declared: false
+- name: pay-secret-key
+  api: Crypto.com Pay API
+  type: http
+  scheme: basic
+  in: header
+  header: Authorization
+  note: 'The secret key is the HTTP Basic username with an empty password. Bearer is also accepted for
+    cross-origin calls. Key prefix selects the mode: sk_test_ = test mode, sk_live_ = live mode. HTTPS
+    is mandatory; plain HTTP calls fail.'
+  sources:
+  - https://pay-docs.crypto.com/
+  spec_declared: false
+- name: developer-platform-api-key
+  api: Crypto.com Developer Platform API
+  type: apiKey
+  in: header
+  note: API key issued against a project in the Developer Platform dashboard at developer.crypto.com;
+    supplied by the first-party TypeScript/Python clients via Client.init(api_key).
+  sources:
+  - https://ai-agent-sdk-docs.crypto.com/crypto.com-developer-platform/developer-platform-dashboard
+  spec_declared: false
+- name: cdcx-oauth-login
+  api: cdcx CLI / MCP server
+  type: oauth-device-browser
+  note: The first-party CLI offers `cdcx auth login --oauth`, a browser-based login that provisions credentials
+    locally. Crypto.com publishes no OAuth authorization-server metadata, no /.well-known/oauth-authorization-server,
+    and no scope reference, so this is not a documented third-party OAuth surface and no scopes/ artifact
+    is emitted.
+  sources:
+  - https://github.com/crypto-com/crypto-agent-trading/blob/main/crypto-com-exchange/SKILL.md
+  spec_declared: false
+gaps:
+- openapi/crypto-com-exchange-openapi.yml declares no components.securitySchemes and no top-level security,
+  so an agent reading only the contract cannot discover how to authenticate.
+- No /.well-known/openid-configuration or /.well-known/oauth-authorization-server on any Crypto.com host
+  (all probed 404 on 2026-08-11).

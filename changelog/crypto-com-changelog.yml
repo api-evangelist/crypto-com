@@ -1,0 +1,91 @@
+generated: '2026-08-11'
+method: searched
+source: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-change-log
+scheme: dated entries, newest first; no semantic version on the API itself
+current_version: v1
+cadence: roughly monthly through 2026; 9 dated entries in the most recent 13 months
+feeds:
+- api: Exchange REST
+  url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-change-log
+  machine_readable: false
+- api: Exchange WebSocket
+  url: https://exchange-developer.crypto.com/exchange/v1/docs/api/websocket-change-log
+  machine_readable: false
+- api: Exchange FIX
+  url: https://exchange-developer.crypto.com/exchange/v1/docs/api/fix-change-log
+  machine_readable: false
+  latest: 2025-08-29 - description updates on tag6616, tag10060, tag60 and tag52
+note: No RSS/Atom/JSON changelog feed and no per-release version tag. Crypto.com Pay publishes no changelog at all
+  and warns that the Pay API "is still under heavy development and there might be breaking changes".
+window: 2025-07-17 to 2026-05-21
+entries:
+- date: '2026-05-21'
+  api: Exchange REST
+  breaking: false
+  additions: true
+  highlights:
+  - public/get-instruments response gained product_type
+  - 'New Trading Bot API section: create/terminate/update/pause/resume trading bot, get-trading-bots, get-trading-bot-executions
+    (DCA, TWAP, GRID, FUNDING_ARBITRAGE)'
+- date: '2026-05-07'
+  api: Exchange REST
+  breaking: false
+  additions: true
+  highlights:
+  - Advanced Order Management extended for DerivAttach; contingency type now resolved from instrument type (SPOT_ATTACH
+    vs DERIV_ATTACH)
+  - isolation_id / leverage / isolated_margin_amount on the primary leg; ISOLATED_MARGIN in exec_inst
+  - cancel-all-orders gained optional position_type (CROSS_MARGIN, ISOLATED_MARGIN)
+  - 'amend-order required/optional flags corrected: new_price Y, new_quantity Y, new_ref_price N'
+- date: '2026-04-29'
+  api: Exchange REST
+  breaking: false
+  additions: true
+  highlights:
+  - Fee Credits introduced
+  - private/get-fee-credit-balances added
+  - fee_credits added to get-trades and user.trade responses
+- date: '2026-04-07'
+  api: Exchange REST
+  breaking: false
+  additions: true
+  highlights:
+  - private/get-accounts response gained hierarchy
+- date: '2026-04-01'
+  api: Exchange REST
+  breaking: false
+  additions: true
+  highlights:
+  - REDUCE_ONLY added to exec_inst on private/create-order
+- date: '2026-01-08'
+  api: Exchange REST + WebSocket
+  breaking: false
+  additions: true
+  highlights:
+  - Isolated position support across balance, positions, order and trade surfaces
+  - private/create-isolated-margin-transfer and private/change-isolated-margin-leverage added
+  - isolation_id / isolation_type added to ~12 request and response shapes and 6 websocket channels
+- date: '2025-11-18'
+  api: Exchange REST
+  breaking: false
+  additions: true
+  highlights:
+  - public/get-risk-parameters gained new columns
+- date: '2025-10-16'
+  api: Exchange REST
+  breaking: false
+  additions: true
+  highlights:
+  - Advanced Order Management API section updated
+- date: '2025-07-17'
+  api: Exchange REST
+  breaking: false
+  additions: true
+  highlights:
+  - 'Fiat Wallet API added: fiat-deposit-info, fiat-deposit-history, fiat-withdraw-history, fiat-create-withdraw,
+    fiat-get-bank-accounts, fiat-transaction-quota'
+breaking_changes: lifecycle/crypto-com-lifecycle.yml
+x-evidence:
+  fetched: '2026-08-11'
+  url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-change-log.md
+  http_status: 200

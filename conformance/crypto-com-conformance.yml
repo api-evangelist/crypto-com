@@ -1,0 +1,75 @@
+generated: '2026-08-11'
+method: searched
+source:
+- https://crypto.com/en/security/
+- openapi/crypto-com-exchange-openapi.yml
+standards:
+- id: openapi-3.0
+  conforms: true
+  evidence: 'openapi/crypto-com-exchange-openapi.yml declares openapi: 3.0.3 with 95 operations, all tagged, all
+    with unique operationIds, summaries and descriptions, 221 component schemas and 560 in-spec response examples.'
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 securityScheme in any spec; no /.well-known/oauth-authorization-server (404 on every host,
+    2026-08-11).
+- id: oidc
+  conforms: false
+  evidence: No /.well-known/openid-configuration on any host (404, 2026-08-11).
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Proprietary code/message envelope; no application/problem+json anywhere in the spec.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: https://crypto.com/.well-known/security.txt returns 404, despite a live HackerOne program.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: 'Breaking changes are announced on a dated HTML page; no Sunset or Deprecation response headers, and
+    no operation carries deprecated: true.'
+- id: ratelimit-headers
+  conforms: false
+  evidence: No X-RateLimit-*, RateLimit-* or Retry-After documented; exhaustion is signalled only by HTTP 429 +
+    in-body code 42901.
+- id: idempotency-key
+  conforms: partial
+  evidence: Crypto.com Pay accepts an Idempotency-Key header, but only on the refund API and not by default. The
+    Exchange order path has no idempotency key - only DUPLICATE_CLORDID rejection on client_oid.
+- id: fix-4.4
+  conforms: true
+  evidence: The FIX API is documented as FIX Protocol 4.4 with selected tags from later versions; a FIX dictionary
+    page is published.
+- id: asyncapi
+  conforms: false
+  evidence: Two real event surfaces (Pay webhooks, Exchange WebSocket) and no AsyncAPI document for either.
+- id: mcp
+  conforms: true
+  evidence: First-party MCP server (@cryptocom/cdcx-cli mcp) answered initialize + tools/list on protocol 2025-06-18
+    with 9 tools carrying inputSchema, probed 2026-08-11.
+- id: agent-skills
+  conforms: true
+  evidence: Two provider-authored Agent Skills with YAML frontmatter published at github.com/crypto-com/crypto-agent-trading,
+    plus an AGENTS.md.
+- id: a2a
+  conforms: false
+  evidence: No agent card at /.well-known/agent-card.json or /.well-known/agent.json on any of six hosts.
+- id: x402
+  conforms: true
+  evidence: Crypto.com publishes a first-party x402 facilitator client (@crypto.com/facilitator-client, github.com/crypto-com/facilitator-client-ts)
+    for the Cronos facilitator API.
+compliance_program:
+  published: true
+  url: https://crypto.com/en/security
+  certifications:
+  - ISO/IEC 27001:2022
+  - ISO/IEC 27701:2019
+  - ISO 22301:2019
+  - PCI DSS v4.0 Level 1 Service Provider
+  - SOC 2 Type II
+  assessments:
+  - NIST Cybersecurity Framework - Tier 4
+  - NIST Privacy Framework - Tier 4
+  note: Transcribed verbatim from the Crypto.com security page. No trust portal with downloadable reports is published;
+    the claims live on a marketing page.
+x-evidence:
+  fetched: '2026-08-11'
+  url: https://crypto.com/en/security/
+  http_status: 200

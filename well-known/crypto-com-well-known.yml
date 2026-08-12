@@ -1,0 +1,297 @@
+generated: '2026-08-11'
+method: probed
+source: live GET of seven /.well-known/ paths across six Crypto.com hosts
+result: no-hits
+summary: 42 probes, zero documents. Crypto.com serves no security.txt, no OIDC or OAuth authorization-server metadata,
+  no api-catalog, no ai-plugin.json and no agent card on any host. Recorded as an absence - no WellKnown, SecurityTxt
+  or AgentCard pointer is wired into apis.yml, because the pointer would assert the provider serves that surface.
+false_positive_warning: developer.crypto.com answers 200 for every /.well-known/* path with an identical 483-byte
+  HTML SPA shell. A probe that trusts the status code alone would credit Crypto.com with all seven documents on
+  that host.
+hosts_probed:
+- crypto.com
+- api.crypto.com
+- exchange-developer.crypto.com
+- pay.crypto.com
+- developer.crypto.com
+- developer-platform-api.crypto.com
+documents:
+- host: crypto.com
+  path: /.well-known/security.txt
+  status: 404
+  content_type: text/html
+  document: false
+  file: null
+- host: crypto.com
+  path: /.well-known/openid-configuration
+  status: 404
+  content_type: text/html
+  document: false
+  file: null
+- host: crypto.com
+  path: /.well-known/oauth-authorization-server
+  status: 404
+  content_type: text/html
+  document: false
+  file: null
+- host: crypto.com
+  path: /.well-known/api-catalog
+  status: 404
+  content_type: text/html
+  document: false
+  file: null
+- host: crypto.com
+  path: /.well-known/ai-plugin.json
+  status: 404
+  content_type: text/html
+  document: false
+  file: null
+- host: crypto.com
+  path: /.well-known/agent-card.json
+  status: 404
+  content_type: text/html
+  document: false
+  file: null
+- host: crypto.com
+  path: /.well-known/agent.json
+  status: 404
+  content_type: text/html
+  document: false
+  file: null
+- host: api.crypto.com
+  path: /.well-known/security.txt
+  status: 404
+  content_type: application/json
+  document: false
+  file: null
+- host: api.crypto.com
+  path: /.well-known/openid-configuration
+  status: 404
+  content_type: application/json
+  document: false
+  file: null
+- host: api.crypto.com
+  path: /.well-known/oauth-authorization-server
+  status: 404
+  content_type: application/json
+  document: false
+  file: null
+- host: api.crypto.com
+  path: /.well-known/api-catalog
+  status: 404
+  content_type: application/json
+  document: false
+  file: null
+- host: api.crypto.com
+  path: /.well-known/ai-plugin.json
+  status: 404
+  content_type: application/json
+  document: false
+  file: null
+- host: api.crypto.com
+  path: /.well-known/agent-card.json
+  status: 404
+  content_type: application/json
+  document: false
+  file: null
+- host: api.crypto.com
+  path: /.well-known/agent.json
+  status: 404
+  content_type: application/json
+  document: false
+  file: null
+- host: exchange-developer.crypto.com
+  path: /.well-known/security.txt
+  status: 403
+  content_type: application/xml
+  document: false
+  file: null
+  note: S3-backed docs origin returns AccessDenied XML for any key that does not exist.
+- host: exchange-developer.crypto.com
+  path: /.well-known/openid-configuration
+  status: 403
+  content_type: application/xml
+  document: false
+  file: null
+  note: S3-backed docs origin returns AccessDenied XML for any key that does not exist.
+- host: exchange-developer.crypto.com
+  path: /.well-known/oauth-authorization-server
+  status: 403
+  content_type: application/xml
+  document: false
+  file: null
+  note: S3-backed docs origin returns AccessDenied XML for any key that does not exist.
+- host: exchange-developer.crypto.com
+  path: /.well-known/api-catalog
+  status: 403
+  content_type: application/xml
+  document: false
+  file: null
+  note: S3-backed docs origin returns AccessDenied XML for any key that does not exist.
+- host: exchange-developer.crypto.com
+  path: /.well-known/ai-plugin.json
+  status: 403
+  content_type: application/xml
+  document: false
+  file: null
+  note: S3-backed docs origin returns AccessDenied XML for any key that does not exist.
+- host: exchange-developer.crypto.com
+  path: /.well-known/agent-card.json
+  status: 403
+  content_type: application/xml
+  document: false
+  file: null
+  note: S3-backed docs origin returns AccessDenied XML for any key that does not exist.
+- host: exchange-developer.crypto.com
+  path: /.well-known/agent.json
+  status: 403
+  content_type: application/xml
+  document: false
+  file: null
+  note: S3-backed docs origin returns AccessDenied XML for any key that does not exist.
+- host: pay.crypto.com
+  path: /.well-known/security.txt
+  status: 404
+  content_type: text/html
+  document: false
+  file: null
+- host: pay.crypto.com
+  path: /.well-known/openid-configuration
+  status: 404
+  content_type: text/html
+  document: false
+  file: null
+- host: pay.crypto.com
+  path: /.well-known/oauth-authorization-server
+  status: 404
+  content_type: text/html
+  document: false
+  file: null
+- host: pay.crypto.com
+  path: /.well-known/api-catalog
+  status: 404
+  content_type: text/html
+  document: false
+  file: null
+- host: pay.crypto.com
+  path: /.well-known/ai-plugin.json
+  status: 404
+  content_type: text/html
+  document: false
+  file: null
+- host: pay.crypto.com
+  path: /.well-known/agent-card.json
+  status: 404
+  content_type: text/html
+  document: false
+  file: null
+- host: pay.crypto.com
+  path: /.well-known/agent.json
+  status: 404
+  content_type: text/html
+  document: false
+  file: null
+- host: developer.crypto.com
+  path: /.well-known/security.txt
+  status: 200
+  content_type: text/html
+  document: false
+  file: null
+  note: 'SPA catch-all: returns HTTP 200 with the same 483-byte React shell for EVERY /.well-known/* path. Not a
+    document - treated as a miss.'
+- host: developer.crypto.com
+  path: /.well-known/openid-configuration
+  status: 200
+  content_type: text/html
+  document: false
+  file: null
+  note: 'SPA catch-all: returns HTTP 200 with the same 483-byte React shell for EVERY /.well-known/* path. Not a
+    document - treated as a miss.'
+- host: developer.crypto.com
+  path: /.well-known/oauth-authorization-server
+  status: 200
+  content_type: text/html
+  document: false
+  file: null
+  note: 'SPA catch-all: returns HTTP 200 with the same 483-byte React shell for EVERY /.well-known/* path. Not a
+    document - treated as a miss.'
+- host: developer.crypto.com
+  path: /.well-known/api-catalog
+  status: 200
+  content_type: text/html
+  document: false
+  file: null
+  note: 'SPA catch-all: returns HTTP 200 with the same 483-byte React shell for EVERY /.well-known/* path. Not a
+    document - treated as a miss.'
+- host: developer.crypto.com
+  path: /.well-known/ai-plugin.json
+  status: 200
+  content_type: text/html
+  document: false
+  file: null
+  note: 'SPA catch-all: returns HTTP 200 with the same 483-byte React shell for EVERY /.well-known/* path. Not a
+    document - treated as a miss.'
+- host: developer.crypto.com
+  path: /.well-known/agent-card.json
+  status: 200
+  content_type: text/html
+  document: false
+  file: null
+  note: 'SPA catch-all: returns HTTP 200 with the same 483-byte React shell for EVERY /.well-known/* path. Not a
+    document - treated as a miss.'
+- host: developer.crypto.com
+  path: /.well-known/agent.json
+  status: 200
+  content_type: text/html
+  document: false
+  file: null
+  note: 'SPA catch-all: returns HTTP 200 with the same 483-byte React shell for EVERY /.well-known/* path. Not a
+    document - treated as a miss.'
+- host: developer-platform-api.crypto.com
+  path: /.well-known/security.txt
+  status: 404
+  content_type: application/json
+  document: false
+  file: null
+- host: developer-platform-api.crypto.com
+  path: /.well-known/openid-configuration
+  status: 404
+  content_type: application/json
+  document: false
+  file: null
+- host: developer-platform-api.crypto.com
+  path: /.well-known/oauth-authorization-server
+  status: 404
+  content_type: application/json
+  document: false
+  file: null
+- host: developer-platform-api.crypto.com
+  path: /.well-known/api-catalog
+  status: 404
+  content_type: application/json
+  document: false
+  file: null
+- host: developer-platform-api.crypto.com
+  path: /.well-known/ai-plugin.json
+  status: 404
+  content_type: application/json
+  document: false
+  file: null
+- host: developer-platform-api.crypto.com
+  path: /.well-known/agent-card.json
+  status: 404
+  content_type: application/json
+  document: false
+  file: null
+- host: developer-platform-api.crypto.com
+  path: /.well-known/agent.json
+  status: 404
+  content_type: application/json
+  document: false
+  file: null
+x-evidence:
+  fetched: '2026-08-11'
+  http_statuses:
+    200-html-shell: 7
+    '404': 28
+    '403': 7

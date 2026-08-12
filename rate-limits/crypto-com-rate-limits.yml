@@ -1,0 +1,101 @@
+generated: '2026-08-11'
+method: searched
+source: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-common-api-reference
+docs:
+- https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-common-api-reference
+- https://exchange-developer.crypto.com/exchange/v1/docs/api/fix-rate-limits
+limit_count: 9
+response_headers:
+  published: false
+  headers: []
+  note: 'No rate-limit response headers are documented on any Crypto.com surface - no X-RateLimit-*, no RateLimit-*
+    (RFC 9331 draft), no Retry-After. Exhaustion is signalled only by HTTP 429 with in-body code 42901 TOO_MANY_REQUESTS.
+    This is the single biggest runtime-semantics gap for an agent: the numbers are published, the live signal is
+    not.'
+exhaustion:
+  http_status: 429
+  code: 42901
+  message: TOO_MANY_REQUESTS:Requests have exceeded rate limits
+  guidance: Crypto.com publishes no backoff policy; its own CLI error catalog recommends exponential backoff with
+    jitter starting at 1s to a 32s ceiling.
+limits:
+- api: Exchange REST
+  scope: per-api-key, per-method
+  methods:
+  - private/create-order
+  - private/cancel-order
+  - private/cancel-all-orders
+  limit: 15
+  window: 100ms
+  burst: null
+- api: Exchange REST
+  scope: per-api-key, per-method
+  methods:
+  - private/get-order-detail
+  limit: 30
+  window: 100ms
+- api: Exchange REST
+  scope: per-api-key, per-method
+  methods:
+  - private/get-trades
+  limit: 1
+  window: 1s
+- api: Exchange REST
+  scope: per-api-key, per-method
+  methods:
+  - private/get-order-history
+  limit: 1
+  window: 1s
+- api: Exchange REST
+  scope: per-api-key, per-method
+  methods:
+  - all other private methods
+  limit: 3
+  window: 100ms
+- api: Exchange REST
+  scope: per-ip, per-method
+  methods:
+  - all public market data methods
+  limit: 100
+  window: 1s
+- api: Exchange REST
+  scope: per-api-key, per-method
+  methods:
+  - all staking methods
+  limit: 50
+  window: 1s
+- api: Exchange WebSocket
+  scope: per-connection
+  methods:
+  - User API
+  limit: 150
+  window: 1s
+- api: Exchange WebSocket
+  scope: per-connection
+  methods:
+  - Market Data
+  limit: 100
+  window: 1s
+- api: Exchange FIX
+  scope: per-session
+  methods:
+  - Order Entry
+  limit: 2500
+  window: 1s
+- api: Exchange FIX
+  scope: per-session
+  methods:
+  - Market Data
+  limit: 20
+  window: 1s
+gotchas:
+- WebSocket and FIX limits are PRO-RATED to the fraction of the calendar-second in which the connection was opened,
+  so a connection established late in a second starts with a fraction of its budget. Crypto.com recommends sleeping
+  1 second after connect before sending.
+pay:
+  documented: false
+  note: The Crypto.com Pay docs define a rate_limit_error type and a 429 status but publish no numeric limits.
+x-evidence:
+  fetched: '2026-08-11'
+  url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-common-api-reference.md
+  http_status: 200

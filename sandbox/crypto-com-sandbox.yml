@@ -1,0 +1,53 @@
+generated: '2026-08-11'
+method: searched
+source: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-common-api-reference
+environments:
+- api: Crypto.com Exchange REST API v1
+  name: UAT Sandbox
+  base: https://uat-api.3ona.co/exchange/v1
+  production: https://api.crypto.com/exchange/v1
+  declared_in_openapi: true
+  note: The UAT sandbox is declared as a second entry in the published OpenAPI servers[] block, which is the strongest
+    form of sandbox publication - an agent reading only the contract can find it.
+- api: Crypto.com Exchange WebSocket API v1 (User)
+  name: UAT Sandbox
+  base: wss://uat-stream.3ona.co/exchange/v1/user
+  production: wss://stream.crypto.com/exchange/v1/user
+- api: Crypto.com Exchange WebSocket API v1 (Market Data)
+  name: UAT Sandbox
+  base: wss://uat-stream.3ona.co/exchange/v1/market
+  production: wss://stream.crypto.com/exchange/v1/market
+- api: Crypto.com Pay API
+  name: Test mode
+  base: https://pay.crypto.com/api
+  separation: key-prefix
+  note: Same host and path for both modes; the key decides. Test-mode secret keys are prefixed sk_test_, live-mode
+    keys sk_live_. Test mode does not touch live data or the payment networks.
+test_credentials:
+  published: false
+  note: No shared/public test credentials are published for any surface. Sandbox and test keys are self-provisioned
+    - Exchange UAT keys from the UAT site, Pay test keys from the Merchant Dashboard.
+simulation:
+- surface: Crypto.com Pay checkout
+  mechanism: In test mode the checkout QR code is clickable and mimics a confirmed payment in the Crypto.com App.
+  source: https://pay-docs.crypto.com/
+- surface: Crypto.com Pay redirect URLs
+  mechanism: In test mode redirect domains can be added to the whitelist instantly; production additions require
+    Compliance approval.
+  source: https://pay-docs.crypto.com/
+- surface: cdcx CLI / MCP
+  mechanism: 'Two independent safety nets rather than a server sandbox: --dry-run previews the exact request without
+    sending it, and `cdcx paper` runs a local paper-trading simulation against live prices with no auth.'
+  source: https://github.com/crypto-com/cdcx-cli
+test_values:
+  magic_values: null
+  test_cards: null
+  test_clocks: null
+  note: Not applicable - Crypto.com Pay settles in crypto and publishes no test card numbers, test IBANs or time-simulation
+    tooling.
+x-evidence:
+  fetched: '2026-08-11'
+  urls:
+  - https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-common-api-reference.md
+  - https://pay-docs.crypto.com/
+  http_status: 200
