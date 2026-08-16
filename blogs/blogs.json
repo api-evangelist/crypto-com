@@ -1,0 +1,14 @@
+{
+  "repo": "crypto-com",
+  "feeds": [
+    {
+      "source": "https://help.crypto.com/en/",
+      "feed_url": "https://help.crypto.com/en/feed.xml",
+      "title": "",
+      "saved": 15,
+      "method": "discovered"
+    }
+  ],
+  "post_count": 15,
+  "fetched": "2026-08-15T12:22:01Z"
+}
