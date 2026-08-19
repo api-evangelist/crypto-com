@@ -1,0 +1,1643 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Crypto.com Exchange API v1",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reference and Market Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "public/get-risk-parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.crypto.com/exchange/v1/public/get-risk-parameters"
+          },
+          "docs": "Provides information on risk parameter settings for [Smart Cross Margin](https://crypto.com/exchange/document/margin-rules)."
+        },
+        {
+          "info": {
+            "name": "public/get-instruments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.crypto.com/exchange/v1/public/get-instruments",
+            "params": [
+              {
+                "name": "event_symbols",
+                "value": "",
+                "type": "query",
+                "description": "Filter by up to 10 event symbols. Comma-separated."
+              },
+              {
+                "name": "is_combo",
+                "value": "",
+                "type": "query",
+                "description": "Filter for combo instruments."
+              },
+              {
+                "name": "PREDICT_CONTRACT_TYPE",
+                "value": "",
+                "type": "query",
+                "description": "Filter by predict contract type."
+              }
+            ]
+          },
+          "docs": "Provides information on all supported instruments (e.g. BTCUSD-PERP)."
+        },
+        {
+          "info": {
+            "name": "public/get-book",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.crypto.com/exchange/v1/public/get-book",
+            "params": [
+              {
+                "name": "instrument_name",
+                "value": "",
+                "type": "query",
+                "description": "Instrument symbol, e.g. BTCUSD-PERP"
+              },
+              {
+                "name": "depth",
+                "value": "",
+                "type": "query",
+                "description": "Number of bids and asks to return (up to 50)"
+              }
+            ]
+          },
+          "docs": "Fetches the public order book for a particular instrument and depth."
+        },
+        {
+          "info": {
+            "name": "public/get-candlestick",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.crypto.com/exchange/v1/public/get-candlestick",
+            "params": [
+              {
+                "name": "instrument_name",
+                "value": "",
+                "type": "query",
+                "description": "Instrument symbol, e.g. BTCUSD-PERP"
+              },
+              {
+                "name": "timeframe",
+                "value": "",
+                "type": "query",
+                "description": "The period value. Default **1m**.\n"
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of candles to return. Default 25."
+              },
+              {
+                "name": "start_ts",
+                "value": "",
+                "type": "query",
+                "description": "Start time (Unix timestamp). Default 1 day ago."
+              },
+              {
+                "name": "end_ts",
+                "value": "",
+                "type": "query",
+                "description": "End time (Unix timestamp). Default current time."
+              }
+            ]
+          },
+          "docs": "Retrieves candlesticks (k-line data history) over a given period for an instrument (e.g. BTCUSD-PERP)."
+        },
+        {
+          "info": {
+            "name": "public/get-trades",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.crypto.com/exchange/v1/public/get-trades",
+            "params": [
+              {
+                "name": "instrument_name",
+                "value": "",
+                "type": "query",
+                "description": "e.g. BTCUSD-PERP"
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of trades to be retrieved. Default: 25. Max: 150"
+              },
+              {
+                "name": "start_ts",
+                "value": "",
+                "type": "query",
+                "description": "Start time in Unix time format (inclusive). Default: end_time - 1 day. Nanosecond recommended for accurate pagination"
+              },
+              {
+                "name": "end_ts",
+                "value": "",
+                "type": "query",
+                "description": "End time in Unix time format (exclusive). Default: current system timestamp. Nanosecond recommended for accurate pagination"
+              }
+            ]
+          },
+          "docs": "Fetches the public trades for a particular instrument. Time window can only be up to 7 days for maximum."
+        },
+        {
+          "info": {
+            "name": "public/get-tickers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.crypto.com/exchange/v1/public/get-tickers",
+            "params": [
+              {
+                "name": "instrument_name",
+                "value": "",
+                "type": "query",
+                "description": "e.g. BTCUSD-PERP"
+              }
+            ]
+          },
+          "docs": "Fetches the public tickers for all or a particular instrument."
+        },
+        {
+          "info": {
+            "name": "public/get-valuations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.crypto.com/exchange/v1/public/get-valuations",
+            "params": [
+              {
+                "name": "instrument_name",
+                "value": "",
+                "type": "query",
+                "description": "e.g. BTCUSD-INDEX"
+              },
+              {
+                "name": "valuation_type",
+                "value": "",
+                "type": "query",
+                "description": "**List of available types:**\n- a. **index_price**: returns per minute data of underlying reference price of the instrument.\n- b. **mark_price**: returns per minute data of mark price of the instrument.\n- c. **funding_hist**: returns hourly data of the funding rate settled in past hourly settlement.\n- d. **funding_rate**: returns per minute data of current hourly funding rate that will settle at the end of each hour of current 4-hour interval.\n- e. **estimated_funding_rate**: returns per minute data of estimated funding rate for the next interval.\n"
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Default is 25"
+              },
+              {
+                "name": "start_ts",
+                "value": "",
+                "type": "query",
+                "description": "Default timestamp is 30 days ago for funding_hist, and 1 day ago for other valuation_type (Unix timestamp)."
+              },
+              {
+                "name": "end_ts",
+                "value": "",
+                "type": "query",
+                "description": "Default timestamp is current time (Unix timestamp)."
+              }
+            ]
+          },
+          "docs": "Fetches valuation type data for an instrument."
+        },
+        {
+          "info": {
+            "name": "public/get-expired-settlement-price",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.crypto.com/exchange/v1/public/get-expired-settlement-price",
+            "params": [
+              {
+                "name": "instrument_type",
+                "value": "",
+                "type": "query",
+                "description": "FUTURE"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number. Default 1."
+              }
+            ]
+          },
+          "docs": "Fetches settlement prices of expired instruments."
+        },
+        {
+          "info": {
+            "name": "public/get-insurance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.crypto.com/exchange/v1/public/get-insurance",
+            "params": [
+              {
+                "name": "instrument_name",
+                "value": "",
+                "type": "query",
+                "description": "e.g. USD"
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Default is 25"
+              },
+              {
+                "name": "start_ts",
+                "value": "",
+                "type": "query",
+                "description": "Default timestamp is 1 day ago (Unix timestamp)."
+              },
+              {
+                "name": "end_ts",
+                "value": "",
+                "type": "query",
+                "description": "Default timestamp is current time (Unix timestamp)."
+              }
+            ]
+          },
+          "docs": "Fetches the balance of the Insurance Fund for a particular currency."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Account Balance and Positions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "private/user-balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/user-balance",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the user's wallet balance.\n"
+        },
+        {
+          "info": {
+            "name": "private/user-balance-history",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/user-balance-history",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the user's balance history. This call may temporarily have discrepancies with that shown on the GUI."
+        },
+        {
+          "info": {
+            "name": "private/get-accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/get-accounts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Account and its Sub Accounts."
+        },
+        {
+          "info": {
+            "name": "private/create-subaccount-transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/create-subaccount-transfer",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Transfer between subaccounts (and master account)."
+        },
+        {
+          "info": {
+            "name": "private/get-subaccount-balances",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/get-subaccount-balances",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the user's wallet balances of all sub-accounts."
+        },
+        {
+          "info": {
+            "name": "private/get-positions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/get-positions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the user's position.\n"
+        },
+        {
+          "info": {
+            "name": "private/get-fee-credit-balances",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/get-fee-credit-balances",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get fee credit balance details for the authenticated account. Fee credits are grouped by expiry date and sorted in ascending order. Values are not real-time and are updated daily at 00:00 UTC.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Trading",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "private/create-order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/create-order",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new BUY or SELL order. \n\nThis call is asynchronous, so the response is simply a confirmation of the request.\n\nThe `user.order` subscription can be used to check when the order is successfully created.\n"
+        },
+        {
+          "info": {
+            "name": "private/amend-order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/amend-order",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Amend an existing order on the Exchange.\n\nThis call is asynchronous, so the response is simply a confirmation of the request.\n\nThe user.order subscription can be used to check when the order is successfully created.\n\nPlease note that amend order is designed as a convenience function such that it performs cancel and then create behind the scene. The new order will lose queue priority, except if the amend is only to amend down order quantity.\n"
+        },
+        {
+          "info": {
+            "name": "private/cancel-order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/cancel-order",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancels an existing order on the Exchange.\n\nThis call is asynchronous, so the response is simply a confirmation of the request.\n\nThe `user.order` subscription can be used to check when the order is successfully canceled.\n"
+        },
+        {
+          "info": {
+            "name": "private/cancel-all-orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/cancel-all-orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancels all orders for a particular instrument/pair (asynchronous).\n\nThis call is asynchronous, so the response is simply a confirmation of the request.\n\nThe `user.order` subscription can be used to check when the order is successfully canceled.\n"
+        },
+        {
+          "info": {
+            "name": "private/close-position",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/close-position",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancels position for a particular instrument/pair (asynchronous).\n\nThis call is asynchronous, so the response is simply a confirmation of the request.\n\nThe `user.order` subscription can be used to check when the order is successfully canceled.\n"
+        },
+        {
+          "info": {
+            "name": "private/get-open-orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/get-open-orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Gets all open orders for a particular instrument."
+        },
+        {
+          "info": {
+            "name": "private/get-order-detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/get-order-detail",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Gets detail of a single order by order_id or client_oid."
+        },
+        {
+          "info": {
+            "name": "private/create-order-list (LIST)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/create-order-list",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a list of orders on the Exchange.\n\n`contingency_type` must be LIST, for list of orders creation.\n\nThis call is asynchronous, so the response is simply a confirmation of the request.\n\nThe `user.order` subscription can be used to check if the orders are successfully created.\n"
+        },
+        {
+          "info": {
+            "name": "private/cancel-order-list (LIST)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/cancel-order-list",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel a list of orders on the Exchange.\n\nThis call is asynchronous, so the response is simply a confirmation of the request.\n\nThe `user.order` subscription can be used to check when each of the orders is successfully cancelled.\n"
+        },
+        {
+          "info": {
+            "name": "private/change-account-leverage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/change-account-leverage",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Changes the maximum leverage used by the account. Please note, each instrument has its own maximum leverage. Whichever leverage (account or instrument) is lower will be used."
+        },
+        {
+          "info": {
+            "name": "private/change-account-settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/change-account-settings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Change account level settings regarding STP and other properties."
+        },
+        {
+          "info": {
+            "name": "private/get-account-settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/get-account-settings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get account settings."
+        },
+        {
+          "info": {
+            "name": "private/create-isolated-margin-transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/create-isolated-margin-transfer",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Transfer balance between account and isolated position."
+        },
+        {
+          "info": {
+            "name": "private/change-isolated-margin-leverage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/change-isolated-margin-leverage",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Changes the maximum leverage of an isolated position."
+        },
+        {
+          "info": {
+            "name": "private/get-fee-rate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/get-fee-rate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get fee rates for user’s account."
+        },
+        {
+          "info": {
+            "name": "private/get-instrument-fee-rate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/get-instrument-fee-rate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get the instrument fee rate."
+        },
+        {
+          "info": {
+            "name": "private/get-order-history",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/get-order-history",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Gets the order history for a particular instrument.\n\nUsers should use `user.order` to keep track of real-time order updates, and `private/get-order-history` should primarily be used for recovery; typically when the websocket is disconnected.\n"
+        },
+        {
+          "info": {
+            "name": "private/get-trades",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/get-trades",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Gets all executed trades for a particular instrument.\n\nUsers should use `user.trade` to keep track of real-time trades, and `private/get-trades` should primarily be used for recovery; typically when the websocket is disconnected.\n"
+        },
+        {
+          "info": {
+            "name": "private/get-transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/get-transactions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fetches recent transactions."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Crypto Wallet",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "private/create-withdrawal",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/create-withdrawal",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a withdrawal request. Withdrawal setting must be enabled for your API Key. If you do not see the option when viewing your API Key, this feature is not yet available for you."
+        },
+        {
+          "info": {
+            "name": "private/get-currency-networks",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/get-currency-networks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get the symbol network mapping."
+        },
+        {
+          "info": {
+            "name": "private/get-deposit-address",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/get-deposit-address",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fetches deposit address. Withdrawal setting must be enabled for your API Key. If you do not see the option when viewing your API Keys, this feature is not yet available for you."
+        },
+        {
+          "info": {
+            "name": "private/get-deposit-history",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/get-deposit-history",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fetches deposit history. If you do not see the option when viewing your API Keys, this feature is not yet available for you."
+        },
+        {
+          "info": {
+            "name": "private/get-withdrawal-history",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/get-withdrawal-history",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fetches withdrawal history. If you do not see the option when viewing your API Keys, this feature is not yet available for you."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Advanced Order Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "private/advanced/create-order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/advanced/create-order",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new BUY or SELL trigger order on the Exchange.\n\n`type` must be STOP_LOSS, STOP_LIMIT, TAKE_PROFIT or TAKE_PROFIT_LIMIT.\n\nThis call is asynchronous, so the response is simply a confirmation of the request.\n\nThe `user.advanced.order` subscription can be used to check if the orders are successfully created.\n\n**Helpful information:**\n- STOP_LIMIT and TAKE_PROFIT_LIMIT will execute a LIMIT order when the ref_price is reached.\n- STOP_LOSS and TAKE_PROFIT will execute a MARKET order when the "
+        },
+        {
+          "info": {
+            "name": "private/advanced/amend-order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/advanced/amend-order",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Amends an existing trigger order on the Exchange.\n\nThis call is asynchronous, so the response is simply a confirmation of the request.\n\nThe `user.advanced.order` subscription can be used to check when the order is successfully amended.\n\n**Trigger Order Type Conversion:**\n- Set `new_price` to \"0\" → Convert trigger limit order to trigger market order\n- Set `new_price` to \"> 0\" → Convert trigger market order to trigger limit order\n"
+        },
+        {
+          "info": {
+            "name": "private/advanced/create-oco",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/advanced/create-oco",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a One-cancels-the-Other (OCO) execution strategy on the Exchange.\n\nOCO execution strategy allows users to place a two-order strategy where one order automatically cancels the other when one of the orders is partially/fully executed. Users are able to place 2 orders - one LIMIT and one trigger order. Only one of the orders will be executed. The trigger order can either be a stop loss or take profit order. The OCO order type is only available for Spot trading pairs for now.\n\nThis call is a"
+        },
+        {
+          "info": {
+            "name": "private/advanced/cancel-oco",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/advanced/cancel-oco",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel an OCO order on the Exchange. This call is asynchronous, so the response is simply a confirmation of the request. The `user.advanced.order` subscription can be used to check when each of the orders is successfully cancelled.\n"
+        },
+        {
+          "info": {
+            "name": "private/advanced/create-oto",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/advanced/create-oto",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a One-triggers-the-Other (OTO) execution strategy on the Exchange.\n\nOTO execution strategy allows users to place a two-order strategy where one order automatically triggers the other when the first order is fully executed. Users are able to place a limit or market order with a trigger order, and only when the primary order is fully executed, the trigger order will take effect. The trigger order can either be a stop loss or take profit order.\n\n**SpotAttach / DerivAttach:** This API create"
+        },
+        {
+          "info": {
+            "name": "private/advanced/cancel-oto",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/advanced/cancel-oto",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel a SPOT_ATTACH or DERIV_ATTACH order on the Exchange. This call is asynchronous, so the response is simply a confirmation of the request. The `user.advanced.order` subscription can be used to check when each of the orders is successfully cancelled.\n\n**Note:** This API can also be used to cancel SpotAttach / DerivAttach orders regardless of the number of legs (2 or 3). Both `cancel-oto` and `cancel-otoco` can be used interchangeably to cancel SpotAttach / DerivAttach orders by `list_id`.\n"
+        },
+        {
+          "info": {
+            "name": "private/advanced/create-otoco",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/advanced/create-otoco",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a One-Triggers-a-One-Cancels-the-Other (OTOCO) execution strategy on the Exchange.\n\nOTOCO execution strategy allows users to place a three-order strategy where one order automatically triggers the other two when the first order is fully executed. Users are able to place a limit or market order with two trigger orders, and only when the primary order is fully executed, the two trigger orders will take effect. The two trigger orders must be one stop loss and one take profit orders.\n\n**Spot"
+        },
+        {
+          "info": {
+            "name": "private/advanced/cancel-otoco",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/advanced/cancel-otoco",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel a SPOT_ATTACH or DERIV_ATTACH order on the Exchange. This call is asynchronous, so the response is simply a confirmation of the request. The `user.advanced.order` subscription can be used to check when each of the orders is successfully cancelled.\n\n**Note:** This API can also be used to cancel SpotAttach / DerivAttach orders regardless of the number of legs (2 or 3). Both `cancel-oto` and `cancel-otoco` can be used interchangeably to cancel SpotAttach / DerivAttach orders by `list_id`.\n"
+        },
+        {
+          "info": {
+            "name": "private/advanced/cancel-order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/advanced/cancel-order",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel an individual order of a OTO/OTOCO order on the Exchange (asynchronous). \n\nThis call is asynchronous, so the response is simply a confirmation of the request. \n\nThe `user.advance.order` subscription can be used to check when the order is successfully canceled.\n"
+        },
+        {
+          "info": {
+            "name": "private/advanced/cancel-all-orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/advanced/cancel-all-orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancels all OTO/OTOCO orders for a particular instrument/pair (asynchronous). \n\nThis call is asynchronous, so the response is simply a confirmation of the request. \n\nThe `user.advance.order` subscription can be used to check when the order is successfully canceled.\n"
+        },
+        {
+          "info": {
+            "name": "private/advanced/get-open-orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/advanced/get-open-orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Gets all open orders for OTO/OTOCO orders for a particular instrument.\n"
+        },
+        {
+          "info": {
+            "name": "private/advanced/get-order-detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/advanced/get-order-detail",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Gets detail of a single advanced order by `order_id` or `client_oid`.\n"
+        },
+        {
+          "info": {
+            "name": "private/advanced/get-order-history",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/advanced/get-order-history",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Gets the order history of OTO/OTOCO orders for a particular instrument.\n\nUsers should use `user.advance.order` to keep track of real-time order updates, and `private/advanced/get-order-history` should primarily be used for recovery; typically when the websocket is disconnected.\n"
+        },
+        {
+          "info": {
+            "name": "private/advanced/create-order-list",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/advanced/create-order-list",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates multiple advanced orders in a single request.\n\nThis call is asynchronous, so the response is simply a confirmation of the request.\n\nThe `user.advanced.order` subscription can be used to check when the orders are successfully created.\n"
+        },
+        {
+          "info": {
+            "name": "private/advanced/cancel-order-list",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/advanced/cancel-order-list",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancels multiple advanced orders in a single request.\n\nThis call is asynchronous, so the response is simply a confirmation of the request.\n\nThe `user.advanced.order` subscription can be used to check when the orders are successfully canceled.\n"
+        },
+        {
+          "info": {
+            "name": "private/advanced/get-order-list-detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/advanced/get-order-list-detail",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Gets order details for multiple OCO/SpotAttach orders by their list IDs.\n\nThis endpoint allows batch querying of order information across different contingency order groups.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Fiat Wallet",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "private/fiat/fiat-access",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/fiat/fiat-access",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves fiat access information for a user account. Used by FCM/DCM brokers to check deposit and withdrawal permissions for different currencies and payment networks on behalf of their users."
+        },
+        {
+          "info": {
+            "name": "private/fiat/fiat-deposit-info",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/fiat/fiat-deposit-info",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves fiat deposit information for the authenticated user. Returns bank details for depositing fiat currency with optional payment network filtering."
+        },
+        {
+          "info": {
+            "name": "private/fiat/fiat-deposit-history",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/fiat/fiat-deposit-history",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves paginated fiat deposit transaction history for the authenticated user."
+        },
+        {
+          "info": {
+            "name": "private/fiat/fiat-withdraw-history",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/fiat/fiat-withdraw-history",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves paginated fiat withdrawal transaction history for the authenticated user."
+        },
+        {
+          "info": {
+            "name": "private/fiat/fiat-create-withdraw",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/fiat/fiat-create-withdraw",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new fiat withdrawal request for the authenticated user."
+        },
+        {
+          "info": {
+            "name": "private/fiat/fiat-get-plaid-token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/fiat/fiat-get-plaid-token",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get a Plaid link token for the user. Must call this before initiating the Plaid Link flow on the frontend. The token is single-use and expires — a new token is generated each time."
+        },
+        {
+          "info": {
+            "name": "private/fiat/fiat-transaction-quota",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/fiat/fiat-transaction-quota",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves transaction quota information for a specific payment network."
+        },
+        {
+          "info": {
+            "name": "private/fiat/fiat-transaction-limit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/fiat/fiat-transaction-limit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves transaction limits for a specific payment network."
+        },
+        {
+          "info": {
+            "name": "private/fiat/fiat-create-bank-account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/fiat/fiat-create-bank-account",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Link a bank account via Plaid for a user. Links the user's bank account to their profile for withdrawals using a Plaid integration payload."
+        },
+        {
+          "info": {
+            "name": "private/fiat/fiat-get-bank-accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/fiat/fiat-get-bank-accounts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves user's bank accounts with optional payment network filtering."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Staking",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "public/staking/get-conversion-rate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/public/staking/get-conversion-rate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns conversion rate between staked token (e.g. ETH.staked) and liquid staking token (e.g. CDCETH). Params instrument_name (e.g. CDCETH). Used before private/staking/convert."
+        },
+        {
+          "info": {
+            "name": "private/staking/stake",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/staking/stake",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a request to earn token rewards by staking on-chain in the Exchange."
+        },
+        {
+          "info": {
+            "name": "private/staking/unstake",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/staking/unstake",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a request to unlock staked token."
+        },
+        {
+          "info": {
+            "name": "private/staking/get-staking-position",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/staking/get-staking-position",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get the total staking position for a user/token"
+        },
+        {
+          "info": {
+            "name": "private/staking/get-staking-instruments",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/staking/get-staking-instruments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get staking instruments information"
+        },
+        {
+          "info": {
+            "name": "private/staking/get-open-stake",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/staking/get-open-stake",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get stake/unstake requests that status is not in final state."
+        },
+        {
+          "info": {
+            "name": "private/staking/get-stake-history",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/staking/get-stake-history",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get stake/unstake request history"
+        },
+        {
+          "info": {
+            "name": "private/staking/get-reward-history",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/staking/get-reward-history",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get stake/unstake request history"
+        },
+        {
+          "info": {
+            "name": "private/staking/convert",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/staking/convert",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a request to convert between staked token with liquid staking token."
+        },
+        {
+          "info": {
+            "name": "private/staking/get-open-convert",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/staking/get-open-convert",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get convert request that status is not in final state."
+        },
+        {
+          "info": {
+            "name": "private/staking/get-convert-history",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/staking/get-convert-history",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get convert request history"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OTC RFQ for Taker",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "private/otc/request-quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/otc/request-quote",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a quote request."
+        },
+        {
+          "info": {
+            "name": "private/otc/get-otc-instruments",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/otc/get-otc-instruments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves a list of available OTC instruments that takers can request quotes for."
+        },
+        {
+          "info": {
+            "name": "private/otc/get-open-quote-requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/otc/get-open-quote-requests",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get open quote requests. Only return active quote requests (status = NEW or ACTIVE)."
+        },
+        {
+          "info": {
+            "name": "private/otc/get-open-quotes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/otc/get-open-quotes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get open quotes. Only return active Quotes (status = ACTIVE)."
+        },
+        {
+          "info": {
+            "name": "private/otc/get-quote-history",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/otc/get-quote-history",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get quotes history."
+        },
+        {
+          "info": {
+            "name": "private/otc/get-quote-request-history",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/otc/get-quote-request-history",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get quote requests history. Only return closed quote requests (status = COMPLETED/REJECTED)."
+        },
+        {
+          "info": {
+            "name": "private/otc/request-deal",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/otc/request-deal",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Request a deal."
+        },
+        {
+          "info": {
+            "name": "private/otc/get-open-deals",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/otc/get-open-deals",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get open deals."
+        },
+        {
+          "info": {
+            "name": "private/otc/get-deal-history",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/otc/get-deal-history",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get deal history."
+        },
+        {
+          "info": {
+            "name": "private/otc/get-settle-later-limit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/otc/get-settle-later-limit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get used settle later limit as well as the configured limit for account."
+        },
+        {
+          "info": {
+            "name": "private/otc/get-unsettled-amounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/otc/get-unsettled-amounts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get pending settlement amount aggregated by date and instrument."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Trading Bot API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "private/bot/create-trading-bot",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/bot/create-trading-bot",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a trading bot. Supports DCA (Dollar Cost Averaging), TWAP (Time-Weighted Average Price), Grid, and Funding Arbitrage bot types."
+        },
+        {
+          "info": {
+            "name": "private/bot/update-trading-bot",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/bot/update-trading-bot",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates settings for a running or paused Trading Bot. TWAP and FUNDING_ARBITRAGE bots only support updating display_name and notify_on_bot_change."
+        },
+        {
+          "info": {
+            "name": "private/bot/terminate-trading-bot",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/bot/terminate-trading-bot",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Terminates a Trading Bot. All open orders placed by the bot are cancelled."
+        },
+        {
+          "info": {
+            "name": "private/bot/pause-trading-bot",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/bot/pause-trading-bot",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Pauses a running Trading Bot. The bot's open orders are cancelled and no new orders will be placed until resumed."
+        },
+        {
+          "info": {
+            "name": "private/bot/resume-trading-bot",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/bot/resume-trading-bot",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Resumes a paused Trading Bot. The bot will restart placing orders according to its configured strategy."
+        },
+        {
+          "info": {
+            "name": "private/bot/get-trading-bots",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/bot/get-trading-bots",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns a list of Trading Bots filtered by type and state. Results are sorted by update time in descending order."
+        },
+        {
+          "info": {
+            "name": "private/bot/get-trading-bot-executions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.crypto.com/exchange/v1/private/bot/get-trading-bot-executions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the order execution history for a specific Trading Bot."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

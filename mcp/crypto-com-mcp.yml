@@ -129,3 +129,9 @@ tool_catalog:
   commands: 67
   note: Provider-published catalog of every cdcx command across all ten service groups, with http_method,
     backing Exchange API method, parameters and safety tier. Crosswalked to OpenAPI operationIds in mcp/crypto-com-tool-crosswalk.yml.
+deployment:
+  mode: local-stdio
+  verified: searched
+  tools: 9
+  checked: '2026-08-12'
+  source: catalog MCP census
