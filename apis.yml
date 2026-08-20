@@ -20,6 +20,22 @@ specificationVersion: '0.23'
 created: '2026-08-11'
 modified: '2026-08-11'
 tags:
+- Cryptocurrency
+- Crypto Exchange
+- Trading
+- Derivatives
+- Market Data
+- Digital Assets
+- Payments
+- Merchant Payments
+- Blockchain
+- cronos
+- DeFi
+- Staking
+- Fintech
+- MCP
+- agent-native
+tags_raw:
 - cryptocurrency
 - crypto-exchange
 - trading
@@ -48,6 +64,13 @@ apis:
   humanURL: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-introduction
   baseURL: https://api.crypto.com/exchange/v1
   tags:
+  - Crypto Exchange
+  - Trading
+  - Derivatives
+  - Market Data
+  - Staking
+  - Digital Assets
+  tags_raw:
   - crypto-exchange
   - trading
   - derivatives
@@ -94,6 +117,11 @@ apis:
   humanURL: https://exchange-developer.crypto.com/exchange/v1/docs/api/websocket-introduction
   baseURL: wss://stream.crypto.com/exchange/v1
   tags:
+  - Crypto Exchange
+  - Market Data
+  - Trading
+  - Streaming
+  tags_raw:
   - crypto-exchange
   - market-data
   - trading
@@ -119,6 +147,11 @@ apis:
     PrivateLink connection - so no public baseURL is published.
   humanURL: https://exchange-developer.crypto.com/exchange/v1/docs/api/fix-introduction
   tags:
+  - Crypto Exchange
+  - Trading
+  - FIX Protocol
+  - Institutional
+  tags_raw:
   - crypto-exchange
   - trading
   - fix-protocol
@@ -143,6 +176,11 @@ apis:
   humanURL: https://pay-docs.crypto.com/
   baseURL: https://pay.crypto.com/api
   tags:
+  - Payments
+  - Merchant Payments
+  - Subscription
+  - Cryptocurrency
+  tags_raw:
   - payments
   - merchant-payments
   - subscriptions
@@ -175,6 +213,12 @@ apis:
   humanURL: https://developer.crypto.com/documentation
   baseURL: https://developer-platform-api.crypto.com/v1/cdc-developer-platform
   tags:
+  - Blockchain
+  - cronos
+  - DeFi
+  - Web3
+  - Digital Assets
+  tags_raw:
   - blockchain
   - cronos
   - defi
