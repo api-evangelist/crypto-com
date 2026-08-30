@@ -32,18 +32,18 @@ specificationVersion: '0.23'
 created: '2026-08-11'
 modified: '2026-08-11'
 tags:
-- Cryptocurrency
-- Crypto Exchange
+- cryptocurrency
+- crypto-exchange
 - Trading
 - Derivatives
 - Market Data
-- Digital Assets
+- digital-assets
 - Payments
-- Merchant Payments
+- merchant-payments
 - Blockchain
 - cronos
 - DeFi
-- Staking
+- staking
 - Fintech
 - MCP
 - agent-native
@@ -74,10 +74,10 @@ apis:
   humanURL: https://exchange-developer.crypto.com/exchange/v1/docs/api/websocket-introduction
   baseURL: wss://stream.crypto.com/exchange/v1
   tags:
-  - Crypto Exchange
+  - crypto-exchange
   - Market Data
   - Trading
-  - Streaming
+  - streaming
   tags_raw:
   - crypto-exchange
   - market-data
@@ -104,10 +104,10 @@ apis:
     connection - so no public baseURL is published.
   humanURL: https://exchange-developer.crypto.com/exchange/v1/docs/api/fix-introduction
   tags:
-  - Crypto Exchange
+  - crypto-exchange
   - Trading
-  - FIX Protocol
-  - Institutional
+  - fix-protocol
+  - institutional
   tags_raw:
   - crypto-exchange
   - trading
@@ -133,9 +133,9 @@ apis:
   baseURL: https://pay.crypto.com/api
   tags:
   - Payments
-  - Merchant Payments
+  - merchant-payments
   - Subscription
-  - Cryptocurrency
+  - cryptocurrency
   tags_raw:
   - payments
   - merchant-payments
@@ -172,7 +172,7 @@ apis:
   - cronos
   - DeFi
   - Web3
-  - Digital Assets
+  - digital-assets
   tags_raw:
   - blockchain
   - cronos
