@@ -1,17 +1,15 @@
 aid: crypto-com
 name: Crypto.com
-description: >-
-  Crypto.com is a cryptocurrency exchange, brokerage and payments company serving retail and
-  institutional customers across spot, margin and derivatives trading, staking, custody, card
-  and payment acceptance, and on-chain development on the Cronos EVM and Cronos zkEVM networks.
-  Its public developer surface spans four programmable products: the Crypto.com Exchange API v1
-  (REST, WebSocket and FIX 4.4) for market data, order entry, advanced OCO/OTO/OTOCO orders,
-  trading bots, portfolio, wallet and staking operations; the Crypto.com Pay API for merchant
-  payment acceptance, refunds, subscriptions and invoicing with webhooks and idempotent refunds;
-  the Crypto.com Developer Platform API for Cronos tokens, contracts, transactions, blocks,
-  wallets, CronosID and DeFi; and an agent layer consisting of a published MCP server, an
-  agent-first Rust CLI, and provider-authored Agent Skills for trading through the Crypto.com
-  App and Exchange.
+description: 'Crypto.com is a cryptocurrency exchange, brokerage and payments company serving retail and
+  institutional customers across spot, margin and derivatives trading, staking, custody, card and payment
+  acceptance, and on-chain development on the Cronos EVM and Cronos zkEVM networks. Its public developer
+  surface spans four programmable products: the Crypto.com Exchange API v1 (REST, WebSocket and FIX 4.4)
+  for market data, order entry, advanced OCO/OTO/OTOCO orders, trading bots, portfolio, wallet and staking
+  operations; the Crypto.com Pay API for merchant payment acceptance, refunds, subscriptions and invoicing
+  with webhooks and idempotent refunds; the Crypto.com Developer Platform API for Cronos tokens, contracts,
+  transactions, blocks, wallets, CronosID and DeFi; and an agent layer consisting of a published MCP server,
+  an agent-first Rust CLI, and provider-authored Agent Skills for trading through the Crypto.com App and
+  Exchange.'
 url: https://raw.githubusercontent.com/api-evangelist/crypto-com/refs/heads/main/apis.yml
 deliveryModel:
   model: saas
@@ -45,7 +43,7 @@ x-type: company
 x-source: harvest:secondary-market
 specificationVersion: '0.23'
 created: '2026-08-11'
-modified: '2026-08-11'
+modified: '2026-09-16'
 tags:
 - Cryptocurrency
 - Crypto Exchange
@@ -80,12 +78,12 @@ tags_raw:
 - agent-native
 apis:
 - name: Crypto.com Exchange WebSocket API v1
-  description: >-
-    WebSocket API for the Crypto.com Exchange, split into a Market Data stream (public channels for book,
-    ticker, trade, candlestick, index, mark price, settlement, funding and open interest) and a User API
-    stream (authenticated via public/auth once per session, then subscription channels for user.order,
-    user.trade, user.balance, user.positions, user.account_risk, user.advance.order and related events).
-    Same request envelope and error codes as REST; websocket termination codes 1000/1006/1013 are documented.
+  description: WebSocket API for the Crypto.com Exchange, split into a Market Data stream (public channels
+    for book, ticker, trade, candlestick, index, mark price, settlement, funding and open interest) and
+    a User API stream (authenticated via public/auth once per session, then subscription channels for
+    user.order, user.trade, user.balance, user.positions, user.account_risk, user.advance.order and related
+    events). Same request envelope and error codes as REST; websocket termination codes 1000/1006/1013
+    are documented.
   humanURL: https://exchange-developer.crypto.com/exchange/v1/docs/api/websocket-introduction
   baseURL: wss://stream.crypto.com/exchange/v1
   tags:
@@ -102,8 +100,7 @@ apis:
   - type: Documentation
     url: https://exchange-developer.crypto.com/exchange/v1/docs/api/websocket-introduction
   - type: APIReference
-    url: >-
-      https://exchange-developer.crypto.com/exchange/v1/docs/api/websocket-common-api-reference
+    url: https://exchange-developer.crypto.com/exchange/v1/docs/api/websocket-common-api-reference
   - type: Webhooks
     url: asyncapi/crypto-com-event-surface.yml
   - type: ChangeLog
@@ -111,12 +108,11 @@ apis:
   - type: RateLimits
     url: rate-limits/crypto-com-rate-limits.yml
 - name: Crypto.com Exchange FIX API
-  description: >-
-    FIX 4.4-based API for institutional order entry, market data and drop copy on the Crypto.com Exchange,
-    with tags borrowed from later FIX versions. Covers Logon/Logout, NewOrderSingle, MassOrder, OrderCancelRequest,
-    OrderCancelReplaceRequest, OrderMassCancelRequest, ExecutionReport, SecurityList and MarketDataRequest.
-    The FIX gateway is not reachable over the public internet - clients must establish an AWS PrivateLink
-    connection - so no public baseURL is published.
+  description: FIX 4.4-based API for institutional order entry, market data and drop copy on the Crypto.com
+    Exchange, with tags borrowed from later FIX versions. Covers Logon/Logout, NewOrderSingle, MassOrder,
+    OrderCancelRequest, OrderCancelReplaceRequest, OrderMassCancelRequest, ExecutionReport, SecurityList
+    and MarketDataRequest. The FIX gateway is not reachable over the public internet - clients must establish
+    an AWS PrivateLink connection - so no public baseURL is published.
   humanURL: https://exchange-developer.crypto.com/exchange/v1/docs/api/fix-introduction
   tags:
   - Crypto Exchange
@@ -138,8 +134,7 @@ apis:
   - type: RateLimits
     url: rate-limits/crypto-com-rate-limits.yml
 - name: Crypto.com Pay API
-  description: >-
-    Merchant payments API for accepting cryptocurrency payments, issuing refunds, running subscriptions
+  description: Merchant payments API for accepting cryptocurrency payments, issuing refunds, running subscriptions
     and recurring invoices, managing customers, products and sub-merchants, and reading transaction histories.
     REST over HTTPS with HTTP Basic authentication using a secret key, test and live modes separated by
     key prefix, an Idempotency-Key header on the refund API, and twelve signed webhook event types verified
@@ -174,12 +169,11 @@ apis:
   - type: Sandbox
     url: sandbox/crypto-com-sandbox.yml
 - name: Crypto.com Developer Platform API
-  description: >-
-    On-chain developer platform service API for Cronos EVM and Cronos zkEVM, exposing native and ERC-20
-    token balances and transfers, smart contract ABI and bytecode lookup, transaction and block queries,
-    wallet creation and balances, CronosID name resolution, DeFi data, contract events, network information
-    and an Exchange module. Access requires an API key created against a project in the Developer Platform
-    dashboard; first-party TypeScript and Python client SDKs wrap the service.
+  description: On-chain developer platform service API for Cronos EVM and Cronos zkEVM, exposing native
+    and ERC-20 token balances and transfers, smart contract ABI and bytecode lookup, transaction and block
+    queries, wallet creation and balances, CronosID name resolution, DeFi data, contract events, network
+    information and an Exchange module. Access requires an API key created against a project in the Developer
+    Platform dashboard; first-party TypeScript and Python client SDKs wrap the service.
   humanURL: https://developer.crypto.com/documentation
   baseURL: https://developer-platform-api.crypto.com/v1/cdc-developer-platform
   tags:
@@ -198,8 +192,7 @@ apis:
   - type: DeveloperPortal
     url: https://developer.crypto.com/
   - type: Documentation
-    url: >-
-      https://ai-agent-sdk-docs.crypto.com/crypto.com-developer-platform/on-chain-developer-platform
+    url: https://ai-agent-sdk-docs.crypto.com/crypto.com-developer-platform/on-chain-developer-platform
   - type: APIReference
     url: https://developer.crypto.com/documentation
   - type: LLMsTxt
@@ -208,10 +201,9 @@ apis:
     url: packages/crypto-com-packages.yml
 - aid: crypto-com:crypto-com-account-balance-and-positions-api
   name: Crypto.com Account Balance and Positions API
-  description: >-
-    Retrieve real-time and historical snapshots of wallet balances, open positions, margin requirements,
-    and collateral status. Use these endpoints to monitor account health, risk exposure, and available
-    trading capacity.
+  description: 'Retrieve real-time and historical snapshots of wallet balances, open positions, margin
+    requirements, and collateral status. Use these endpoints to monitor account health, risk exposure,
+    and available trading capacity.
 
 
     ## Account Balance
@@ -247,7 +239,7 @@ apis:
 
 
     Master accounts can create subaccounts to isolate trading activity. Use the subaccount transfer endpoint
-    to move funds between accounts.
+    to move funds between accounts.'
   humanURL: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-introduction
   baseURL: https://api.crypto.com/exchange/v1
   tags:
@@ -258,8 +250,7 @@ apis:
   - type: Documentation
     url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-introduction
   - type: APIReference
-    url: >-
-      https://exchange-developer.crypto.com/exchange/v1/docs/api/rest/crypto-com-exchange-api-v-1
+    url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest/crypto-com-exchange-api-v-1
   - type: Authentication
     url: authentication/crypto-com-authentication.yml
   - type: Conventions
@@ -280,9 +271,9 @@ apis:
     url: https://exchange-developer.crypto.com/exchange/v1/llms.txt
 - aid: crypto-com:crypto-com-advanced-order-management-api
   name: Crypto.com Advanced Order Management API
-  description: >-
-    Advanced Order Management provides trigger orders and multi-leg execution strategies beyond basic
-    LIMIT and MARKET orders. Use these endpoints for conditional order execution based on price triggers.
+  description: 'Advanced Order Management provides trigger orders and multi-leg execution strategies beyond
+    basic LIMIT and MARKET orders. Use these endpoints for conditional order execution based on price
+    triggers.
 
 
     ## Trigger Orders
@@ -376,7 +367,7 @@ apis:
     ## Real-Time Updates
 
 
-    Subscribe to `user.advanced.order` for real-time advanced order lifecycle events.
+    Subscribe to `user.advanced.order` for real-time advanced order lifecycle events.'
   humanURL: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-introduction
   baseURL: https://api.crypto.com/exchange/v1
   tags:
@@ -387,8 +378,7 @@ apis:
   - type: Documentation
     url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-introduction
   - type: APIReference
-    url: >-
-      https://exchange-developer.crypto.com/exchange/v1/docs/api/rest/crypto-com-exchange-api-v-1
+    url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest/crypto-com-exchange-api-v-1
   - type: Authentication
     url: authentication/crypto-com-authentication.yml
   - type: Conventions
@@ -422,8 +412,7 @@ apis:
   - type: Documentation
     url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-introduction
   - type: APIReference
-    url: >-
-      https://exchange-developer.crypto.com/exchange/v1/docs/api/rest/crypto-com-exchange-api-v-1
+    url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest/crypto-com-exchange-api-v-1
   - type: Authentication
     url: authentication/crypto-com-authentication.yml
   - type: Conventions
@@ -444,8 +433,7 @@ apis:
     url: https://exchange-developer.crypto.com/exchange/v1/llms.txt
 - aid: crypto-com:crypto-com-fiat-wallet-api
   name: Crypto.com Fiat Wallet API
-  description: >-
-    Manages the user's fiat wallet.
+  description: 'Manages the user''s fiat wallet.
 
 
     Most of the endpoints are only available at master account level.
@@ -497,7 +485,7 @@ apis:
 
     - Multiple Payment Networks (comma-separated): `json { "payment_networks": "usd_cubix, usd_swift"
     }` Refer to the individual API endpoint documentation above for specific parameter requirements and
-    usage examples.
+    usage examples.'
   humanURL: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-introduction
   baseURL: https://api.crypto.com/exchange/v1
   tags:
@@ -508,8 +496,7 @@ apis:
   - type: Documentation
     url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-introduction
   - type: APIReference
-    url: >-
-      https://exchange-developer.crypto.com/exchange/v1/docs/api/rest/crypto-com-exchange-api-v-1
+    url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest/crypto-com-exchange-api-v-1
   - type: Authentication
     url: authentication/crypto-com-authentication.yml
   - type: Conventions
@@ -530,10 +517,9 @@ apis:
     url: https://exchange-developer.crypto.com/exchange/v1/llms.txt
 - aid: crypto-com:crypto-com-otc-rfq-for-taker-api
   name: Crypto.com OTC RFQ for Taker API
-  description: >-
-    OTC RFQ (Request For Quote) enables takers to request block trade quotes from multiple liquidity providers,
-    evaluate received quotes, and execute trades at the best available price. This workflow is designed
-    for institutional clients who need to trade large sizes with minimal market impact.
+  description: 'OTC RFQ (Request For Quote) enables takers to request block trade quotes from multiple
+    liquidity providers, evaluate received quotes, and execute trades at the best available price. This
+    workflow is designed for institutional clients who need to trade large sizes with minimal market impact.
 
 
     ## RFQ Trading Flow
@@ -590,11 +576,11 @@ apis:
 
     - `cl_deal_id` — Client-assigned deal ID for tracking
 
-    - `quote_id` — The ID of the quote you're accepting
+    - `quote_id` — The ID of the quote you''re accepting
 
     - `quote_req_id` — The original quote request ID
 
-    - `leg_list` — Must match the quote's instrument, price, quantity, and side
+    - `leg_list` — Must match the quote''s instrument, price, quantity, and side
 
 
     ## Quote Request Lifecycle
@@ -655,7 +641,7 @@ apis:
 
     - **Monitor quote expiration times** to avoid accepting stale quotes
 
-    - **Track client IDs** (`cl_quote_req_id`, `cl_deal_id`) for reconciliation and audit purposes
+    - **Track client IDs** (`cl_quote_req_id`, `cl_deal_id`) for reconciliation and audit purposes'
   humanURL: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-introduction
   baseURL: https://api.crypto.com/exchange/v1
   tags:
@@ -666,8 +652,7 @@ apis:
   - type: Documentation
     url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-introduction
   - type: APIReference
-    url: >-
-      https://exchange-developer.crypto.com/exchange/v1/docs/api/rest/crypto-com-exchange-api-v-1
+    url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest/crypto-com-exchange-api-v-1
   - type: Authentication
     url: authentication/crypto-com-authentication.yml
   - type: Conventions
@@ -688,10 +673,9 @@ apis:
     url: https://exchange-developer.crypto.com/exchange/v1/llms.txt
 - aid: crypto-com:crypto-com-reference-and-market-data-api
   name: Crypto.com Reference and Market Data API
-  description: >-
-    Reference and market data endpoints provide public, unauthenticated access to instrument metadata,
-    real-time market data, and historical pricing information. These endpoints form the foundation for
-    price discovery, order book analysis, and trading decision workflows.
+  description: 'Reference and market data endpoints provide public, unauthenticated access to instrument
+    metadata, real-time market data, and historical pricing information. These endpoints form the foundation
+    for price discovery, order book analysis, and trading decision workflows.
 
 
     ## Core Data Types
@@ -787,7 +771,7 @@ apis:
 
 
     If WebSocket connections are unavailable, poll `public/get-tickers` and `public/get-book` at reasonable
-    intervals (e.g., 1-5 seconds).
+    intervals (e.g., 1-5 seconds).'
   humanURL: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-introduction
   baseURL: https://api.crypto.com/exchange/v1
   tags:
@@ -798,8 +782,7 @@ apis:
   - type: Documentation
     url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-introduction
   - type: APIReference
-    url: >-
-      https://exchange-developer.crypto.com/exchange/v1/docs/api/rest/crypto-com-exchange-api-v-1
+    url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest/crypto-com-exchange-api-v-1
   - type: Authentication
     url: authentication/crypto-com-authentication.yml
   - type: Conventions
@@ -820,10 +803,9 @@ apis:
     url: https://exchange-developer.crypto.com/exchange/v1/llms.txt
 - aid: crypto-com:crypto-com-staking-api
   name: Crypto.com Staking API
-  description: >-
-    Stake crypto assets on-chain to earn rewards directly from the Exchange. Staking locks your tokens
-    for a period, during which you earn periodic rewards. Liquid staking tokens (e.g., CDCETH) allow you
-    to maintain liquidity while staking.
+  description: 'Stake crypto assets on-chain to earn rewards directly from the Exchange. Staking locks
+    your tokens for a period, during which you earn periodic rewards. Liquid staking tokens (e.g., CDCETH)
+    allow you to maintain liquidity while staking.
 
 
     ## Staking Workflow
@@ -885,7 +867,7 @@ apis:
     staking rewards |
 
     | [`private/staking/get-convert-history`](/docs/api/rest/private-staking-get-convert-history) | Past
-    conversion requests |
+    conversion requests |'
   humanURL: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-introduction
   baseURL: https://api.crypto.com/exchange/v1
   tags:
@@ -896,8 +878,7 @@ apis:
   - type: Documentation
     url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-introduction
   - type: APIReference
-    url: >-
-      https://exchange-developer.crypto.com/exchange/v1/docs/api/rest/crypto-com-exchange-api-v-1
+    url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest/crypto-com-exchange-api-v-1
   - type: Authentication
     url: authentication/crypto-com-authentication.yml
   - type: Conventions
@@ -918,9 +899,8 @@ apis:
     url: https://exchange-developer.crypto.com/exchange/v1/llms.txt
 - aid: crypto-com:crypto-com-trading-api
   name: Crypto.com Trading API
-  description: >-
-    Private trading endpoints manage order placement and lifecycle. All order operations (create, amend,
-    cancel) are asynchronous — the REST response confirms the request was received, but order lifecycle
+  description: 'Private trading endpoints manage order placement and lifecycle. All order operations (create,
+    amend, cancel) are asynchronous — the REST response confirms the request was received, but order lifecycle
     updates arrive via WebSocket subscriptions.
 
 
@@ -1055,7 +1035,7 @@ apis:
     | `user.trade.{instrument_name}` | Trade execution events for a specific instrument |
 
 
-    These subscriptions require authentication and eliminate the need for polling REST endpoints.
+    These subscriptions require authentication and eliminate the need for polling REST endpoints.'
   humanURL: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-introduction
   baseURL: https://api.crypto.com/exchange/v1
   tags:
@@ -1066,8 +1046,7 @@ apis:
   - type: Documentation
     url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-introduction
   - type: APIReference
-    url: >-
-      https://exchange-developer.crypto.com/exchange/v1/docs/api/rest/crypto-com-exchange-api-v-1
+    url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest/crypto-com-exchange-api-v-1
   - type: Authentication
     url: authentication/crypto-com-authentication.yml
   - type: Conventions
@@ -1088,9 +1067,8 @@ apis:
     url: https://exchange-developer.crypto.com/exchange/v1/llms.txt
 - aid: crypto-com:crypto-com-trading-bot-api-api
   name: Crypto.com Trading Bot API
-  description: >-
-    Manage automated trading bots including DCA (Dollar-Cost Averaging), TWAP (Time-Weighted Average Price),
-    GRID, and Funding Arbitrage strategies.
+  description: 'Manage automated trading bots including DCA (Dollar-Cost Averaging), TWAP (Time-Weighted
+    Average Price), GRID, and Funding Arbitrage strategies.
 
 
     ## Bot Types
@@ -1123,7 +1101,7 @@ apis:
 
     | PAUSED | Bot is paused, no new orders will be placed |
 
-    | TERMINATED | Bot has been terminated |
+    | TERMINATED | Bot has been terminated |'
   humanURL: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-introduction
   baseURL: https://api.crypto.com/exchange/v1
   tags:
@@ -1134,8 +1112,7 @@ apis:
   - type: Documentation
     url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-introduction
   - type: APIReference
-    url: >-
-      https://exchange-developer.crypto.com/exchange/v1/docs/api/rest/crypto-com-exchange-api-v-1
+    url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest/crypto-com-exchange-api-v-1
   - type: Authentication
     url: authentication/crypto-com-authentication.yml
   - type: Conventions
@@ -1156,9 +1133,8 @@ apis:
     url: https://exchange-developer.crypto.com/exchange/v1/llms.txt
 - aid: crypto-com:crypto-com-transaction-history-api
   name: Crypto.com Transaction History API
-  description: >-
-    History will be stored for recent 6 months record only. For records over 6 months, please contact
-    our support team.
+  description: History will be stored for recent 6 months record only. For records over 6 months, please
+    contact our support team.
   humanURL: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-introduction
   baseURL: https://api.crypto.com/exchange/v1
   tags:
@@ -1169,8 +1145,7 @@ apis:
   - type: Documentation
     url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-introduction
   - type: APIReference
-    url: >-
-      https://exchange-developer.crypto.com/exchange/v1/docs/api/rest/crypto-com-exchange-api-v-1
+    url: https://exchange-developer.crypto.com/exchange/v1/docs/api/rest/crypto-com-exchange-api-v-1
   - type: Authentication
     url: authentication/crypto-com-authentication.yml
   - type: Conventions
@@ -1233,7 +1208,7 @@ common:
 - type: Compliance
   url: https://crypto.com/en/security
 - type: OpenAPI
-  url: openapi/crypto-com-exchange-openapi.yml
+  url: openapi/_original/crypto-com-exchange-openapi.yml
 - type: MCPServer
   url: mcp/crypto-com-mcp.yml
 - type: ToolCrosswalk
