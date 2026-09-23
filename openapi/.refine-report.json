@@ -1,0 +1,38 @@
+{
+  "provider": "crypto-com",
+  "sources": [
+    "_original/crypto-com-exchange-openapi.yml"
+  ],
+  "outputs": [
+    "crypto-com-account-balance-and-positions-api-openapi.yml",
+    "crypto-com-advanced-order-management-api-openapi.yml",
+    "crypto-com-crypto-wallet-api-openapi.yml",
+    "crypto-com-fiat-wallet-api-openapi.yml",
+    "crypto-com-otc-rfq-for-taker-api-openapi.yml",
+    "crypto-com-reference-and-market-data-api-openapi.yml",
+    "crypto-com-staking-api-openapi.yml",
+    "crypto-com-trading-api-openapi.yml",
+    "crypto-com-trading-bot-api-api-openapi.yml",
+    "crypto-com-transaction-history-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "crypto-com-exchange-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "crypto-com-account-balance-and-positions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "crypto-com-advanced-order-management-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "crypto-com-crypto-wallet-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "crypto-com-fiat-wallet-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "crypto-com-otc-rfq-for-taker-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "crypto-com-reference-and-market-data-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "crypto-com-staking-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "crypto-com-trading-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "crypto-com-trading-bot-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "crypto-com-transaction-history-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}
