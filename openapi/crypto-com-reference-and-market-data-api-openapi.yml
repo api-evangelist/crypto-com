@@ -1198,22 +1198,22 @@ components:
   schemas:
     PublicGetInsuranceResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetInsuranceResponse
-    PublicGetExpiredSettlementPriceResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetExpiredSettlementPriceResponse
-    PublicGetTradesResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetTradesResponse
-    PublicGetCandlestickResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetCandlestickResponse
-    PublicGetRiskParametersResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetRiskParametersResponse
     PublicGetValuationsResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetValuationsResponse
-    PublicGetTickersResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetTickersResponse
-    PublicGetInstrumentsResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetInstrumentsResponse
+    PublicGetCandlestickResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetCandlestickResponse
     PublicGetBookResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetBookResponse
+    PublicGetTickersResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetTickersResponse
+    PublicGetExpiredSettlementPriceResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetExpiredSettlementPriceResponse
+    PublicGetRiskParametersResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetRiskParametersResponse
+    PublicGetTradesResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetTradesResponse
+    PublicGetInstrumentsResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetInstrumentsResponse
 x-additional-descriptions:
 - name: Prediction Reference Data
   slug: prediction-reference-data

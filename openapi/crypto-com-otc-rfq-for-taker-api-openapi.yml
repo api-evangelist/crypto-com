@@ -1290,50 +1290,50 @@ paths:
                 message: INTERNAL_SERVER_ERROR
 components:
   schemas:
-    PrivateOtcGetOpenQuoteRequestsResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetOpenQuoteRequestsResponse
-    PrivateOtcRequestQuoteRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcRequestQuoteRequest
-    PrivateOtcGetOtcInstrumentsResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetOtcInstrumentsResponse
-    PrivateOtcGetUnsettledAmountsRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetUnsettledAmountsRequest
-    PrivateOtcGetQuoteHistoryRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetQuoteHistoryRequest
-    PrivateOtcGetSettleLaterLimitRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetSettleLaterLimitRequest
     PrivateOtcGetOpenQuotesRequest:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetOpenQuotesRequest
-    PrivateOtcGetOpenQuoteRequestsRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetOpenQuoteRequestsRequest
-    PrivateOtcGetDealHistoryRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetDealHistoryRequest
     PrivateOtcGetOtcInstrumentsRequest:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetOtcInstrumentsRequest
-    PrivateOtcGetOpenDealsResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetOpenDealsResponse
     PrivateOtcGetQuoteHistoryResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetQuoteHistoryResponse
-    PrivateOtcGetQuoteRequestHistoryRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetQuoteRequestHistoryRequest
-    PrivateOtcRequestDealRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcRequestDealRequest
-    PrivateOtcGetOpenDealsRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetOpenDealsRequest
-    PrivateOtcRequestDealResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcRequestDealResponse
-    PrivateOtcRequestQuoteResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcRequestQuoteResponse
-    PrivateOtcGetOpenQuotesResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetOpenQuotesResponse
     PrivateOtcGetUnsettledAmountsResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetUnsettledAmountsResponse
+    PrivateOtcRequestDealResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcRequestDealResponse
+    PrivateOtcGetQuoteRequestHistoryResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetQuoteRequestHistoryResponse
+    PrivateOtcRequestQuoteRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcRequestQuoteRequest
+    PrivateOtcGetOpenQuotesResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetOpenQuotesResponse
+    PrivateOtcGetDealHistoryRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetDealHistoryRequest
+    PrivateOtcGetQuoteRequestHistoryRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetQuoteRequestHistoryRequest
+    PrivateOtcGetOtcInstrumentsResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetOtcInstrumentsResponse
+    PrivateOtcGetSettleLaterLimitRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetSettleLaterLimitRequest
+    PrivateOtcGetOpenQuoteRequestsRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetOpenQuoteRequestsRequest
+    PrivateOtcRequestDealRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcRequestDealRequest
+    PrivateOtcGetQuoteHistoryRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetQuoteHistoryRequest
+    PrivateOtcGetOpenQuoteRequestsResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetOpenQuoteRequestsResponse
     PrivateOtcGetDealHistoryResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetDealHistoryResponse
     PrivateOtcGetSettleLaterLimitResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetSettleLaterLimitResponse
-    PrivateOtcGetQuoteRequestHistoryResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetQuoteRequestHistoryResponse
+    PrivateOtcGetUnsettledAmountsRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetUnsettledAmountsRequest
+    PrivateOtcRequestQuoteResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcRequestQuoteResponse
+    PrivateOtcGetOpenDealsResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetOpenDealsResponse
+    PrivateOtcGetOpenDealsRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateOtcGetOpenDealsRequest
 x-additional-descriptions:
 - name: Prediction Reference Data
   slug: prediction-reference-data
