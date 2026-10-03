@@ -1374,46 +1374,46 @@ paths:
                 message: INTERNAL_SERVER_ERROR
 components:
   schemas:
-    PrivateFiatFiatWithdrawHistoryRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatWithdrawHistoryRequest
     PrivateFiatFiatDepositHistoryRequest:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatDepositHistoryRequest
-    PrivateFiatFiatGetBankAccountsRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatGetBankAccountsRequest
-    PrivateFiatFiatDepositInfoRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatDepositInfoRequest
-    PrivateFiatFiatDepositInfoResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatDepositInfoResponse
-    PrivateFiatFiatCreateBankAccountRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatCreateBankAccountRequest
     PrivateFiatFiatTransactionQuotaResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatTransactionQuotaResponse
     PrivateFiatFiatAccessResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatAccessResponse
-    PrivateFiatFiatTransactionLimitRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatTransactionLimitRequest
-    PrivateFiatFiatCreateBankAccountResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatCreateBankAccountResponse
-    PrivateFiatFiatTransactionLimitResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatTransactionLimitResponse
-    PrivateFiatFiatTransactionQuotaRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatTransactionQuotaRequest
+    PrivateFiatFiatCreateWithdrawRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatCreateWithdrawRequest
+    PrivateFiatFiatGetPlaidTokenRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatGetPlaidTokenRequest
+    PrivateFiatFiatDepositHistoryResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatDepositHistoryResponse
+    PrivateFiatFiatCreateBankAccountRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatCreateBankAccountRequest
+    PrivateFiatFiatGetBankAccountsRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatGetBankAccountsRequest
+    PrivateFiatFiatWithdrawHistoryRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatWithdrawHistoryRequest
+    PrivateFiatFiatDepositInfoRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatDepositInfoRequest
     PrivateFiatFiatGetPlaidTokenResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatGetPlaidTokenResponse
     PrivateFiatFiatAccessRequest:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatAccessRequest
-    PrivateFiatFiatGetBankAccountsResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatGetBankAccountsResponse
-    PrivateFiatFiatDepositHistoryResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatDepositHistoryResponse
+    PrivateFiatFiatDepositInfoResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatDepositInfoResponse
     PrivateFiatFiatCreateWithdrawResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatCreateWithdrawResponse
-    PrivateFiatFiatCreateWithdrawRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatCreateWithdrawRequest
+    PrivateFiatFiatCreateBankAccountResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatCreateBankAccountResponse
     PrivateFiatFiatWithdrawHistoryResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatWithdrawHistoryResponse
-    PrivateFiatFiatGetPlaidTokenRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatGetPlaidTokenRequest
+    PrivateFiatFiatGetBankAccountsResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatGetBankAccountsResponse
+    PrivateFiatFiatTransactionQuotaRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatTransactionQuotaRequest
+    PrivateFiatFiatTransactionLimitResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatTransactionLimitResponse
+    PrivateFiatFiatTransactionLimitRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateFiatFiatTransactionLimitRequest
 x-additional-descriptions:
 - name: Prediction Reference Data
   slug: prediction-reference-data

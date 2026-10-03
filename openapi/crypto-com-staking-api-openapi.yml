@@ -1236,50 +1236,50 @@ paths:
                 message: INTERNAL_SERVER_ERROR
 components:
   schemas:
+    PrivateStakingGetOpenStakeRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingGetOpenStakeRequest
+    PublicStakingGetConversionRateRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PublicStakingGetConversionRateRequest
     PrivateStakingStakeRequest:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingStakeRequest
-    PrivateStakingGetOpenConvertResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingGetOpenConvertResponse
-    PrivateStakingStakeResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingStakeResponse
-    PrivateStakingGetRewardHistoryRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingGetRewardHistoryRequest
-    PrivateStakingGetConvertHistoryResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingGetConvertHistoryResponse
     PrivateStakingGetStakeHistoryResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingGetStakeHistoryResponse
+    PrivateStakingGetStakingPositionRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingGetStakingPositionRequest
+    PrivateStakingUnstakeRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingUnstakeRequest
+    PrivateStakingUnstakeResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingUnstakeResponse
+    PrivateStakingGetRewardHistoryResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingGetRewardHistoryResponse
+    PrivateStakingGetStakingPositionResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingGetStakingPositionResponse
+    PrivateStakingStakeResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingStakeResponse
+    PublicStakingGetConversionRateResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PublicStakingGetConversionRateResponse
+    PrivateStakingGetStakingInstrumentsResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingGetStakingInstrumentsResponse
+    PrivateStakingGetConvertHistoryRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingGetConvertHistoryRequest
+    PrivateStakingGetRewardHistoryRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingGetRewardHistoryRequest
     PrivateStakingConvertRequest:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingConvertRequest
     PrivateStakingGetStakingInstrumentsRequest:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingGetStakingInstrumentsRequest
-    PublicStakingGetConversionRateResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PublicStakingGetConversionRateResponse
     PrivateStakingConvertResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingConvertResponse
-    PrivateStakingGetRewardHistoryResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingGetRewardHistoryResponse
-    PrivateStakingGetConvertHistoryRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingGetConvertHistoryRequest
-    PrivateStakingUnstakeResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingUnstakeResponse
-    PrivateStakingGetStakingPositionRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingGetStakingPositionRequest
-    PublicStakingGetConversionRateRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PublicStakingGetConversionRateRequest
-    PrivateStakingUnstakeRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingUnstakeRequest
-    PrivateStakingGetOpenStakeResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingGetOpenStakeResponse
-    PrivateStakingGetStakingPositionResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingGetStakingPositionResponse
-    PrivateStakingGetOpenConvertRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingGetOpenConvertRequest
-    PrivateStakingGetStakingInstrumentsResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingGetStakingInstrumentsResponse
-    PrivateStakingGetOpenStakeRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingGetOpenStakeRequest
+    PrivateStakingGetConvertHistoryResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingGetConvertHistoryResponse
     PrivateStakingGetStakeHistoryRequest:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingGetStakeHistoryRequest
+    PrivateStakingGetOpenConvertResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingGetOpenConvertResponse
+    PrivateStakingGetOpenStakeResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingGetOpenStakeResponse
+    PrivateStakingGetOpenConvertRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateStakingGetOpenConvertRequest
 x-additional-descriptions:
 - name: Prediction Reference Data
   slug: prediction-reference-data
