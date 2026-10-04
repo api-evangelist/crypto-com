@@ -1009,34 +1009,34 @@ paths:
                 message: INTERNAL_SERVER_ERROR
 components:
   schemas:
-    PrivateBotPauseTradingBotResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateBotPauseTradingBotResponse
-    PrivateBotPauseTradingBotRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateBotPauseTradingBotRequest
-    PrivateBotUpdateTradingBotRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateBotUpdateTradingBotRequest
-    PrivateBotUpdateTradingBotResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateBotUpdateTradingBotResponse
-    PrivateBotCreateTradingBotResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateBotCreateTradingBotResponse
-    PrivateBotResumeTradingBotResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateBotResumeTradingBotResponse
     PrivateBotGetTradingBotExecutionsRequest:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateBotGetTradingBotExecutionsRequest
+    PrivateBotTerminateTradingBotResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateBotTerminateTradingBotResponse
+    PrivateBotUpdateTradingBotResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateBotUpdateTradingBotResponse
     PrivateBotGetTradingBotsRequest:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateBotGetTradingBotsRequest
     PrivateBotGetTradingBotExecutionsResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateBotGetTradingBotExecutionsResponse
+    PrivateBotCreateTradingBotResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateBotCreateTradingBotResponse
     PrivateBotCreateTradingBotRequest:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateBotCreateTradingBotRequest
-    PrivateBotGetTradingBotsResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateBotGetTradingBotsResponse
-    PrivateBotTerminateTradingBotRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateBotTerminateTradingBotRequest
     PrivateBotResumeTradingBotRequest:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateBotResumeTradingBotRequest
-    PrivateBotTerminateTradingBotResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateBotTerminateTradingBotResponse
+    PrivateBotGetTradingBotsResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateBotGetTradingBotsResponse
+    PrivateBotResumeTradingBotResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateBotResumeTradingBotResponse
+    PrivateBotPauseTradingBotRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateBotPauseTradingBotRequest
+    PrivateBotTerminateTradingBotRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateBotTerminateTradingBotRequest
+    PrivateBotPauseTradingBotResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateBotPauseTradingBotResponse
+    PrivateBotUpdateTradingBotRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateBotUpdateTradingBotRequest
 x-additional-descriptions:
 - name: Prediction Reference Data
   slug: prediction-reference-data

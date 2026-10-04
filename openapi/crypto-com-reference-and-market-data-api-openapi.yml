@@ -1196,24 +1196,24 @@ paths:
                 message: INTERNAL_SERVER_ERROR
 components:
   schemas:
-    PublicGetRiskParametersResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetRiskParametersResponse
-    PublicGetTickersResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetTickersResponse
-    PublicGetValuationsResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetValuationsResponse
     PublicGetInstrumentsResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetInstrumentsResponse
-    PublicGetCandlestickResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetCandlestickResponse
-    PublicGetExpiredSettlementPriceResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetExpiredSettlementPriceResponse
-    PublicGetTradesResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetTradesResponse
     PublicGetInsuranceResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetInsuranceResponse
+    PublicGetValuationsResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetValuationsResponse
+    PublicGetCandlestickResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetCandlestickResponse
+    PublicGetRiskParametersResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetRiskParametersResponse
     PublicGetBookResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetBookResponse
+    PublicGetTradesResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetTradesResponse
+    PublicGetExpiredSettlementPriceResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetExpiredSettlementPriceResponse
+    PublicGetTickersResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetTickersResponse
 x-additional-descriptions:
 - name: Prediction Reference Data
   slug: prediction-reference-data

@@ -2206,82 +2206,82 @@ paths:
                 message: INTERNAL_SERVER_ERROR
 components:
   schemas:
-    PrivateChangeAccountSettingsResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateChangeAccountSettingsResponse
-    PrivateGetOpenOrdersRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetOpenOrdersRequest
-    PrivateGetAccountSettingsResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetAccountSettingsResponse
-    PrivateCancelOrderRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateCancelOrderRequest
-    PrivateCancelOrderResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateCancelOrderResponse
-    PrivateGetFeeRateResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetFeeRateResponse
-    PrivateGetTradesRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetTradesRequest
-    PrivateCancelAllOrdersResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateCancelAllOrdersResponse
-    PrivateCreateIsolatedMarginTransferRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateCreateIsolatedMarginTransferRequest
-    PrivateChangeAccountSettingsRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateChangeAccountSettingsRequest
-    PrivateGetFeeRateRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetFeeRateRequest
-    PrivateClosePositionRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateClosePositionRequest
-    PrivateCancelAllOrdersRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateCancelAllOrdersRequest
-    PrivateCreateOrderResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateCreateOrderResponse
-    PrivateChangeIsolatedMarginLeverageResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateChangeIsolatedMarginLeverageResponse
-    PrivateChangeAccountLeverageResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateChangeAccountLeverageResponse
-    PrivateChangeAccountLeverageRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateChangeAccountLeverageRequest
-    PrivateCreateOrderListRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateCreateOrderListRequest
-    PrivateGetOpenOrdersResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetOpenOrdersResponse
     PrivateAmendOrderRequest:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAmendOrderRequest
-    PrivateGetOrderHistoryRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetOrderHistoryRequest
+    PrivateCancelAllOrdersResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateCancelAllOrdersResponse
     PrivateClosePositionResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateClosePositionResponse
-    PrivateGetTradesResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetTradesResponse
+    PrivateClosePositionRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateClosePositionRequest
     PrivateGetOrderHistoryResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetOrderHistoryResponse
-    PrivateGetTransactionsResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetTransactionsResponse
-    PrivateGetInstrumentFeeRateResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetInstrumentFeeRateResponse
-    PrivateGetOrderDetailResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetOrderDetailResponse
+    PrivateChangeAccountLeverageResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateChangeAccountLeverageResponse
     PrivateCreateIsolatedMarginTransferResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateCreateIsolatedMarginTransferResponse
-    PrivateCancelOrderListRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateCancelOrderListRequest
-    PrivateCreateOrderRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateCreateOrderRequest
-    PrivateCreateOrderListResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateCreateOrderListResponse
-    PrivateGetOrderDetailRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetOrderDetailRequest
-    PrivateGetInstrumentFeeRateRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetInstrumentFeeRateRequest
+    PrivateGetTransactionsResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetTransactionsResponse
+    PrivateGetOrderHistoryRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetOrderHistoryRequest
+    PrivateCancelAllOrdersRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateCancelAllOrdersRequest
+    PrivateCancelOrderRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateCancelOrderRequest
     PrivateCancelOrderListResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateCancelOrderListResponse
-    PrivateGetAccountSettingsRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetAccountSettingsRequest
+    PrivateCancelOrderResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateCancelOrderResponse
+    PrivateGetOpenOrdersRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetOpenOrdersRequest
+    PrivateGetInstrumentFeeRateRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetInstrumentFeeRateRequest
+    PrivateCreateOrderResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateCreateOrderResponse
+    PrivateChangeAccountLeverageRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateChangeAccountLeverageRequest
+    PrivateGetAccountSettingsResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetAccountSettingsResponse
     PrivateGetTransactionsRequest:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetTransactionsRequest
-    PrivateChangeIsolatedMarginLeverageRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateChangeIsolatedMarginLeverageRequest
+    PrivateGetOrderDetailResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetOrderDetailResponse
+    PrivateCreateOrderListResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateCreateOrderListResponse
+    PrivateGetFeeRateResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetFeeRateResponse
     PrivateAmendOrderResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAmendOrderResponse
+    PrivateGetInstrumentFeeRateResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetInstrumentFeeRateResponse
+    PrivateGetTradesResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetTradesResponse
+    PrivateChangeAccountSettingsResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateChangeAccountSettingsResponse
+    PrivateGetOrderDetailRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetOrderDetailRequest
+    PrivateChangeIsolatedMarginLeverageRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateChangeIsolatedMarginLeverageRequest
+    PrivateChangeAccountSettingsRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateChangeAccountSettingsRequest
+    PrivateCreateOrderRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateCreateOrderRequest
+    PrivateCreateIsolatedMarginTransferRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateCreateIsolatedMarginTransferRequest
+    PrivateGetAccountSettingsRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetAccountSettingsRequest
+    PrivateGetFeeRateRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetFeeRateRequest
+    PrivateChangeIsolatedMarginLeverageResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateChangeIsolatedMarginLeverageResponse
+    PrivateCancelOrderListRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateCancelOrderListRequest
+    PrivateGetTradesRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetTradesRequest
+    PrivateGetOpenOrdersResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetOpenOrdersResponse
+    PrivateCreateOrderListRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateCreateOrderListRequest
 x-additional-descriptions:
 - name: Prediction Reference Data
   slug: prediction-reference-data
