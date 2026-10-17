@@ -598,26 +598,26 @@ paths:
                 message: INTERNAL_SERVER_ERROR
 components:
   schemas:
-    PrivateGetDepositAddressResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetDepositAddressResponse
-    PrivateGetWithdrawalHistoryResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetWithdrawalHistoryResponse
-    PrivateGetDepositHistoryResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetDepositHistoryResponse
-    PrivateCreateWithdrawalRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateCreateWithdrawalRequest
-    PrivateGetCurrencyNetworksRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetCurrencyNetworksRequest
     PrivateGetDepositAddressRequest:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetDepositAddressRequest
-    PrivateGetWithdrawalHistoryRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetWithdrawalHistoryRequest
+    PrivateGetCurrencyNetworksRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetCurrencyNetworksRequest
     PrivateGetDepositHistoryRequest:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetDepositHistoryRequest
-    PrivateGetCurrencyNetworksResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetCurrencyNetworksResponse
     PrivateCreateWithdrawalResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateCreateWithdrawalResponse
+    PrivateGetWithdrawalHistoryResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetWithdrawalHistoryResponse
+    PrivateCreateWithdrawalRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateCreateWithdrawalRequest
+    PrivateGetWithdrawalHistoryRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetWithdrawalHistoryRequest
+    PrivateGetDepositAddressResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetDepositAddressResponse
+    PrivateGetDepositHistoryResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetDepositHistoryResponse
+    PrivateGetCurrencyNetworksResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetCurrencyNetworksResponse
 x-additional-descriptions:
 - name: Prediction Reference Data
   slug: prediction-reference-data

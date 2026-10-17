@@ -2031,70 +2031,70 @@ paths:
                 message: INTERNAL_SERVER_ERROR
 components:
   schemas:
-    PrivateAdvancedCancelOrderListResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCancelOrderListResponse
-    PrivateAdvancedCreateOtocoResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCreateOtocoResponse
-    PrivateAdvancedCancelOtoResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCancelOtoResponse
-    PrivateAdvancedCreateOcoRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCreateOcoRequest
-    PrivateAdvancedCancelOtocoRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCancelOtocoRequest
-    PrivateAdvancedCancelOrderRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCancelOrderRequest
     PrivateAdvancedCreateOtocoRequest:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCreateOtocoRequest
-    PrivateAdvancedCancelOtocoResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCancelOtocoResponse
-    PrivateAdvancedCreateOrderListResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCreateOrderListResponse
-    PrivateAdvancedGetOrderListDetailRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedGetOrderListDetailRequest
-    PrivateAdvancedGetOrderListDetailResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedGetOrderListDetailResponse
-    PrivateAdvancedCancelOrderListRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCancelOrderListRequest
-    PrivateAdvancedGetOrderHistoryResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedGetOrderHistoryResponse
-    PrivateAdvancedCancelAllOrdersRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCancelAllOrdersRequest
-    PrivateAdvancedCreateOtoResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCreateOtoResponse
-    PrivateAdvancedCreateOrderListRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCreateOrderListRequest
-    PrivateAdvancedGetOpenOrdersResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedGetOpenOrdersResponse
-    PrivateAdvancedGetOrderDetailResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedGetOrderDetailResponse
-    PrivateAdvancedCancelOcoRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCancelOcoRequest
-    PrivateAdvancedAmendOrderResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedAmendOrderResponse
-    PrivateAdvancedCancelOtoRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCancelOtoRequest
     PrivateAdvancedGetOrderHistoryRequest:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedGetOrderHistoryRequest
-    PrivateAdvancedCancelOrderResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCancelOrderResponse
-    PrivateAdvancedAmendOrderRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedAmendOrderRequest
-    PrivateAdvancedGetOrderDetailRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedGetOrderDetailRequest
-    PrivateAdvancedCreateOtoRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCreateOtoRequest
-    PrivateAdvancedCancelOcoResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCancelOcoResponse
-    PrivateAdvancedCreateOrderResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCreateOrderResponse
-    PrivateAdvancedGetOpenOrdersRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedGetOpenOrdersRequest
     PrivateAdvancedCreateOrderRequest:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCreateOrderRequest
-    PrivateAdvancedCancelAllOrdersResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCancelAllOrdersResponse
+    PrivateAdvancedCancelAllOrdersRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCancelAllOrdersRequest
+    PrivateAdvancedCancelOrderListResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCancelOrderListResponse
+    PrivateAdvancedGetOrderDetailResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedGetOrderDetailResponse
+    PrivateAdvancedCreateOrderListRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCreateOrderListRequest
+    PrivateAdvancedCancelOtoRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCancelOtoRequest
+    PrivateAdvancedCancelOrderRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCancelOrderRequest
+    PrivateAdvancedCreateOtocoResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCreateOtocoResponse
+    PrivateAdvancedCancelOrderResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCancelOrderResponse
+    PrivateAdvancedGetOrderHistoryResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedGetOrderHistoryResponse
+    PrivateAdvancedAmendOrderRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedAmendOrderRequest
+    PrivateAdvancedAmendOrderResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedAmendOrderResponse
     PrivateAdvancedCreateOcoResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCreateOcoResponse
+    PrivateAdvancedCreateOtoRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCreateOtoRequest
+    PrivateAdvancedGetOpenOrdersResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedGetOpenOrdersResponse
+    PrivateAdvancedGetOpenOrdersRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedGetOpenOrdersRequest
+    PrivateAdvancedGetOrderDetailRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedGetOrderDetailRequest
+    PrivateAdvancedCreateOrderResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCreateOrderResponse
+    PrivateAdvancedCancelOtocoRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCancelOtocoRequest
+    PrivateAdvancedCancelOtocoResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCancelOtocoResponse
+    PrivateAdvancedGetOrderListDetailResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedGetOrderListDetailResponse
+    PrivateAdvancedCreateOrderListResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCreateOrderListResponse
+    PrivateAdvancedCancelOtoResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCancelOtoResponse
+    PrivateAdvancedGetOrderListDetailRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedGetOrderListDetailRequest
+    PrivateAdvancedCancelOrderListRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCancelOrderListRequest
+    PrivateAdvancedCreateOcoRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCreateOcoRequest
+    PrivateAdvancedCancelOcoResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCancelOcoResponse
+    PrivateAdvancedCancelOcoRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCancelOcoRequest
+    PrivateAdvancedCancelAllOrdersResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCancelAllOrdersResponse
+    PrivateAdvancedCreateOtoResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateAdvancedCreateOtoResponse
 x-additional-descriptions:
 - name: Prediction Reference Data
   slug: prediction-reference-data

@@ -1196,24 +1196,24 @@ paths:
                 message: INTERNAL_SERVER_ERROR
 components:
   schemas:
+    PublicGetExpiredSettlementPriceResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetExpiredSettlementPriceResponse
+    PublicGetValuationsResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetValuationsResponse
+    PublicGetTradesResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetTradesResponse
     PublicGetInstrumentsResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetInstrumentsResponse
     PublicGetInsuranceResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetInsuranceResponse
-    PublicGetValuationsResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetValuationsResponse
-    PublicGetCandlestickResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetCandlestickResponse
-    PublicGetRiskParametersResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetRiskParametersResponse
-    PublicGetBookResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetBookResponse
-    PublicGetTradesResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetTradesResponse
-    PublicGetExpiredSettlementPriceResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetExpiredSettlementPriceResponse
     PublicGetTickersResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetTickersResponse
+    PublicGetBookResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetBookResponse
+    PublicGetRiskParametersResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetRiskParametersResponse
+    PublicGetCandlestickResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PublicGetCandlestickResponse
 x-additional-descriptions:
 - name: Prediction Reference Data
   slug: prediction-reference-data

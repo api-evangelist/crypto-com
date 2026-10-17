@@ -539,22 +539,22 @@ paths:
                 message: INTERNAL_SERVER_ERROR
 components:
   schemas:
-    PrivateGetTransactionsResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetTransactionsResponse
     PrivateGetOrderHistoryRequest:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetOrderHistoryRequest
-    PrivateGetTransactionsRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetTransactionsRequest
+    PrivateGetOrderDetailRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetOrderDetailRequest
+    PrivateGetTransactionsResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetTransactionsResponse
     PrivateGetOrderDetailResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetOrderDetailResponse
+    PrivateGetTradesRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetTradesRequest
     PrivateGetTradesResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetTradesResponse
     PrivateGetOrderHistoryResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetOrderHistoryResponse
-    PrivateGetTradesRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetTradesRequest
-    PrivateGetOrderDetailRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetOrderDetailRequest
+    PrivateGetTransactionsRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetTransactionsRequest
 x-additional-descriptions:
 - name: Prediction Reference Data
   slug: prediction-reference-data

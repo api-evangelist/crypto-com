@@ -915,34 +915,34 @@ paths:
                 message: INTERNAL_SERVER_ERROR
 components:
   schemas:
-    PrivateGetAccountsResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetAccountsResponse
-    PrivateCreateSubaccountTransferResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateCreateSubaccountTransferResponse
-    PrivateUserBalanceRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateUserBalanceRequest
     PrivateGetSubaccountBalancesResponse:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetSubaccountBalancesResponse
-    PrivateUserBalanceHistoryRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateUserBalanceHistoryRequest
-    PrivateCreateSubaccountTransferRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateCreateSubaccountTransferRequest
-    PrivateUserBalanceResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateUserBalanceResponse
-    PrivateGetPositionsResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetPositionsResponse
     PrivateGetSubaccountBalancesRequest:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetSubaccountBalancesRequest
-    PrivateGetFeeCreditBalancesResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetFeeCreditBalancesResponse
-    PrivateUserBalanceHistoryResponse:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateUserBalanceHistoryResponse
-    PrivateGetFeeCreditBalancesRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetFeeCreditBalancesRequest
-    PrivateGetPositionsRequest:
-      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetPositionsRequest
+    PrivateCreateSubaccountTransferRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateCreateSubaccountTransferRequest
     PrivateGetAccountsRequest:
       $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetAccountsRequest
+    PrivateUserBalanceHistoryRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateUserBalanceHistoryRequest
+    PrivateCreateSubaccountTransferResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateCreateSubaccountTransferResponse
+    PrivateGetPositionsResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetPositionsResponse
+    PrivateGetAccountsResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetAccountsResponse
+    PrivateUserBalanceHistoryResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateUserBalanceHistoryResponse
+    PrivateGetPositionsRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetPositionsRequest
+    PrivateGetFeeCreditBalancesResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetFeeCreditBalancesResponse
+    PrivateGetFeeCreditBalancesRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateGetFeeCreditBalancesRequest
+    PrivateUserBalanceResponse:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateUserBalanceResponse
+    PrivateUserBalanceRequest:
+      $ref: exchange-schema.generated.yaml#/components/schemas/PrivateUserBalanceRequest
 x-additional-descriptions:
 - name: Prediction Reference Data
   slug: prediction-reference-data
