@@ -49,7 +49,7 @@ x-docs-platform-confidence: medium
 x-docs-platform-checked: 2026-09-24
 tags:
 - Cryptocurrency
-- Crypto Exchange
+- Cryptocurrency Exchange
 - Trading
 - Derivatives
 - Market Data
@@ -79,6 +79,7 @@ tags_raw:
 - fintech
 - mcp
 - agent-native
+- Crypto Exchange
 apis:
 - name: Crypto.com Exchange WebSocket API v1
   description: WebSocket API for the Crypto.com Exchange, split into a Market Data stream (public channels
@@ -90,7 +91,7 @@ apis:
   humanURL: https://exchange-developer.crypto.com/exchange/v1/docs/api/websocket-introduction
   baseURL: wss://stream.crypto.com/exchange/v1
   tags:
-  - Crypto Exchange
+  - Cryptocurrency Exchange
   - Market Data
   - Trading
   - Streaming
@@ -99,6 +100,7 @@ apis:
   - market-data
   - trading
   - streaming
+  - Crypto Exchange
   properties:
   - type: Documentation
     url: https://exchange-developer.crypto.com/exchange/v1/docs/api/websocket-introduction
@@ -118,7 +120,7 @@ apis:
     an AWS PrivateLink connection - so no public baseURL is published.
   humanURL: https://exchange-developer.crypto.com/exchange/v1/docs/api/fix-introduction
   tags:
-  - Crypto Exchange
+  - Cryptocurrency Exchange
   - Trading
   - FIX Protocol
   - Institutional
@@ -127,6 +129,7 @@ apis:
   - trading
   - fix-protocol
   - institutional
+  - Crypto Exchange
   properties:
   - type: Documentation
     url: https://exchange-developer.crypto.com/exchange/v1/docs/api/fix-introduction
