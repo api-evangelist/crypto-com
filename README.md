@@ -64,14 +64,151 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Crypto.com is a cryptocurrency exchange, brokerage and payments company. Its public developer surface
-spans four programmable products — the Crypto.com Exchange API v1 (REST, WebSocket and FIX 4.4), the
-Crypto.com Pay merchant payments API, the Crypto.com Developer Platform API for Cronos EVM / zkEVM, and
-an agent layer made up of a published MCP server, an agent-first CLI and provider-authored Agent Skills.
+Crypto.com is a cryptocurrency exchange, brokerage and payments company serving retail and institutional customers across spot, margin and derivatives trading, staking, custody, card and payment acceptance, and on-chain development on the Cronos EVM and Cronos zkEVM networks. Its public developer surface spans four programmable products: the Crypto.com Exchange API v1 (REST, WebSocket and FIX 4.4) for market data, order entry, advanced OCO/OTO/OTOCO orders, trading bots, portfolio, wallet and staking operations; the Crypto.com Pay API for merchant payment acceptance, refunds, subscriptions and invoicing with webhooks and idempotent refunds; the Crypto.com Developer Platform API for Cronos tokens, contracts, transactions, blocks, wallets, CronosID and DeFi; and an agent layer consisting of a published MCP server, an agent-first Rust CLI, and provider-authored Agent Skills for trading through the Crypto.com App and Exchange.
 
-- Website: https://crypto.com/
-- Exchange API docs: https://exchange-developer.crypto.com/exchange/v1
-- Pay API docs: https://pay-docs.crypto.com/
-- Developer Platform: https://developer.crypto.com/
-- GitHub: https://github.com/crypto-com
-- Status: https://status.crypto.com/
+**Areas:** Cryptocurrency · Cryptocurrency Exchange · Trading · Derivatives · Market Data · Digital Assets · Payments · Merchant Payments · Blockchain · cronos · DeFi · Staking
+
+## Crypto.com on APIs.io
+
+Everything profiled for Crypto.com is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/crypto-com/](https://apis.io/providers/crypto-com/)** — or go straight to one of the APIs or properties below.
+
+### APIs (14)
+
+- [Crypto.com Exchange WebSocket API v1](https://apis.io/apis/crypto-com/cryptocom-exchange-websocket-api-v1/) — WebSocket API for the Crypto.com Exchange, split into a Market Data stream (public channels for book, ticker, trade, candlestick, index, mark price,…
+- [Crypto.com Exchange FIX API](https://apis.io/apis/crypto-com/cryptocom-exchange-fix-api/) — FIX 4.4-based API for institutional order entry, market data and drop copy on the Crypto.com Exchange, with tags borrowed from later FIX versions. Covers…
+- [Crypto.com Pay API](https://apis.io/apis/crypto-com/cryptocom-pay-api/) — Merchant payments API for accepting cryptocurrency payments, issuing refunds, running subscriptions and recurring invoices, managing customers, products and…
+- [Crypto.com Developer Platform API](https://apis.io/apis/crypto-com/cryptocom-developer-platform-api/) — On-chain developer platform service API for Cronos EVM and Cronos zkEVM, exposing native and ERC-20 token balances and transfers, smart contract ABI and…
+- [Crypto.com Account Balance and Positions API](https://apis.io/apis/crypto-com/crypto-com-account-balance-and-positions-api/) — Retrieve real-time and historical snapshots of wallet balances, open positions, margin requirements, and collateral status. Use these endpoints to monitor…
+- [Crypto.com Advanced Order Management API](https://apis.io/apis/crypto-com/crypto-com-advanced-order-management-api/) — Advanced Order Management provides trigger orders and multi-leg execution strategies beyond basic LIMIT and MARKET orders. Use these endpoints for…
+- [Crypto.com Crypto Wallet API](https://apis.io/apis/crypto-com/crypto-com-crypto-wallet-api/) — Manages the user's wallet. Most of the endpoints are only available at master account level. Some endpoints requires Withdrawal setting to be enabled for…
+- [Crypto.com Fiat Wallet API](https://apis.io/apis/crypto-com/crypto-com-fiat-wallet-api/) — Manages the user's fiat wallet. Most of the endpoints are only available at master account level. Some endpoints requires Withdrawal setting to be enabled…
+- [Crypto.com OTC RFQ for Taker API](https://apis.io/apis/crypto-com/crypto-com-otc-rfq-for-taker-api/) — OTC RFQ (Request For Quote) enables takers to request block trade quotes from multiple liquidity providers, evaluate received quotes, and execute trades at…
+- [Crypto.com Reference and Market Data API](https://apis.io/apis/crypto-com/crypto-com-reference-and-market-data-api/) — Reference and market data endpoints provide public, unauthenticated access to instrument metadata, real-time market data, and historical pricing…
+- [Crypto.com Staking API](https://apis.io/apis/crypto-com/crypto-com-staking-api/) — Stake crypto assets on-chain to earn rewards directly from the Exchange. Staking locks your tokens for a period, during which you earn periodic rewards.…
+- [Crypto.com Trading API](https://apis.io/apis/crypto-com/crypto-com-trading-api/) — Private trading endpoints manage order placement and lifecycle. All order operations (create, amend, cancel) are asynchronous — the REST response confirms…
+- [Crypto.com Trading Bot API](https://apis.io/apis/crypto-com/crypto-com-trading-bot-api-api/) — Manage automated trading bots including DCA (Dollar-Cost Averaging), TWAP (Time-Weighted Average Price), GRID, and Funding Arbitrage strategies. ## Bot…
+- [Crypto.com Transaction History API](https://apis.io/apis/crypto-com/crypto-com-transaction-history-api/) — History will be stored for recent 6 months record only. For records over 6 months, please contact our support team.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Crypto Com Event Surface](https://apis.io/asyncapis/crypto-com/crypto-com-event-surface/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [cdcx](https://apis.io/servers/crypto-com/cdcx/)
+
+#### Collections (1)
+
+Postman and Open Collection request collections.
+
+- [Crypto.com Exchange API v1](https://apis.io/collections/crypto-com/open-crypto-com-exchange/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Crypto Com Exchange Overlay](https://apis.io/overlays/crypto-com/crypto-com-exchange-overlay/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Crypto Com Authentication](https://apis.io/security/crypto-com/crypto-com-authentication/)
+- [Crypto Com Domain Security](https://apis.io/security/crypto-com/crypto-com-domain-security/)
+- [Crypto Com Trust Center](https://apis.io/security/crypto-com/crypto-com-trust-center/)
+- [Crypto Com Vulnerability Disclosure](https://apis.io/security/crypto-com/crypto-com-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Crypto Com Plans Pricing](https://apis.io/plans/crypto-com/crypto-com-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Crypto Com Rate Limits](https://apis.io/rate-limits/crypto-com/crypto-com-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://crypto.com/)
+- [Documentation](https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-introduction)
+- [Getting started](https://exchange-developer.crypto.com/exchange/v1/docs/api/rest-common-api-reference)
+- [API reference](https://exchange-developer.crypto.com/exchange/v1/docs/api/rest/crypto-com-exchange-api-v-1)
+- [Pricing](https://crypto.com/exchange/fee)
+- [Sign up](https://crypto.com/exchange/signup)
+- [Support](https://help.crypto.com/en/)
+- [Blog](https://crypto.com/en/product-news)
+- [Security](https://help.crypto.com/en/articles/9154034-vulnerability-disclosure-and-bug-bounty)
+- [Compliance](https://crypto.com/en/security)
+- [Trust centre](https://crypto.com/en/security)
+- [Terms of service](https://crypto.com/exchange/terms)
+- [Privacy policy](https://crypto.com/en/privacy)
+- [GitHub](https://github.com/crypto-com)
+- [Status](https://status.crypto.com/)
+
+## API Evangelist rating
+
+**Kin Score 65.6** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 63.3 |
+| Contract quality | 55.2 |
+| Contract governance | 18.2 |
+| Operational transparency | 92.1 |
+| Developer ergonomics | 85.7 |
+| Access clarity | 60.5 |
+
+**Agent readiness 46.3** — agent-native
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | documented (partial credit) |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | yes |
+| Agent Skills | yes |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 38.9** — Securities & Market Data
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/crypto-com/](https://apis.io/providers/crypto-com/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Crypto.com: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/crypto-com/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
